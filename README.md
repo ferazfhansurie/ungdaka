@@ -34,7 +34,7 @@ yarn run dev
 ## Contact
 
 - **Email:** Faeezree@gmail.com
-- **Phone:** 0182225286
+- **Phone:** 01121677672
 - **Location:** Shah Alam, Malaysia
 
 ## Technologies Used
