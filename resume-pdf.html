@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faeez Rifaie Bin Musa - Resume</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.4;
+            color: #1a1a1a;
+            background: #ffffff;
+            font-size: 10px;
+        }
+
+        .resume-container {
+            width: 210mm; /* A4 width */
+            height: 297mm; /* A4 height - fixed height */
+            margin: 0 auto;
+            padding: 10mm;
+            background: #ffffff;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #3b82f6;
+        }
+
+        .name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .title {
+            font-size: 0.9rem;
+            color: #3b82f6;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #4a5568;
+            font-size: 0.8rem;
+        }
+
+        .contact-item i {
+            color: #3b82f6;
+            width: 12px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .section-title i {
+            color: #3b82f6;
+        }
+
+        /* Professional Summary */
+        .summary {
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .summary p {
+            color: #4a5568;
+            line-height: 1.5;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            margin-bottom: 6px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2px;
+        }
+
+        .job-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .company {
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .job-date {
+            color: #4a5568;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+
+        .job-description {
+            color: #4a5568;
+            margin-bottom: 2px;
+            font-size: 0.8rem;
+        }
+
+        .job-achievements {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job-achievements li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 2px;
+            color: #4a5568;
+            font-size: 0.75rem;
+        }
+
+        .job-achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-size: 0.7rem;
+        }
+
+        .job-skills {
+            margin-top: 4px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 1px 4px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            margin: 1px 2px 1px 0;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .skill-category {
+            background: #f8fafc;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skill-category h4 {
+            color: #3b82f6;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .skill-category h4 i {
+            font-size: 0.9rem;
+        }
+
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.7rem;
+            color: #4a5568;
+        }
+
+        .skill-item i {
+            color: #3b82f6;
+            font-size: 0.7rem;
+            width: 10px;
+        }
+
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: #f8fafc;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+            margin-bottom: 2px;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: #4a5568;
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            
+            body {
+                font-size: 9px;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .resume-container {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 8mm;
+                box-shadow: none;
+                overflow: hidden;
+            }
+            
+            .section {
+                margin-bottom: 8px;
+            }
+            
+            .name {
+                font-size: 1.4rem;
+            }
+            
+            .title {
+                font-size: 0.8rem;
+            }
+            
+            .contact-info {
+                gap: 12px;
+                font-size: 0.7rem;
+            }
+            
+            .section-title {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 4px;
+            }
+            
+            .stat-number {
+                font-size: 1.1rem;
+            }
+            
+            .stat-label {
+                font-size: 0.65rem;
+            }
+            
+            .job-header {
+                margin-bottom: 3px;
+            }
+            
+            .job-title {
+                font-size: 0.8rem;
+            }
+            
+            .job-date {
+                font-size: 0.7rem;
+            }
+            
+            .job-description {
+                font-size: 0.75rem;
+                margin-bottom: 3px;
+            }
+            
+            .job-achievements li {
+                font-size: 0.7rem;
+                margin-bottom: 2px;
+            }
+            
+            .skill-tag {
+                font-size: 0.6rem;
+                padding: 1px 3px;
+            }
+            
+            .skill-item {
+                font-size: 0.65rem;
+            }
+            
+            .summary {
+                padding: 8px;
+            }
+            
+            .summary p {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Page Break */
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="name">Faeez Rifaie Bin Musa</h1>
+            <div class="title">Business Development Executive & Social Media Digital Marketer</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+60 18-222 5286</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Faeezree@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Malaysia</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-user"></i>
+                Professional Summary
+            </h2>
+            <div class="summary">
+                <p>Results-driven business development professional and Social Media Digital Marketer with proven track record in client acquisition, sales strategy development, relationship building, leading advanced CRM AI systems, and managing comprehensive digital marketing campaigns. Currently contributing to Juta Teknologi's growth while directing innovative AI-powered solutions and managing social media presence.</p>
+            </div>
+        </div>
+
+        <!-- Key Statistics -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-chart-bar"></i>
+                Key Achievements
+            </h2>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Clients Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Team Player</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Experience -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-briefcase"></i>
+                Professional Experience
+            </h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Business Development & Social Media Digital Marketer</div>
+                        <div class="company">Juta Teknologi Sdn Bhd</div>
+                    </div>
+                    <div class="job-date">March 2023 – August 2025</div>
+                </div>
+                <div class="job-description">
+                    Leading business development initiatives, directing CRM AI System development, and managing social media digital marketing for AI-powered WhatsApp automation solutions.
+                </div>
+                <ul class="job-achievements">
+                    <li>Director of CRM AI System development and implementation</li>
+                    <li>Managed comprehensive social media marketing campaigns</li>
+                    <li>Client acquisition and relationship management</li>
+                    <li>Contributed to company growth serving 100+ clients</li>
+                </ul>
+                <div class="job-skills">
+                    <span class="skill-tag">CRM AI Director</span>
+                    <span class="skill-tag">Social Media Marketing</span>
+                    <span class="skill-tag">Business Development</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Call Centre Agent</div>
+                        <div class="company">IGT Solutions - Scoot Airlines</div>
+                    </div>
+                    <div class="job-date">March 2022 – March 2023</div>
+                </div>
+                <div class="job-description">
+                    Provided customer support for Scoot Airlines passengers.
+                </div>
+                <ul class="job-achievements">
+                    <li>Resolved customer issues and maintained call logs</li>
+                    <li>Handled high-volume customer inquiries</li>
+                </ul>
+                <div class="job-skills">
+                    <span class="skill-tag">Customer Service</span>
+                    <span class="skill-tag">Communication</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Sales Executive</div>
+                        <div class="company">TGV Cinemas</div>
+                    </div>
+                    <div class="job-date">January 2021 – December 2021</div>
+                </div>
+                <div class="job-description">
+                    Promoted cinema services and managed customer relationships.
+                </div>
+                <ul class="job-achievements">
+                    <li>Promoted cinema tickets, food, and beverage sales</li>
+                    <li>Met monthly sales targets and handled customer inquiries</li>
+                </ul>
+                <div class="job-skills">
+                    <span class="skill-tag">Sales</span>
+                    <span class="skill-tag">Customer Relations</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Sales Executive</div>
+                        <div class="company">HOOGA</div>
+                    </div>
+                    <div class="job-date">January 2022 – February 2022</div>
+                </div>
+                <div class="job-description">
+                    Promoted products and services while building customer relationships.
+                </div>
+                <ul class="job-achievements">
+                    <li>Promoted company products and met sales targets</li>
+                    <li>Provided excellent customer service and support</li>
+                </ul>
+                <div class="job-skills">
+                    <span class="skill-tag">Sales</span>
+                    <span class="skill-tag">Customer Service</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Cashier and Staff</div>
+                        <div class="company">Woodfire</div>
+                    </div>
+                    <div class="job-date">March 2020 – December 2020</div>
+                </div>
+                <div class="job-description">
+                    Handled cashier operations and general staff duties.
+                </div>
+                <ul class="job-achievements">
+                    <li>Registered sales and provided customer service</li>
+                    <li>Maintained inventory and stock management</li>
+                </ul>
+                <div class="job-skills">
+                    <span class="skill-tag">Cash Handling</span>
+                    <span class="skill-tag">Customer Service</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Cashier and Staff</div>
+                        <div class="company">KFC</div>
+                    </div>
+                    <div class="job-date">October 2019 – February 2020</div>
+                </div>
+                <div class="job-description">
+                    Provided customer service and handled food service operations.
+                </div>
+                <ul class="job-achievements">
+                    <li>Processed customer orders and maintained food safety standards</li>
+                </ul>
+                <div class="job-skills">
+                    <span class="skill-tag">Food Service</span>
+                    <span class="skill-tag">Customer Service</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-cogs"></i>
+                Skills & Technologies
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="fas fa-chart-line"></i> Business Development</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Client Relations</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-search"></i>
+                            <span>Lead Generation</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Sales Strategy</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Market Analysis</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-users"></i>
+                            <span>Relationship Building</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Sales & Promotion</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-robot"></i> AI & Technology</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fas fa-robot"></i>
+                            <span>ChatGPT & AI Tools</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>Cursor AI Editor</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>CRM AI Systems</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Social Media Marketing</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-hashtag"></i>
+                            <span>Digital Marketing</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Content Creation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-users"></i> Soft Skills</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fas fa-comments"></i>
+                            <span>Communication</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Customer Service</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <span>Problem Solving</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Time Management</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-users"></i>
+                            <span>Team Leadership</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Organization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-tools"></i> Tools & Software</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fas fa-desktop"></i>
+                            <span>Microsoft Office</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cube"></i>
+                            <span>AutoCAD</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-cog"></i>
+                            <span>SolidWorks</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Excel & Data Analysis</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Call Center Systems</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Basic Computer Skills</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Attributes -->
+        <div class="section">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                Personal Attributes
+            </h2>
+            <div class="two-column">
+                <div class="skill-category">
+                    <h4><i class="fas fa-heart"></i> Core Values</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Passionate</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Perfectionist</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Always Up & Going</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Quick Learner</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-bolt"></i> Work Style</h4>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Work Under Pressure</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-users"></i>
+                            <span>Social Butterfly</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Reliable Team Player</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Always Improving</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

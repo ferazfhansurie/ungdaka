@@ -1,0 +1,29 @@
+{
+  "name": "faeez-resume",
+  "version": "1.0.0",
+  "description": "Professional resume website for Faeez Rifaie Bin Musa",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx live-server --port=3000 --open=/index.html",
+    "start": "npx live-server --port=3000 --open=/index.html",
+    "build": "echo 'Static site - no build process needed'",
+    "preview": "npx live-server --port=3000 --open=/index.html",
+    "serve": "python3 -m http.server 3000"
+  },
+  "keywords": [
+    "resume",
+    "portfolio",
+    "business-development",
+    "sales-executive"
+  ],
+  "author": "Faeez Rifaie Bin Musa",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "homepage": "."
+}
