@@ -458,6 +458,69 @@
         </div>
     </section>
 
+    <!-- Page-specific carousel control styles -->
+    <style>
+        /* Transparent but vibrant carousel buttons */
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none; /* allow underlying touch if buttons are hidden */
+            transform: translateY(-50%);
+            padding: 0 12px;
+        }
+
+        .carousel-controls .carousel-btn {
+            pointer-events: auto;
+            background: rgba(255,255,255,0.06); /* slightly translucent base */
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #fff;
+            width: 56px;
+            height: 56px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            box-shadow: 0 8px 24px rgba(15,23,42,0.35);
+            transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0.95;
+        }
+
+        /* Vibrant accent: use yellow/gold to match brand */
+        .carousel-controls .carousel-btn i {
+            color: #FFD24D; /* vibrant gold */
+            font-size: 18px;
+        }
+
+        .carousel-controls .carousel-btn:hover,
+        .carousel-controls .carousel-btn:focus {
+            transform: translateY(-4px) scale(1.03);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 14px 30px rgba(15,23,42,0.45);
+            outline: none;
+        }
+
+        .carousel-controls .carousel-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Smaller on mobile but still clear */
+        @media (max-width: 480px) {
+            .carousel-controls .carousel-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 16px;
+            }
+        }
+    </style>
+
     <!-- Rolling Drum Section -->
     <section class="rolling-drum-section">
         <div class="container">
@@ -620,7 +683,7 @@
             <div class="products-grid" style="grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1400px; margin: 0 auto;">
                 <a href="products/s-88-silicone-mould-release.html" class="product-card">
                     <div class="product-image" style="height: 600px; padding: 40px;">
-                        <img src="public/s-88 paintable.png" alt="S-88 Silicone Mould Release" style="max-height: 100%; width: 100%; object-fit: contain;">
+                        <img src="public/s-88 paintable.png" alt="S-88 Silicone Mould Release" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
                     </div>
                     <div class="product-info">
                         <h3>S-88 Silicone Mould Release</h3>
@@ -634,7 +697,7 @@
                 
                 <a href="products/ns-77-non-silicone-mould-release.html" class="product-card">
                     <div class="product-image" style="height: 600px; padding: 40px;">
-                        <img src="public/ns-77.png" alt="NS-77 Non-Silicone Mould Release" style="max-height: 100%; width: 100%; object-fit: contain;">
+                        <img src="public/ns-77.png" alt="NS-77 Non-Silicone Mould Release" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
                     </div>
                     <div class="product-info">
                         <h3>NS-77 Non-Silicone Mould Release</h3>
@@ -648,7 +711,7 @@
                 
                 <a href="products/s-22-degreaser-mould-cleaner.html" class="product-card">
                     <div class="product-image" style="height: 450px; padding: 30px;">
-                        <img src="public/s-22.png" alt="S-22 Degreaser & Mould Cleaner" style="max-height: 100%; width: 100%; object-fit: contain;">
+                        <img src="public/s-22.png" alt="S-22 Degreaser & Mould Cleaner" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
                     </div>
                     <div class="product-info">
                         <h3>S-22 Degreaser & Mould Cleaner</h3>
@@ -662,7 +725,7 @@
                 
                 <a href="products/pro-shield-blue-anti-corrosion.html" class="product-card">
                     <div class="product-image" style="height: 450px; padding: 30px;">
-                        <img src="public/pro shield blue.png" alt="Pro-Shield Anti-Corrosion" style="max-height: 100%; width: 100%; object-fit: contain;">
+                        <img src="public/pro shield blue.png" alt="Pro-Shield Anti-Corrosion" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
                     </div>
                     <div class="product-info">
                         <h3>Pro-Shield Anti-Corrosion</h3>
@@ -676,7 +739,7 @@
                 
                 <a href="products/ep-lube-extreme-pressure-lubricant.html" class="product-card">
                     <div class="product-image" style="height: 450px; padding: 30px;">
-                        <img src="public/ep lube.png" alt="EP Lube Ejector Pin Lubricant" style="max-height: 100%; width: 100%; object-fit: contain;">
+                        <img src="public/ep lube.png" alt="EP Lube Ejector Pin Lubricant" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
                     </div>
                     <div class="product-info">
                         <h3>EP Lube Ejector Pin Lubricant</h3>
@@ -690,7 +753,7 @@
                 
                 <a href="products/sg-18-high-performance-grease.html" class="product-card">
                     <div class="product-image" style="height: 450px; padding: 30px;">
-                        <img src="public/sg-18.png" alt="SG-18 Multi Functional Spray Grease" style="max-height: 100%; width: 100%; object-fit: contain;">
+                        <img src="public/sg-18.png" alt="SG-18 Multi Functional Spray Grease" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
                     </div>
                     <div class="product-info">
                         <h3>SG-18 Multi Functional Spray Grease</h3>

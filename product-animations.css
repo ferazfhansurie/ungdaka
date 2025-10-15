@@ -181,6 +181,36 @@
     margin: 0 auto;
 }
 
+/* Desktop: ensure featured products in the hero/featured section have uniform large sizing */
+@media (min-width: 769px) {
+    .featured-products .product-card .product-image {
+        height: 600px !important;
+        padding: 40px !important;
+    }
+
+    .featured-products .product-card .product-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+    }
+}
+
+    /* Add spacing for the featured products CTA button */
+    .featured-products .products-cta {
+        margin-top: 28px !important;
+        text-align: center;
+    }
+
+    .featured-products .products-cta .btn-modern {
+        margin-top: 12px !important;
+        padding: 12px 22px !important;
+    }
+
+    /* Add more top padding to the industries carousel section */
+    .industries-carousel-section {
+        padding-top: 64px !important;
+    }
+
 /* Apply same oil overlay to category tiles on the products index */
 .category-card .category-image {
     position: relative;
@@ -307,5 +337,18 @@
         font-size: 0.95rem;
         line-height: 1.2;
         margin-top: 6px;
+    }
+}
+
+/* Hide Food Grade images on mobile to reduce clutter */
+@media (max-width: 768px) {
+    .food-grade-section .food-image-grid,
+    .food-grade-section .food-image-card,
+    .food-grade-section .food-image-card img {
+        display: none !important;
+    }
+    /* If needed, keep the section header visible */
+    .food-grade-section .section-header {
+        margin-bottom: 16px !important;
     }
 }

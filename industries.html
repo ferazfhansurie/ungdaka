@@ -419,6 +419,61 @@
         </div>
     </section>
 
+        <!-- Page-specific mobile styles -->
+        <style>
+            @media (max-width: 768px) {
+                .industries-grid {
+                    display: grid !important;
+                    grid-template-columns: 1fr !important;
+                    gap: 18px !important;
+                }
+
+                .industry-detail-card {
+                    display: block;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: 18px;
+                    background: #fff;
+                    border-radius: 8px;
+                    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+                }
+
+                .industry-image img {
+                    width: 100%;
+                    height: auto;
+                    display: block;
+                    border-radius: 6px;
+                    object-fit: cover;
+                }
+
+                .industry-icon {
+                    margin-top: 12px;
+                    margin-bottom: 8px;
+                }
+
+                .industry-detail-card h3 {
+                    font-size: 1.1rem;
+                    margin-top: 8px;
+                    margin-bottom: 6px;
+                }
+
+                .industry-detail-card p {
+                    font-size: 0.95rem;
+                    margin-bottom: 10px;
+                }
+
+                .industry-detail-card .industry-products h4 {
+                    margin-top: 10px;
+                    margin-bottom: 6px;
+                }
+
+                .industry-detail-card .industry-link {
+                    display: inline-block;
+                    margin-top: 10px;
+                }
+            }
+        </style>
+
     <!-- Industry Applications -->
     <section class="industry-applications">
         <div class="container">

@@ -1734,6 +1734,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     bearings.forEach(bearing => {
+        // Allow touch/pointer interactions on mobile by disabling default touch-action
+        try {
+            bearing.element.style.touchAction = 'none';
+        } catch (err) {
+            // ignore if not supported
+        }
+
+        // Mouse fallback (desktop)
         bearing.element.addEventListener('mousedown', (e) => {
             bearing.isDragging = true;
             bearing.lastX = e.clientX;
@@ -1741,17 +1749,33 @@ document.addEventListener('DOMContentLoaded', () => {
             bearing.element.style.cursor = 'grabbing';
         });
 
-        window.addEventListener('mousemove', (e) => {
+        // Pointer events (unified for mouse, pen, and touch)
+        bearing.element.addEventListener('pointerdown', (e) => {
+            // Prevent page scrolling while dragging
+            try { e.preventDefault(); } catch (err) {}
+            bearing.isDragging = true;
+            bearing.lastX = e.clientX;
+            bearing.lastY = e.clientY;
+            if (bearing.element.setPointerCapture) {
+                try { bearing.element.setPointerCapture(e.pointerId); } catch (err) {}
+            }
+            bearing.element.style.cursor = 'grabbing';
+        });
+
+        // Pointer / mouse move handler
+        const onMove = (e) => {
             if (!bearing.isDragging) return;
 
-            const dx = e.clientX - bearing.lastX;
-            const dy = e.clientY - bearing.lastY;
+            const clientX = e.clientX;
+            const clientY = e.clientY;
+            const dx = clientX - bearing.lastX;
+            const dy = clientY - bearing.lastY;
             const center = bearing.element.getBoundingClientRect();
             const centerX = center.left + center.width / 2;
             const centerY = center.top + center.height / 2;
 
-            // Calculate angle based on mouse position relative to center
-            const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
+            // Calculate angle based on pointer position relative to center
+            const angle = Math.atan2(clientY - centerY, clientX - centerX);
             const prevAngle = Math.atan2(bearing.lastY - centerY, bearing.lastX - centerX);
             let deltaAngle = angle - prevAngle;
 
@@ -1760,15 +1784,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (deltaAngle < -Math.PI) deltaAngle += 2 * Math.PI;
 
             bearing.velocity += deltaAngle * 2;
-            bearing.lastX = e.clientX;
-            bearing.lastY = e.clientY;
-        });
-
-        const stopDragging = () => {
-            bearing.isDragging = false;
-            bearing.element.style.cursor = 'grab';
+            bearing.lastX = clientX;
+            bearing.lastY = clientY;
         };
 
+        // Attach both pointermove and mousemove (pointer covers mouse, but keep mouse for older browsers)
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('mousemove', onMove);
+
+        const stopDragging = (e) => {
+            bearing.isDragging = false;
+            bearing.element.style.cursor = 'grab';
+            if (e && e.pointerId && bearing.element.releasePointerCapture) {
+                try { bearing.element.releasePointerCapture(e.pointerId); } catch (err) {}
+            }
+        };
+
+        window.addEventListener('pointerup', stopDragging);
+        window.addEventListener('pointercancel', stopDragging);
         window.addEventListener('mouseup', stopDragging);
         window.addEventListener('mouseleave', stopDragging);
     });
