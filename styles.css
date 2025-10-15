@@ -27,6 +27,12 @@
     background: transparent;
 }
 
+@media (max-width: 600px) {
+    .liquid-body {
+        height: 22%;
+    }
+}
+
 #liquidCanvas {
     position: absolute;
     bottom: 0;
