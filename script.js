@@ -314,22 +314,33 @@ class NavigationController {
             const toggle = dropdown.querySelector('.dropdown-toggle');
             
             if (toggle) {
-                // Mobile: Click to toggle
-                toggle.addEventListener('click', (e) => {
+                // Mobile: use pointer/touch handlers to reliably toggle dropdowns on first tap
+                const handleToggle = (e) => {
+                    // Only treat as mobile-ish toggle
                     if (window.innerWidth <= 1024) {
-                        e.preventDefault();
-                        
+                        try { e.preventDefault(); } catch (err) {}
+                        try { e.stopPropagation(); } catch (err) {}
+
                         // Close other dropdowns
                         this.dropdowns.forEach(otherDropdown => {
                             if (otherDropdown !== dropdown) {
                                 otherDropdown.classList.remove('active');
                             }
                         });
-                        
+
                         // Toggle current dropdown
                         dropdown.classList.toggle('active');
                     }
-                });
+                };
+
+                if (window.PointerEvent) {
+                    toggle.addEventListener('pointerdown', handleToggle);
+                } else if ('ontouchstart' in window) {
+                    toggle.addEventListener('touchstart', handleToggle, { passive: false });
+                } else {
+                    // Fallback to click
+                    toggle.addEventListener('click', handleToggle);
+                }
             }
         });
         
