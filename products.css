@@ -1,0 +1,272 @@
+.products {
+    background-color: #f5f7fa;
+    padding: 60px 0;
+}
+
+.tab-panel {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-image {
+    height: 600px;
+    padding: 40px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image img {
+    max-height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 25px;
+    background: #f8f9fa;
+}
+
+.product-info h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.product-info p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.product-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.feature-tag {
+    padding: 6px 12px;
+    background: #eef2f7;
+    color: var(--primary-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.feature-tag.gold {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* Category Overview Styles */
+.category-overview {
+    margin: 40px 0;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+}
+
+.category-overview.hidden {
+    display: none !important;
+}
+
+/* Back to Categories Button */
+.back-to-categories {
+    text-align: center;
+    margin: 30px 0;
+    padding: 0 20px;
+}
+
+.back-to-categories.hidden {
+    display: none !important;
+}
+
+.back-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.back-btn i {
+    margin-right: 8px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.category-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.category-image {
+    height: 280px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.08), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transition: all 0.3s ease;
+}
+
+.category-card:hover .category-image::before {
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15), transparent 70%);
+}
+
+.category-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.08);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+}
+
+.category-info {
+    padding: 18px;
+    text-align: center;
+}
+
+.category-info h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.category-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+}
+
+.category-features .feature-tag {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+}
+
+/* Responsive Design for Category Cards */
+@media (max-width: 1200px) {
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0 15px;
+    }
+    
+    .category-card {
+        margin: 0;
+    }
+    
+    .category-image {
+        height: 200px;
+        padding: 20px;
+    }
+    
+    .category-info {
+        padding: 15px;
+    }
+    
+    .category-info h3 {
+        font-size: 1rem;
+    }
+
+    .category-features .feature-tag {
+        font-size: 0.7rem;
+        padding: 3px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-image {
+        height: 220px;
+    }
+}

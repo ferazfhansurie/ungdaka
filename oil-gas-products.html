@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oil & Gas Products | Ungdaka (M) Sdn Bhd</title>
+    <meta name="description" content="High-performance lubricants and specialty chemicals for oil and gas exploration and processing equipment. Professional solutions for oil and gas industries.">
+    <meta name="keywords" content="oil gas industry products, petroleum lubricants, drilling equipment, oil exploration, gas processing, petroleum chemicals">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Enhanced Styles for Industry Pages -->
+    <style>
+        .industry-overview-enhanced {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            padding: 80px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .industry-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .industry-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .industry-hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .industry-hero p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .industry-stats {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            font-weight: 500;
+        }
+        
+        .industry-hero-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .industry-hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px;
+        }
+        
+        .overlay-content {
+            text-align: center;
+        }
+        
+        .overlay-content i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .overlay-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .industry-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: #d1d5db;
+            line-height: 1.5;
+        }
+
+        .cta-section-enhanced {
+            padding: 80px 0;
+            background: #1f2937;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-cta-primary {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.4);
+        }
+        
+        .btn-cta-secondary {
+            background: transparent;
+            color: #f59e0b;
+            border: 2px solid #f59e0b;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-cta-secondary:hover {
+            background: #f59e0b;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .industry-hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .industry-stats {
+                justify-content: center;
+            }
+            
+            .products-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .specs-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .industry-hero-image {
+                height: 300px;
+            }
+        }
+        
+        .products-section-enhanced {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-header-enhanced {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .products-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .product-card-enhanced {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card-enhanced:hover {
+            transform: translateY(-5px);
+        }
+
+        .specs-section-enhanced {
+            background: linear-gradient(135deg, #292524 0%, #1c1917 100%);
+            padding: 80px 0;
+            color: white;
+        }
+
+        .specs-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .spec-card-enhanced {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spec-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .section-header-enhanced h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        
+        .section-header-enhanced p {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .products-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card-enhanced {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-image-container {
+            position: relative;
+            height: 600px;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            max-height: 100%;
+        }
+
+        /* Ensure product card images in the grid match featured sizing */
+        .products-grid .product-image {
+            height: 600px;
+            padding: 40px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .products-grid .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            max-height: 100%;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .product-content {
+            padding: 25px;
+        }
+        
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .product-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+        }
+        
+        .product-rating {
+            color: #fbbf24;
+            font-size: 0.9rem;
+        }
+        
+        .product-content p {
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .product-features-enhanced {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-tag-enhanced {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #fef3c7;
+            color: #d97706;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .product-application-enhanced {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .application-icon {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .application-text {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-product-primary {
+            flex: 1;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .btn-product-primary:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-product-secondary {
+            flex: 1;
+            background: transparent;
+            color: #f59e0b;
+            border: 2px solid #f59e0b;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-product-secondary:hover {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .technical-specs-enhanced {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .technical-specs-enhanced h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 60px;
+        }
+        
+        .specs-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .spec-item-enhanced {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .spec-item-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        
+        .spec-item-enhanced:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .spec-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+        
+        .spec-item-enhanced h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+        
+        .spec-item-enhanced p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .cta-section-enhanced {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-cta-primary {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(245, 158, 11, 0.4);
+        }
+        
+        .btn-cta-secondary {
+            background: transparent;
+            color: #f59e0b;
+            border: 2px solid #f59e0b;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-cta-secondary:hover {
+            background: #f59e0b;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .industry-hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .industry-stats {
+                justify-content: center;
+            }
+            
+            .products-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .specs-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="logo-img">
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                
+                <!-- Products Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="products.html" class="nav-link dropdown-toggle">
+                        Our Products
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4>Lubricants & Oils</h4>
+                                <a href="products/engine-oils.html">Engine Oils</a>
+                                <a href="products/hydraulic-awx-series.html">Hydraulic Oils</a>
+                                <a href="products/industrial-gear-series.html">Industrial Gear Oils</a>
+                                <a href="products/compressor-oils.html">Compressor Oils</a>
+                                <a href="products/circulating-oils.html">Circulating Oils</a>
+                                <a href="products/lubricating-oils.html">Lubricating Oils</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Greases</h4>
+                                <a href="products/heavy-duty-grease.html">Heavy Duty Grease</a>
+                                <a href="products/lit-888-ep-grease.html">LIT 888 EP Grease</a>
+                                <a href="products/hi-lo-grease.html">Hi-Lo Grease</a>
+                                <a href="products/food-grade-grease.html">Food Grade Grease</a>
+                                <a href="products/al-cx-grease.html">AL-CX Grease</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Specialty Products</h4>
+                                <a href="products/cnc-os-oil-skimmer.html">CNC OS Oil Skimmer</a>
+                                <a href="products/giga-os-oil-skimmer.html">GIGA OS Oil Skimmer</a>
+                                <a href="products/anti-rust-series.html">Anti-Rust Series</a>
+                                <a href="products/moly-lube-advanced-lubricant.html">Moly Lube</a>
+                                <a href="products.html" class="view-all">View All Products →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Industries Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="industries.html" class="nav-link dropdown-toggle">
+                        Industries
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4>Manufacturing</h4>
+                                <a href="stamping-products.html">Stamping</a>
+                                <a href="automotive-transportation-products.html">Automotive & Transportation</a>
+                                <a href="plastic-injection-products.html">Plastic Injection</a>
+                                <a href="machining-engineering-products.html">Machining & Engineering</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Heavy Industries</h4>
+                                <a href="construction-cement-products.html">Construction & Cement</a>
+                                <a href="marine-offshore-products.html">Marine & Offshore</a>
+                                <a href="oil-gas-products.html">Oil & Gas</a>
+                                <a href="quarries-products.html">Quarries</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Specialized</h4>
+                                <a href="semiconductor-disk-drive-products.html">Semiconductor & Disk Drive</a>
+                                <a href="food-beverage-pharmaceutical-products.html">Food & Beverage</a>
+                                <a href="rubber-latex-products.html">Rubber & Latex</a>
+                                <a href="printing-paper-products.html">Printing & Paper</a>
+                                <a href="workshops-automotive-products.html">Workshops</a>
+                                <a href="industries.html" class="view-all">View All Industries →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </div>
+            <div class="nav-actions">
+                <a href="tel:+60439999966" class="nav-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>+604-399 9966</span>
+                </a>
+                <button class="nav-quote-btn">Get Quote</button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="industries.html">Industries</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Oil & Gas Products</span>
+                </div>
+                <h1>Oil & Gas Industry Products</h1>
+                <p>High-performance lubricants and specialty chemicals for oil and gas exploration and processing equipment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Overview -->
+    <section class="industry-overview-enhanced">
+        <div class="container">
+            <div class="industry-hero">
+                <div class="industry-content">
+                    <div class="industry-badge">
+                        <i class="fas fa-oil-can"></i>
+                        Oil & Gas Industry
+                    </div>
+                    <h2>Heavy-Duty Solutions for Oil & Gas Operations</h2>
+                    <p>Our specialized products are designed to meet the extreme demands of oil and gas exploration, drilling, and processing operations. From high-temperature applications to heavy-duty equipment, we provide solutions that ensure optimal performance in the most challenging environments.</p>
+                    <div class="industry-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">-40°C</div>
+                            <div class="stat-label">Extreme Cold</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">200°C</div>
+                            <div class="stat-label">High Heat</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Operation</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="industry-hero-image">
+                    <img src="public/Industries Images/oil & gas.jpg" alt="Oil & Gas Industry">
+                    <div class="image-overlay">
+                        <div class="overlay-content">
+                            <i class="fas fa-oil-can"></i>
+                            <h4>Extreme Conditions</h4>
+                            <p>Reliable performance in harsh environments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="industry-features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <h3>High-Temperature Resistant</h3>
+                    <p>Specialized lubricants that perform in extreme cold and high-temperature environments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Chemical Resistant</h3>
+                    <p>Advanced protection against harsh chemicals and corrosive environments</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                    </div>
+                    <h3>Extreme Pressure Rated</h3>
+                    <p>Reliable performance under extreme pressure conditions in drilling and processing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recommended Products for Oil & Gas Industry</h2>
+                <p>Professional-grade solutions for your oil and gas operations</p>
+            </div>
+            
+            <div class="products-grid">
+                <a href="products/moly-lube-advanced-lubricant.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/moly lube.png" alt="Moly Lube Advanced">
+                    </div>
+                    <div class="product-info">
+                        <h3>MOLY LUBE</h3>
+                        <p>Advanced molybdenum lubricant for extreme pressure conditions in oil and gas equipment</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Extreme Pressure</span>
+                            <span class="feature-tag">High Temperature</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Drilling equipment, high-pressure valves, heavy machinery
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/lube-guard-original.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/lube guard.png" alt="Lube Guard Original">
+                    </div>
+                    <div class="product-info">
+                        <h3>LUBE GUARD</h3>
+                        <p>Multi-purpose lubricant for oil and gas processing and refinery equipment</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Multi-Purpose</span>
+                            <span class="feature-tag">Chemical Resistant</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> General lubrication, equipment maintenance, processing equipment
+                        </div>
+                    </div>
+                </a>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="public/TYGRIS MOLY DRY FILM SPRAY.jpg" alt="TYGRIS MOLY DRY FILM SPRAY">
+                    </div>
+                    <div class="product-info">
+                        <h3>TYGRIS MOLY DRY FILM SPRAY</h3>
+                        <p>Dry film molybdenum lubricant for high-temperature oil and gas applications</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Dry Film</span>
+                            <span class="feature-tag">High Temperature</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> High-temperature components, threaded connections, valves
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="public/Tygris copper.jfif" alt="TYGRIS COPPER">
+                    </div>
+                    <div class="product-info">
+                        <h3>TYGRIS COPPER</h3>
+                        <p>Copper-based anti-seize compound for high-temperature oil and gas applications</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Anti-Seize</span>
+                            <span class="feature-tag">High Temperature</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Bolts, flanges, threaded connections, high-temperature assemblies
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="products/sr-remover-silicone-residue-cleaner.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/superscrub.png" alt="Super Scrub Waterless Hand Scrubber">
+                    </div>
+                    <div class="product-info">
+                        <h3>Waterless Hand Scrubber with Grit</h3>
+                        <p>Heavy-duty cleaner for oil and gas equipment and facilities</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Heavy Duty</span>
+                            <span class="feature-tag">Chemical Safe</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Equipment cleaning, degreasing, facility maintenance
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="technical-specs-enhanced">
+        <div class="container">
+            <h2>Technical Specifications & Benefits</h2>
+            <div class="specs-grid-enhanced">
+                <div class="spec-item-enhanced">
+                    <div class="spec-icon"><i class="fas fa-thermometer-half"></i></div>
+                    <h3>High Temperature</h3>
+                    <p>Designed for extreme temperature conditions in oil and gas operations</p>
+                </div>
+                <div class="spec-item-enhanced">
+                    <div class="spec-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Chemical Resistance</h3>
+                    <p>Superior resistance to petroleum products and chemicals</p>
+                </div>
+                <div class="spec-item-enhanced">
+                    <div class="spec-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+                    <h3>Extreme Pressure</h3>
+                    <p>Rated for extreme pressure applications in drilling and processing</p>
+                </div>
+                <div class="spec-item-enhanced">
+                    <div class="spec-icon"><i class="fas fa-dumbbell"></i></div>
+                    <h3>Heavy Duty</h3>
+                    <p>Built to withstand the most demanding oil and gas applications</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Custom Solutions for Your Oil & Gas Operations?</h2>
+                <p>Our technical team can help you select the right products for your specific oil and gas exploration and processing requirements.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Contact Our Experts</a>
+                    <a href="products.html" class="btn btn-outline">View All Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-col-brand">
+                    <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="footer-logo-img">
+                    <p class="footer-company">Ungdaka (M) Sdn. Bhd.</p>
+                    <p class="footer-reg">199701002373(417869-V)</p>
+                    <p class="footer-tagline">Advanced Technology Solutions to Cleanliness & Lubrications.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Products</h4>
+                    <ul class="footer-list">
+                        <li><a href="products.html">Aerosol Products</a></li>
+                        <li><a href="products.html">Industrial Lubricants</a></li>
+                        <li><a href="products.html">Industrial Grease</a></li>
+                        <li><a href="products.html">Maintenance & Repair</a></li>
+                        <li><a href="products.html">Metal Working</a></li>
+                        <li><a href="products.html">Food Grade Products</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contact Info (HQ)</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>21, Lorong Nagasari 25, Taman Nagasari, 13600 Prai, Penang, Malaysia</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+604-399 9966</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>pgsales@ungdaka.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-new">
+                <p>&copy; 2025 Ungdaka (M) Sdn. Bhd. All Rights Reserved.</p>
+                <div class="footer-social-new">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

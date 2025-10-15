@@ -1,0 +1,109 @@
+/* Mobile navigation fixes: ensure hamburger opens the menu and it sits below the navbar */
+@media (max-width: 768px) {
+	/* Ensure the nav toggle is visible and clickable */
+	.nav-toggle {
+		/* keep toggle above navbar and menu */
+		z-index: calc(var(--z-fixed) + 10);
+		position: relative;
+	}
+
+	/* Place the mobile menu directly below the navbar height so it can be seen */
+	.nav-menu {
+		position: fixed;
+		left: 0;
+		right: 0;
+		/* place the menu immediately below the fixed navbar so the logo/header remains visible */
+		top: calc(var(--navbar-height, 64px));
+		width: 100%;
+		background: #ffffff;
+		/* hide by moving the entire menu slightly up so it sits just off the top edge */
+		transform: translateY(-8px);
+		opacity: 0;
+		visibility: hidden;
+		transition: transform 220ms ease, opacity 220ms ease, visibility 220ms;
+		/* position the menu below the navbar's stacking context so the header/logo stays visible */
+		z-index: calc(var(--z-fixed) - 1);
+		box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+		/* add padding for content inside the menu */
+		padding: 1.5rem;
+		box-sizing: border-box;
+		/* constrain to viewport so long menus stay reachable */
+		max-height: calc(100vh - calc(var(--navbar-height, 64px) + 8px));
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+		pointer-events: none; /* disable interactions when hidden */
+	}
+
+	/* When active, show the menu and make sure it's fully tappable */
+	.nav-menu.active {
+		transform: translateY(0);
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto; /* allow clicks when visible */
+		/* when visible, keep the menu just below the navbar in stacking order */
+		z-index: calc(var(--z-fixed) - 1);
+	}
+
+	/* Make sure the nav links are large enough for touch */
+	.nav-menu .nav-link {
+		display: block;
+		padding: 0.75rem 0;
+		font-size: 1.03rem;
+	}
+
+	/* Ensure links are visible on the white mobile menu (desktop header uses light-on-dark colors)
+	   This override only applies inside the mobile nav so desktop colors remain unchanged */
+	.nav-menu .nav-link {
+		color: var(--gray-900) !important;
+	}
+
+	.nav-menu .nav-link:hover,
+	.nav-menu .nav-link:focus {
+		color: var(--primary-color) !important;
+	}
+
+	/* Remove the thin underline animation color conflict on mobile (optional)
+	   but keep the effect by using primary color */
+	.nav-menu .nav-link::after {
+		height: 2px;
+		background: var(--primary-color) !important;
+	}
+
+	/* Optional debug helpers: uncomment during troubleshooting to visualize menu bounds */
+	/*
+		.nav-menu {
+			border: 2px dashed rgba(0,0,0,0.08);
+			background: #fff9e6;
+		}
+
+		.nav-menu .nav-link { outline: 1px solid rgba(0,0,0,0.02); }
+	*/
+
+	/* Ensure body doesn't scroll when menu open (JS already sets overflow hidden; keep consistency) */
+	body.menu-open {
+		overflow: hidden !important;
+	}
+
+	/* Make header opaque on mobile so it doesn't visually overlay hero background */
+	.navbar {
+		background: rgba(255,255,255,0.98) !important;
+		backdrop-filter: none !important;
+		box-shadow: 0 6px 18px rgba(0,0,0,0.06) !important;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: var(--z-fixed);
+	}
+
+	/* Push hero content below the header so the header does not overlay the background image */
+	.hero-modern,
+	.hero {
+		/* On mobile, don't use a full 100vh hero that starts at page top.
+		   Reduce to auto height and add top padding so content sits below header. */
+		height: auto !important;
+		min-height: calc(60vh);
+		padding-top: calc(var(--navbar-height, 64px) + 1rem) !important;
+	}
+}
+

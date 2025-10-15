@@ -3,109 +3,477 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faeez Rifaie Bin Musa | Business Development Professional & Social Media Digital Marketer</title>
+    <title>Ungdaka (M) Sdn Bhd | Advanced Technology Solutions to Cleanliness & Lubrications</title>
+    <meta name="description" content="Leading supplier of industrial aerosol sprays, specialty lubricants, greases & maintenance chemicals. 20+ years experience serving multiple industries across Malaysia and Thailand.">
+    <meta name="keywords" content="industrial lubricants, aerosol sprays, maintenance chemicals, Malaysia, Ungdaka, industrial grease">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Mobile-specific overrides (scoped with media queries) -->
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="product-animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Ungdaka (M) Sdn Bhd | Industrial Lubricants & Chemicals">
+    <meta property="og:description" content="Advanced Technology Solutions to Cleanliness & Lubrications. 20+ years experience in industrial solutions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ungdaka.com">
 </head>
 <body>
-    <canvas id="particles"></canvas>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="loading-logo-img">
+            </div>
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
     
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">F<span class="accent">R</span></span>
+                <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="logo-img">
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                
+                <!-- Products Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="products.html" class="nav-link dropdown-toggle">
+                        Our Products
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4>Lubricants & Oils</h4>
+                                <a href="products/engine-oils.html">Engine Oils</a>
+                                <a href="products/hydraulic-awx-series.html">Hydraulic Oils</a>
+                                <a href="products/industrial-gear-series.html">Industrial Gear Oils</a>
+                                <a href="products/compressor-oils.html">Compressor Oils</a>
+                                <a href="products/circulating-oils.html">Circulating Oils</a>
+                                <a href="products/lubricating-oils.html">Lubricating Oils</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Greases</h4>
+                                <a href="products/heavy-duty-grease.html">Heavy Duty Grease</a>
+                                <a href="products/lit-888-ep-grease.html">LIT 888 EP Grease</a>
+                                <a href="products/hi-lo-grease.html">Hi-Lo Grease</a>
+                                <a href="products/food-grade-grease.html">Food Grade Grease</a>
+                                <a href="products/al-cx-grease.html">AL-CX Grease</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Specialty Products</h4>
+                                <a href="products/cnc-os-oil-skimmer.html">CNC OS Oil Skimmer</a>
+                                <a href="products/giga-os-oil-skimmer.html">GIGA OS Oil Skimmer</a>
+                                <a href="products/anti-rust-series.html">Anti-Rust Series</a>
+                                <a href="products/moly-lube-advanced-lubricant.html">Moly Lube</a>
+                                <a href="products.html" class="view-all">View All Products →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Industries Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="industries.html" class="nav-link dropdown-toggle">
+                        Industries
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4>Manufacturing</h4>
+                                <a href="stamping-products.html">Stamping</a>
+                                <a href="automotive-transportation-products.html">Automotive & Transportation</a>
+                                <a href="plastic-injection-products.html">Plastic Injection</a>
+                                <a href="machining-engineering-products.html">Machining & Engineering</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Heavy Industries</h4>
+                                <a href="construction-cement-products.html">Construction & Cement</a>
+                                <a href="marine-offshore-products.html">Marine & Offshore</a>
+                                <a href="oil-gas-products.html">Oil & Gas</a>
+                                <a href="quarries-products.html">Quarries</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Specialized</h4>
+                                <a href="semiconductor-disk-drive-products.html">Semiconductor & Disk Drive</a>
+                                <a href="food-beverage-pharmaceutical-products.html">Food & Beverage</a>
+                                <a href="rubber-latex-products.html">Rubber & Latex</a>
+                                <a href="printing-paper-products.html">Printing & Paper</a>
+                                <a href="workshops-automotive-products.html">Workshops</a>
+                                <a href="industries.html" class="view-all">View All Industries →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </div>
+            <div class="nav-actions">
+                <a href="tel:+60439999966" class="nav-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>+604-399 9966</span>
+                </a>
+                <button class="nav-quote-btn">Get Quote</button>
             </div>
             <div class="nav-toggle" id="nav-toggle">
-                <i class="fas fa-bars"></i>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-intro">
-                    <span class="intro-text">Business Development Executive & Social Media Digital Marketer</span>
+    <!-- SVG Filters -->
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: none;">
+        <defs>
+            <filter id="turbulence">
+                <feTurbulence type="turbulence" baseFrequency="0.01 0.02" numOctaves="3" seed="2" result="NOISE"/>
+                <feDisplacementMap in="SourceGraphic" in2="NOISE" scale="10" />
+            </filter>
+            <filter id="liquidEffect">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="BLUR"/>
+                <feColorMatrix in="BLUR" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="liquidEffect"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <section class="hero-modern">
+        <!-- Liquid Fill Animation -->
+        <div class="liquid-fill" id="liquidFill">
+            <div class="liquid-body" id="liquidBody">
+                <canvas id="liquidCanvas"></canvas>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <img src="public/AI Images/shelf.jpg" alt="Industrial Shelves with Product Drums" class="hero-bg-image">
+        </div>
+        
+        <div class="container">
+            <div class="hero-content-modern">
+                <div class="hero-badge-modern">
+                    <i class="fas fa-award"></i>
+                    <span>20+ Years of Excellence in Industrial Solutions</span>
                 </div>
-                <h1 class="hero-name">Faeez Rifaie Bin Musa</h1>
-                <div class="hero-tagline">
-                    <p>Driving Revenue Growth, Building Strategic Partnerships, Leading CRM AI Systems & Managing Digital Marketing</p>
-                </div>
-                <div class="hero-description">
-                    <p>
-                        Results-driven business development professional, and Social Media Digital Marketer with proven track record in 
-                        client acquisition, sales strategy development, relationship building, leading advanced CRM AI systems, and managing comprehensive digital marketing campaigns. 
-                        Successfully contributed to Juta Teknologi's growth while directing innovative AI-powered solutions and managing social media presence.
-                    </p>
-                </div>
+                <h1 class="hero-title-modern">
+                    Advanced Technology Solutions
+                    <span class="hero-highlight">To Cleanliness & Lubrications</span>
+                </h1>
+                <p class="hero-subtitle-modern">
+                    Leading supplier of industrial aerosol sprays, specialty lubricants, greases & maintenance chemicals across Malaysia and Thailand
+                </p>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">5+</div>
+                        <div class="stat-number">20+</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
+                    <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Clients Served</div>
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Happy Clients</div>
                     </div>
+                    <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Team Player</div>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Products</div>
                     </div>
                 </div>
-                <div class="hero-cta">
-                    <a href="#contact" class="cta-primary">
-                        <span>Contact Me</span>
-                        <i class="fas fa-envelope"></i>
+                <div class="hero-actions-modern">
+                    <a href="products.html" class="btn-modern btn-primary-modern">
+                        <span>Explore Products</span>
+                        <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="tel:+601121677672" class="cta-secondary">
+                    <a href="contact.html" class="btn-modern btn-outline-modern">
                         <i class="fas fa-phone"></i>
-                        <span>Call Me</span>
+                        <span>Get In Touch</span>
                     </a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="visual-card">
-                    <div class="card-header">
-                        <h3>Key Achievements</h3>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span></span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Industries Carousel Section -->
+    <section class="industries-carousel-section">
+        <!-- Oil Dripping Effect -->
+        <div class="oil-drip-top"></div>
+        <div class="oil-drops-container">
+            <div class="oil-drop" style="left: 15%; animation-delay: 0s;"></div>
+            <div class="oil-drop" style="left: 30%; animation-delay: 0.8s;"></div>
+            <div class="oil-drop" style="left: 45%; animation-delay: 1.6s;"></div>
+            <div class="oil-drop" style="left: 60%; animation-delay: 2.4s;"></div>
+            <div class="oil-drop" style="left: 75%; animation-delay: 3.2s;"></div>
+            <div class="oil-drop" style="left: 85%; animation-delay: 4s;"></div>
+        </div>
+        
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Industries We Serve</span>
+                <h2>Serving Multiple Industries</h2>
+                <p>Specialized solutions for diverse industrial applications</p>
+            </div>
+
+            <div class="industries-carousel-container">
+                <div class="industries-carousel" id="industries-carousel">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <a href="rubber-latex-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/rubber and latex.jpg" alt="Rubber & Latex Products">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-circle"></i>
+                                </div>
+                                <h3>Rubber & Latex Products</h3>
+                                <p class="panel-description">High-performance mould release agents and specialty chemicals for rubber and latex manufacturing processes.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="construction-cement-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/construction and cement industries.jpg" alt="Construction & Cement Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h3>Construction & Cement Industries</h3>
+                                <p class="panel-description">Industrial-grade lubricants and release agents designed for heavy-duty construction and cement applications.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="semiconductor-disk-drive-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/semiconductor & disk drive industries.jpg" alt="Semiconductor & Disk Drive Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-microchip"></i>
+                                </div>
+                                <h3>Semiconductor & Disk Drive Industries</h3>
+                                <p class="panel-description">Precision cleaning solutions and specialty lubricants for high-tech manufacturing environments.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="food-beverage-pharmaceutical-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/food  & beverage.jpg" alt="Food, Beverage & Pharmaceutical Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <h3>Food, Beverage & Pharmaceutical</h3>
+                                <p class="panel-description">NSF approved food-grade lubricants and HACCP compliant solutions for food processing equipment.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
                     </div>
-                    <div class="achievement-list">
-                        <div class="achievement-item">
-                            <div class="achievement-icon">
-                                <i class="fas fa-chart-line"></i>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <a href="printing-paper-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/print_paper-industry.jpg" alt="Printing & Paper Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-print"></i>
+                                </div>
+                                <h3>Printing & Paper Industries</h3>
+                                <p class="panel-description">Specialized lubricants and maintenance chemicals for printing presses and paper manufacturing equipment.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="marine-offshore-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/marine & offshore industries.jpg" alt="Marine & Offshore Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-ship"></i>
+                                </div>
+                                <h3>Marine & Offshore Industries</h3>
+                                <p class="panel-description">Specialized marine-grade lubricants and corrosion protection solutions for offshore and marine applications.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="quarries-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/quarries industries.jpg" alt="Quarries Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-mountain"></i>
+                                </div>
+                                <h3>Quarries Industries</h3>
+                                <p class="panel-description">Heavy-duty lubricants and maintenance solutions for quarry equipment and mining operations.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="oil-gas-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/oil & gas.jpg" alt="Oil & Gas Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-oil-can"></i>
+                                </div>
+                                <h3>Oil & Gas Industries</h3>
+                                <p class="panel-description">High-performance lubricants and specialty chemicals for oil and gas exploration and processing equipment.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <a href="workshops-automotive-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/workshop.png" alt="Workshops - Cars, Motorcycles, Bicycles">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h3>Workshops → Cars / Motorcycles / Bicycles</h3>
+                                <p class="panel-description">Professional lubricants and maintenance solutions for automotive workshops and vehicle maintenance.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="plastic-injection-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/plastic injection.png" alt="Plastic Injection Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <h3>Plastic Injection Industries</h3>
+                                <p class="panel-description">Specialized mould release agents and lubricants for plastic injection molding processes.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="machining-engineering-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/machining, moulding, engineering & precision components.webp" alt="Machining, Moulding, Engineering & Precision Components">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                                <h3>Machining, Moulding, Engineering & Precision Components</h3>
+                                <p class="panel-description">Precision lubricants and cutting fluids for machining, moulding, and precision component manufacturing.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="stamping-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/stamping.png" alt="Stamping Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-hammer"></i>
+                                </div>
+                                <h3>Stamping Industries</h3>
+                                <p class="panel-description">Heavy-duty lubricants and release agents for metal stamping and forming operations.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <a href="automotive-transportation-products.html" class="industry-panel">
+                            <div class="panel-background">
+                                <img src="public/Industries Images/automotive & transportation industries_backup.jpg" alt="Automotive & Transportation Industries">
+                            </div>
+                            <div class="panel-overlay"></div>
+                            <div class="panel-content">
+                                <div class="panel-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <h3>Automotive & Transportation Industries</h3>
+                                <p class="panel-description">Specialized lubricants and maintenance solutions for automotive manufacturing and transportation equipment.</p>
+                                <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                            <div class="achievement-text">
-                                <h4>100+ Client Acquisitions</h4>
-                                <p>Successfully acquired and managed clients at Juta Teknologi</p>
-                            </div>
-                        </div>
-                        <div class="achievement-item">
-                            <div class="achievement-icon">
-                                <i class="fas fa-handshake"></i>
-                    </div>
-                            <div class="achievement-text">
-                                <h4>Strong Relationships</h4>
-                                <p>Built lasting partnerships across multiple industries</p>
-                            </div>
-                        </div>
-                        <div class="achievement-item">
-                            <div class="achievement-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <div class="achievement-text">
-                                <h4>Proven Results</h4>
-                                <p>Consistent track record of exceeding targets and expectations</p>
-                            </div>
-                        </div>
+                
+                <!-- Carousel Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next-btn" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Indicators will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rolling Drum Section -->
+    <section class="rolling-drum-section">
+        <div class="container">
+            <div class="drum-container">
+                <!-- Visual trail to show drum path -->
+                <div class="drum-trail" id="drumTrail">
+                    <div class="trail-line"></div>
+                </div>
+                
+                <div class="drum-wrapper">
+                    <img src="public/AI Images/drum with logo.png" alt="Ungdaka Drum with Logo" class="rolling-drum" id="drumWithLogo">
+                    <img src="public/AI Images/drum without logo.png" alt="Ungdaka Drum without Logo" class="rolling-drum" id="drumWithoutLogo">
+
+                    <!-- Slogan / Fun Fact that follows the drum -->
+                    <div class="drum-slogan" id="drumSlogan" aria-hidden="true">
+                        <span class="slogan-text" id="sloganText">Fun fact: Our drums last longer than your coffee breaks ☕</span>
                     </div>
                 </div>
             </div>
@@ -113,75 +481,293 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section class="about-home-modern">
         <div class="container">
-            <div class="section-header">
-                <span class="section-number">01</span>
-                <h2 class="section-title">Professional Profile</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <div class="glass-card">
-                        <h3>Why Hire Me?</h3>
-                        <p>
-                            <strong>Results-Driven Professional:</strong> Successfully contributed to Juta Teknologi's 
-                            rapid growth, helping acquire 16+ clients in the first 3 months. Proven ability to 
-                            drive revenue and build lasting client relationships.
-                        </p>
-                        <p>
-                            <strong>Diverse Industry Experience:</strong> Successfully managed customer service, 
-                            sales, and business development across multiple sectors including technology, 
-                            retail, hospitality, and fitness industries.
-                        </p>
-                        <p>
-                            <strong>Strong Work Ethic:</strong> Known for working well under pressure, quick 
-                            learning ability, and always striving for improvement. A reliable team player 
-                            who brings positive energy to any workplace.
-                        </p>
-                        <div class="value-props">
-                            <div class="value-prop">
-                                <i class="fas fa-chart-line"></i>
-                                <div>
-                                    <h4>Revenue Growth</h4>
-                                    <p>Proven track record in client acquisition and sales</p>
-                        </div>
+            <div class="about-content-modern">
+                <div class="about-images-modern">
+                    <img class="about-gif" src="public/man pouring oil.gif" alt="Pouring oil animation">
+                    <div class="about-image-main">
+                        <img src="public/AI Images/2 women talking and holding spray ans.png" alt="Ungdaka product specialists discussing industrial spray solutions">
                     </div>
-                            <div class="value-prop">
-                            <i class="fas fa-users"></i>
-                                <div>
-                                    <h4>Team Collaboration</h4>
-                                    <p>Excellent interpersonal skills and team player</p>
-                        </div>
-                    </div>
-                            <div class="value-prop">
-                                <i class="fas fa-lightbulb"></i>
-                                <div>
-                                    <h4>Quick Learner</h4>
-                                    <p>Adapts quickly to new environments and challenges</p>
-                                </div>
-                        </div>
+                    <div class="about-image-secondary">
+                        <img src="public/AI Images/a man holding a spray can.png" alt="Professional demonstrating Ungdaka products">
+                        <div class="experience-badge-float">
+                            <div class="experience-number">
+                                <span class="big-number">20+</span>
+                            </div>
+                            <div class="experience-text">
+                                <span>Years of Excellence</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-visual">
-                    <div class="stats-container">
-                        <div class="stat-circle" data-percent="95">
-                            <div class="stat-content">
-                                <span class="stat-number">95%</span>
-                                <span class="stat-label">Client Satisfaction</span>
+
+                <div class="about-text-modern">
+                    <span class="section-badge">About Us</span>
+                    <h2>Why Choose Ungdaka?</h2>
+                    <p class="about-lead">
+                        Over the years, we are involved in producing and supplying <span class="text-highlight">high-quality industrial
+                        aerosol sprays</span>, industrial specialty lubricants, greases & maintenance chemicals
+                        to our customers at competitive prices.
+                    </p>
+                    <p>
+                        With complete technical support from both overseas principles & in-house R&D department,
+                        we are also capable of <span class="text-highlight">customizing products</span> accordingly to the
+                        respective customers' requirements.
+                    </p>
+
+                    <div class="features-list-modern">
+                        <div class="feature-item-modern">
+                            <div class="feature-icon-modern">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="feature-content-modern">
+                                <h4>Cost Effective</h4>
+                                <p>Competitive pricing without compromising quality</p>
                             </div>
                         </div>
-                        <div class="stat-circle" data-percent="90">
-                            <div class="stat-content">
-                                <span class="stat-number">90%</span>
-                                <span class="stat-label">Sales Performance</span>
-                    </div>
+                        <div class="feature-item-modern">
+                            <div class="feature-icon-modern">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <div class="feature-content-modern">
+                                <h4>Highest Quality</h4>
+                                <p>Premium industrial-grade solutions</p>
+                            </div>
                         </div>
-                        <div class="stat-circle" data-percent="88">
-                            <div class="stat-content">
-                                <span class="stat-number">88%</span>
-                                <span class="stat-label">Problem Solving</span>
+                        <div class="feature-item-modern">
+                            <div class="feature-icon-modern">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="feature-content-modern">
+                                <h4>Reduced Downtime</h4>
+                                <p>Maximize productivity with reliable products</p>
+                            </div>
+                        </div>
+                        <div class="feature-item-modern">
+                            <div class="feature-icon-modern">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="feature-content-modern">
+                                <h4>On-time Delivery</h4>
+                                <p>Reliable logistics and distribution</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="about.html" class="btn-modern btn-primary-modern">Learn More About Ungdaka <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Bearings Section -->
+    <section class="bearings-comparison">
+        <video class="bearings-bg-video" autoplay loop muted playsinline>
+            <source src="public/Abstract_Golden_Oil_Flowing_Video.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Quick Comparison</span>
+                <p>Discover how proper lubrication extends bearing life and improves performance</p>
+            </div>
+            <div class="bearings-wrapper" style="gap: 40px;">
+                <div class="bearing-container">
+                    <h3 class="bearing-title">Without Grease</h3>
+                    <div class="bearing" id="dry-bearing">
+                        <img src="public/metal-bearings.png" alt="Bearing without grease" class="bearing-image">
+                    </div>
+                </div>
+                <div class="bearing-container">
+                    <h3 class="bearing-title">With Grease</h3>
+                    <div class="bearing" id="greased-bearing">
+                        <img src="public/metal-bearings with grease.png" alt="Bearing with grease" class="bearing-image">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators within the same section -->
+            <div class="trust-grid" style="margin: 40px 0 0 0;">
+                <div class="trust-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>ISO Certified</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-leaf"></i>
+                    <span>Eco-Friendly</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Quality Assured</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-truck"></i>
+                    <span>Fast Delivery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Products</span>
+                <h2>Featured Aerosol Products</h2>
+                <p>High-quality industrial solutions for your specific needs</p>
+            </div>
+            
+            <div class="products-grid" style="grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1400px; margin: 0 auto;">
+                <a href="products/s-88-silicone-mould-release.html" class="product-card">
+                    <div class="product-image" style="height: 600px; padding: 40px;">
+                        <img src="public/s-88 paintable.png" alt="S-88 Silicone Mould Release" style="max-height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-info">
+                        <h3>S-88 Silicone Mould Release</h3>
+                        <p>Excellent Releasing Agent - Paintable & Non-Paintable Version Available</p>
+                        <div class="product-features">
+                            <span class="feature-tag">High Performance</span>
+                            <span class="feature-tag">Versatile</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/ns-77-non-silicone-mould-release.html" class="product-card">
+                    <div class="product-image" style="height: 600px; padding: 40px;">
+                        <img src="public/ns-77.png" alt="NS-77 Non-Silicone Mould Release" style="max-height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-info">
+                        <h3>NS-77 Non-Silicone Mould Release</h3>
+                        <p>Formulated from Vegetable Oil & Food Grade Base</p>
+                        <div class="product-features">
+                            <span class="feature-tag gold">Food Grade</span>
+                            <span class="feature-tag">Eco-Friendly</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/s-22-degreaser-mould-cleaner.html" class="product-card">
+                    <div class="product-image" style="height: 450px; padding: 30px;">
+                        <img src="public/s-22.png" alt="S-22 Degreaser & Mould Cleaner" style="max-height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-info">
+                        <h3>S-22 Degreaser & Mould Cleaner</h3>
+                        <p>Superior Metal & Plastic Cleaner - Heavy Duty, Effective, Economical & Residue Free</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Heavy Duty</span>
+                            <span class="feature-tag">Residue Free</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/pro-shield-blue-anti-corrosion.html" class="product-card">
+                    <div class="product-image" style="height: 450px; padding: 30px;">
+                        <img src="public/pro shield blue.png" alt="Pro-Shield Anti-Corrosion" style="max-height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pro-Shield Anti-Corrosion</h3>
+                        <p>Short Mid-Term Protection Wax Coating - Excellent Protection Against Rust & Corrosion</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Anti-Corrosion</span>
+                            <span class="feature-tag">High Temperature</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/ep-lube-extreme-pressure-lubricant.html" class="product-card">
+                    <div class="product-image" style="height: 450px; padding: 30px;">
+                        <img src="public/ep lube.png" alt="EP Lube Ejector Pin Lubricant" style="max-height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-info">
+                        <h3>EP Lube Ejector Pin Lubricant</h3>
+                        <p>Non-Staining & Non-Dripping Lubrication Film for Ejector Pins</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Non-Staining</span>
+                            <span class="feature-tag">Precision</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/sg-18-high-performance-grease.html" class="product-card">
+                    <div class="product-image" style="height: 450px; padding: 30px;">
+                        <img src="public/sg-18.png" alt="SG-18 Multi Functional Spray Grease" style="max-height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-info">
+                        <h3>SG-18 Multi Functional Spray Grease</h3>
+                        <p>Non-Drip Lithium Based Grease Spray - Applicable to all Moving Parts</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Multi-Purpose</span>
+                            <span class="feature-tag">Non-Drip</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products-cta">
+                <a href="products.html" class="btn-modern btn-primary-modern">
+                    <span>View All Products</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Grade Section -->
+    <section class="food-grade-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Food Grade Solutions</span>
+                <h2>Safe for Food Industry Applications</h2>
+                <p>NSF approved and HACCP compliant products for food processing equipment</p>
+            </div>
+            
+            <div class="food-grade-content">
+                <div class="food-grade-text golden-border">
+                    <h3>Food Safety Compliance</h3>
+                    <p>
+                        Our <span class="golden-accent">food-grade lubricants and chemicals</span> are specially formulated 
+                        to meet the stringent requirements of the food processing industry. All products are 
+                        NSF approved and comply with HACCP standards for safe incidental food contact.
+                    </p>
+                    
+                    <div class="food-grade-features">
+                        <div class="feature-item">
+                            <i class="fas fa-certificate" style="color: var(--secondary-color);"></i>
+                            <span>NSF Approved</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shield-alt" style="color: var(--secondary-color);"></i>
+                            <span>HACCP Compliant</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-leaf" style="color: var(--secondary-color);"></i>
+                            <span>Food Safe</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
+                            <span>Quality Assured</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="food-grade-images">
+                    <div class="food-image-grid">
+                        <div class="food-image-card">
+                            <img src="public/AI Images/a man holding a spray can.png" alt="Professional demonstrating Ungdaka aerosol products" loading="lazy">
+                            <div class="image-overlay">
+                                <h4>Professional Quality Products</h4>
+                            </div>
+                        </div>
+                        <div class="food-image-card">
+                            <img src="public/AI Images/landscape of factory.png" alt="Industrial manufacturing facility" loading="lazy">
+                            <div class="image-overlay">
+                                <h4>Industrial Production</h4>
+                            </div>
+                        </div>
+                        <div class="food-image-card">
+                            <img src="public/Industries Images/food  & beverage.jpg" alt="Food Grade Lubricants" loading="lazy">
+                            <div class="image-overlay">
+                                <h4>Food Grade Lubricants</h4>
                             </div>
                         </div>
                     </div>
@@ -190,484 +776,143 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">02</span>
-                <h2 class="section-title">Experience</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <h3>Business Development & Social Media Digital Marketer</h3>
-                            <span class="timeline-company">Juta Teknologi Sdn Bhd</span>
-                            <span class="timeline-date">March 2023 – August 2024</span>
-                    </div>
-                        <div class="timeline-description">
-                            <p>Leading business development initiatives and managing social media digital marketing for AI-powered WhatsApp automation solutions</p>
-                            <ul>
-                                <li><strong>Social Media Digital Marketer:</strong> Managed and executed comprehensive social media marketing campaigns across multiple platforms</li>
-                                <li>Assisted in client acquisition and relationship management</li>
-                                <li>Supported sales team with lead generation and qualification</li>
-                                <li>Helped develop business strategies for WhatsApp AI chatbot solutions</li>
-                                <li>Contributed to company growth serving 100+ clients in first 3 months</li>
-                                <li>Created engaging social media content and managed brand presence online</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Social Media Marketing</span>
-                            <span class="skill-tag">Digital Marketing</span>
-                            <span class="skill-tag">Business Development</span>
-                            <span class="skill-tag">Client Relations</span>
-                            <span class="skill-tag">Sales Support</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <h3>Call Centre Agent</h3>
-                            <span class="timeline-company">IGT Solutions - Scoot Airlines</span>
-                            <span class="timeline-date">March 2022 – March 2023</span>
-                    </div>
-                        <div class="timeline-description">
-                            <p>Provided customer support for Scoot Airlines passengers for 1 year</p>
-                            <ul>
-                                <li>Resolved customer issues and answered questions</li>
-                                <li>Maintained call logs for each call</li>
-                                <li>Provided positive customer experience with fair, friendly, and courteous service</li>
-                                <li>Handled high-volume customer inquiries and complaints</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Customer Service</span>
-                            <span class="skill-tag">Communication</span>
-                            <span class="skill-tag">Problem Solving</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <h3>Sales Executive</h3>
-                            <span class="timeline-company">TGV Cinemas</span>
-                            <span class="timeline-date">January 2021 – December 2021</span>
-                        </div>
-                        <div class="timeline-description">
-                            <p>Promoted cinema services and managed customer relationships for 1 year</p>
-                            <ul>
-                                <li>Promoted cinema tickets, food, and beverage sales</li>
-                                <li>Built strong customer relationships and provided excellent service</li>
-                                <li>Met and exceeded monthly sales targets</li>
-                                <li>Handled customer inquiries and resolved issues</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Sales</span>
-                            <span class="skill-tag">Customer Relations</span>
-                            <span class="skill-tag">Target Achievement</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <h3>Sales Executive</h3>
-                            <span class="timeline-company">HOOGA</span>
-                            <span class="timeline-date">January 2022 – February 2022</span>
-                    </div>
-                        <div class="timeline-description">
-                            <p>Promoted products and services while building customer relationships</p>
-                            <ul>
-                                <li>Promoted company products and services to potential customers</li>
-                                <li>Built and maintained strong customer relationships</li>
-                                <li>Met sales targets and contributed to team goals</li>
-                                <li>Provided excellent customer service and support</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Sales</span>
-                            <span class="skill-tag">Product Promotion</span>
-                            <span class="skill-tag">Customer Service</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <h3>Cashier and Staff</h3>
-                            <span class="timeline-company">Woodfire</span>
-                            <span class="timeline-date">March 2020 – December 2020</span>
-                        </div>
-                        <div class="timeline-description">
-                            <p>Handled cashier operations and general staff duties for 9 months</p>
-                            <ul>
-                                <li>Registered sales on cash register by scanning items</li>
-                                <li>Itemized and totaled customers' purchases</li>
-                                <li>Provided excellent customer service</li>
-                                <li>Maintained inventory and stock management</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Cash Handling</span>
-                            <span class="skill-tag">Customer Service</span>
-                            <span class="skill-tag">Point of Sale</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <div class="timeline-header">
-                            <h3>Cashier and Staff</h3>
-                            <span class="timeline-company">KFC</span>
-                            <span class="timeline-date">October 2019 – February 2020</span>
-                    </div>
-                        <div class="timeline-description">
-                            <p>Provided customer service and handled food service operations</p>
-                            <ul>
-                                <li>Processed customer orders and payments</li>
-                                <li>Maintained food safety and cleanliness standards</li>
-                                <li>Worked efficiently in fast-paced environment</li>
-                            </ul>
-                        </div>
-                        <div class="timeline-skills">
-                            <span class="skill-tag">Food Service</span>
-                            <span class="skill-tag">Customer Service</span>
-                            <span class="skill-tag">Teamwork</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">03</span>
-                <h2 class="section-title">Skills & Technologies</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="skills-content">
-                <div class="skills-category" data-aos="fade-up">
-                    <div class="category-header">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Business Development</h3>
-                    </div>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fas fa-handshake"></i>
-                            <span>Client Relations</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-search"></i>
-                            <span>Lead Generation</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-target"></i>
-                            <span>Sales Strategy</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Market Analysis</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-users"></i>
-                            <span>Relationship Building</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-bullhorn"></i>
-                            <span>Sales & Promotion</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-robot"></i>
-                            <span>AI Solutions Knowledge</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>WhatsApp Business</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cogs"></i>
-                            <span>Technical Understanding</span>
-                        </div>
-                        <div class="skill-item special-skill">
-                            <i class="fas fa-lightning-bolt"></i>
-                            <span>Quick Learner</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skills-category" data-aos="fade-up">
-                    <div class="category-header">
-                        <i class="fas fa-users"></i>
-                        <h3>Soft Skills</h3>
-                    </div>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fas fa-comments"></i>
-                            <span>Communication</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-handshake"></i>
-                            <span>Customer Service</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-puzzle-piece"></i>
-                            <span>Problem Solving</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-clock"></i>
-                            <span>Time Management</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-users-cog"></i>
-                            <span>Team Leadership</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Sales & Promotion</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-tasks"></i>
-                            <span>Organization</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-bolt"></i>
-                            <span>Work Under Pressure</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skills-category" data-aos="fade-up">
-                    <div class="category-header">
-                        <i class="fas fa-tools"></i>
-                        <h3>Tools & Software</h3>
-                    </div>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fas fa-robot"></i>
-                            <span>ChatGPT & AI Tools</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>Cursor AI Editor</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>CRM AI Systems</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-share-alt"></i>
-                            <span>Social Media Marketing</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-hashtag"></i>
-                            <span>Digital Marketing</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-bullhorn"></i>
-                            <span>Content Creation</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-desktop"></i>
-                            <span>Microsoft Office</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cube"></i>
-                            <span>AutoCAD</span>
-                    </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cog"></i>
-                            <span>SolidWorks</span>
-                </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Excel & Data Analysis</span>
-            </div>
-                        <div class="skill-item">
-                            <i class="fas fa-file-alt"></i>
-                            <span>Technical Documentation</span>
-                    </div>
-                        <div class="skill-item">
-                            <i class="fas fa-phone"></i>
-                            <span>Call Center Systems</span>
-                </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cash-register"></i>
-                            <span>POS Systems</span>
-            </div>
-                        <div class="skill-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>Basic Computer Skills</span>
-                    </div>
-                    </div>
-                </div>
-                
-                <div class="skills-category" data-aos="fade-up">
-                    <div class="category-header">
-                        <i class="fas fa-star"></i>
-                        <h3>Personal Attributes</h3>
-                    </div>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <i class="fas fa-heart"></i>
-                            <span>Passionate</span>
-                    </div>
-                        <div class="skill-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Perfectionist</span>
-                </div>
-                        <div class="skill-item">
-                            <i class="fas fa-rocket"></i>
-                            <span>Always Up & Going</span>
-                    </div>
-                        <div class="skill-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Quick Learner</span>
-                    </div>
-                        <div class="skill-item">
-                            <i class="fas fa-bolt"></i>
-                            <span>Works Under Pressure</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>Always Improving</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-butterfly"></i>
-                            <span>Social Butterfly</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-handshake"></i>
-                            <span>Reliable Team Player</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">04</span>
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info" data-aos="fade-up">
-                    <div class="glass-card">
-                        <h3>Let's Work Together</h3>
-                        <p>
-                            I'm actively seeking business development and sales executive opportunities where I can 
-                            leverage my proven track record in client acquisition, relationship building, and 
-                            revenue growth. Ready to contribute to your company's success with my diverse 
-                            experience and strong work ethic.
-                        </p>
-                        <div class="contact-methods">
-                            <div class="contact-method">
-                                <i class="fas fa-envelope"></i>
-                                <div class="method-info">
-                                    <span class="method-label">Email</span>
-                                    <span class="method-value">Faeezree@gmail.com</span>
-                                </div>
-                            </div>
-                            <div class="contact-method">
-                                <i class="fas fa-phone"></i>
-                                <div class="method-info">
-                                    <span class="method-label">Phone</span>
-                                    <span class="method-value">01121677672</span>
-                                </div>
-                            </div>
-                            <div class="contact-method">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div class="method-info">
-                                    <span class="method-label">Location</span>
-                                    <span class="method-value">Shah Alam, Selangor, Malaysia</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contact-social">
-                            <a href="#" class="social-link">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="social-link">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form-container" data-aos="fade-up">
-                    <form class="contact-form glass-card">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" required>
-                            <label for="name">Your Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email">Your Email</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" required>
-                            <label for="subject">Subject</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" required></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer-new">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Faeez Rifaie Bin Musa</h3>
-                    <p>Business Development Professional</p>
+            <div class="footer-grid">
+                <div class="footer-col footer-col-brand">
+                    <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="footer-logo-img">
+                    <p class="footer-company">Ungdaka (M) Sdn. Bhd.</p>
+                    <p class="footer-reg">199701002373(417869-V)</p>
+                    <p class="footer-tagline">Advanced Technology Solutions to Cleanliness & Lubrications.</p>
                 </div>
-                <div class="footer-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#contact">Contact</a>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Products</h4>
+                    <ul class="footer-list">
+                        <li><a href="products.html">Aerosol Products</a></li>
+                        <li><a href="products.html">Industrial Lubricants</a></li>
+                        <li><a href="products.html">Industrial Grease</a></li>
+                        <li><a href="products.html">Maintenance & Repair</a></li>
+                        <li><a href="products.html">Metal Working</a></li>
+                        <li><a href="products.html">Food Grade Products</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contact Info (HQ)</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>21, Lorong Nagasari 25, Taman Nagasari, 13600 Prai, Penang, Malaysia</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+604-399 9966</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>pgsales@ungdaka.com</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Faeez Rifaie Bin Musa. All rights reserved.</p>
+
+            <div class="footer-bottom-new">
+                <p>&copy; 2025 Ungdaka (M) Sdn. Bhd. All Rights Reserved.</p>
+                <div class="footer-social-new">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Floating Buttons -->
+    <div class="floating-buttons">
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+        
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/60439999966" class="whatsapp-button" aria-label="Contact us on WhatsApp" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Quote Modal -->
+    <div class="modal" id="quote-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Request a Quote</h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="quote-form" id="quote-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="company" required>
+                            <label>Company Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="contact-person" required>
+                            <label>Contact Person</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="email" name="email" required>
+                            <label>Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" required>
+                            <label>Phone Number</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select name="product-category" required>
+                            <option value="">Select Product Category</option>
+                            <option value="aerosol">Aerosol Products</option>
+                            <option value="lubricants">Industrial Lubricants</option>
+                            <option value="grease">Industrial Grease</option>
+                            <option value="maintenance">Maintenance & Repair</option>
+                            <option value="metalworking">Metal Working</option>
+                            <option value="foodgrade">Food Grade Products</option>
+                        </select>
+                        <label>Product Category</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="requirements" rows="4" required></textarea>
+                        <label>Specific Requirements</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Submit Quote Request</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
+    <script src="product-animations.js"></script>
 </body>
 </html>

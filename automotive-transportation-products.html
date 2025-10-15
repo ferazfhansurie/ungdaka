@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive & Transportation Industry Products | Ungdaka (M) Sdn Bhd</title>
+    <meta name="description" content="Specialized lubricants and maintenance solutions for automotive manufacturing and transportation equipment. Professional solutions for automotive industry.">
+    <meta name="keywords" content="automotive industry products, transportation lubricants, automotive manufacturing, vehicle maintenance, automotive chemicals">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Enhanced Styles for Industry Pages -->
+    <style>
+        .industry-overview-enhanced {
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+            padding: 80px 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .industry-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .industry-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .section-badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; padding: 8px 16px; border-radius: 25px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        .section-header-enhanced h2 { font-size: 2.2rem; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
+        .section-header-enhanced p { font-size: 1.05rem; color: #475569; max-width: 700px; margin: 0 auto; }
+        .products-grid-enhanced { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+        .product-card-enhanced { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.08); transition: transform .25s ease, box-shadow .25s ease; }
+        .product-card-enhanced:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(0,0,0,.12); }
+        .product-image-container { position: relative; height: 200px; overflow: hidden; }
+        .product-image-container img { width: 100%; height: 100%; object-fit: cover; }
+        .product-badge { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .product-content { padding: 22px; }
+        .product-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .product-header h3 { font-size: 1.15rem; margin: 0; color: #0f172a; }
+        .product-rating { color: #f59e0b; font-size: .9rem; }
+        .product-features-enhanced { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 16px; }
+        .feature-tag-enhanced { display: inline-flex; align-items: center; gap: 6px; background: #e0f2fe; color: #075985; padding: 6px 12px; border-radius: 999px; font-size: .85rem; font-weight: 500; }
+        .product-application-enhanced { display: flex; gap: 12px; background: #f1f5f9; padding: 14px; border-radius: 10px; margin-bottom: 16px; }
+        .application-icon { width: 34px; height: 34px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+        .product-actions { display: flex; gap: 10px; }
+        .btn-product-primary { flex: 1; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; border: none; padding: 12px 18px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+        .btn-product-secondary { flex: 1; background: transparent; color: #1d4ed8; border: 2px solid #1d4ed8; padding: 10px 18px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+        .technical-specs-enhanced {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+        }
+
+        .technical-specs-enhanced .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .technical-specs-enhanced h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .technical-specs-enhanced .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .specs-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .spec-card-enhanced {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .spec-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .spec-card-enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .spec-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .spec-card-enhanced h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .spec-card-enhanced p {
+            color: #64748b;
+            line-height: 1.5;
+            font-size: 1rem;
+            margin: 0;
+        }
+        .cta-section-enhanced {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-cta-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-cta-secondary {
+            background: transparent;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-cta-secondary:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .industry-hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .industry-stats {
+                justify-content: center;
+            }
+            
+            .products-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .specs-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .industry-hero-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="logo-img">
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                
+                <!-- Products Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="products.html" class="nav-link dropdown-toggle">
+                        Our Products
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4>Lubricants & Oils</h4>
+                                <a href="products/engine-oils.html">Engine Oils</a>
+                                <a href="products/hydraulic-awx-series.html">Hydraulic Oils</a>
+                                <a href="products/industrial-gear-series.html">Industrial Gear Oils</a>
+                                <a href="products/compressor-oils.html">Compressor Oils</a>
+                                <a href="products/circulating-oils.html">Circulating Oils</a>
+                                <a href="products/lubricating-oils.html">Lubricating Oils</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Greases</h4>
+                                <a href="products/heavy-duty-grease.html">Heavy Duty Grease</a>
+                                <a href="products/lit-888-ep-grease.html">LIT 888 EP Grease</a>
+                                <a href="products/hi-lo-grease.html">Hi-Lo Grease</a>
+                                <a href="products/food-grade-grease.html">Food Grade Grease</a>
+                                <a href="products/al-cx-grease.html">AL-CX Grease</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Specialty Products</h4>
+                                <a href="products/cnc-os-oil-skimmer.html">CNC OS Oil Skimmer</a>
+                                <a href="products/giga-os-oil-skimmer.html">GIGA OS Oil Skimmer</a>
+                                <a href="products/anti-rust-series.html">Anti-Rust Series</a>
+                                <a href="products/moly-lube-advanced-lubricant.html">Moly Lube</a>
+                                <a href="products.html" class="view-all">View All Products →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Industries Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="industries.html" class="nav-link dropdown-toggle">
+                        Industries
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4>Manufacturing</h4>
+                                <a href="stamping-products.html">Stamping</a>
+                                <a href="automotive-transportation-products.html">Automotive & Transportation</a>
+                                <a href="plastic-injection-products.html">Plastic Injection</a>
+                                <a href="machining-engineering-products.html">Machining & Engineering</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Heavy Industries</h4>
+                                <a href="construction-cement-products.html">Construction & Cement</a>
+                                <a href="marine-offshore-products.html">Marine & Offshore</a>
+                                <a href="oil-gas-products.html">Oil & Gas</a>
+                                <a href="quarries-products.html">Quarries</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Specialized</h4>
+                                <a href="semiconductor-disk-drive-products.html">Semiconductor & Disk Drive</a>
+                                <a href="food-beverage-pharmaceutical-products.html">Food & Beverage</a>
+                                <a href="rubber-latex-products.html">Rubber & Latex</a>
+                                <a href="printing-paper-products.html">Printing & Paper</a>
+                                <a href="workshops-automotive-products.html">Workshops</a>
+                                <a href="industries.html" class="view-all">View All Industries →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </div>
+            <div class="nav-actions">
+                <a href="tel:+60439999966" class="nav-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>+604-399 9966</span>
+                </a>
+                <button class="nav-quote-btn">Get Quote</button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="industries.html">Industries</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Automotive & Transportation Industry Products</span>
+                </div>
+                <h1>Automotive & Transportation Industry Products</h1>
+                <p>Specialized lubricants and maintenance solutions for automotive manufacturing and transportation equipment</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Overview -->
+    <section class="industry-overview-enhanced">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="industry-badge" style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); padding: 12px 24px; border-radius: 30px; background: #3b82f6; color: white; display: flex; align-items: center; gap: 8px; font-size: 1rem;">
+                <i class="fas fa-car"></i> Automotive & Transportation
+            </div>
+            <div class="industry-hero" style="margin-top: 60px;">
+                <div class="industry-content" style="max-width: 600px;">
+                    <h2 style="font-size: 3rem; font-weight: 700; color: #1e293b; margin-bottom: 24px;">Advanced Solutions for Automotive Excellence</h2>
+                    <p style="font-size: 1.1rem; color: #64748b; line-height: 1.6; margin-bottom: 40px;">Our specialized products are designed for the demanding requirements of automotive manufacturing and transportation. From assembly line lubrication to vehicle maintenance, we provide solutions that ensure optimal performance and reliability.</p>
+                    <div class="industry-stats" style="display: flex; gap: 60px;" style="display: flex; gap: 60px;">
+                        <div class="stat-item" style="text-align: center;">
+                            <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #3b82f6; margin-bottom: 8px;">+30%</div>
+                            <div class="stat-label" style="font-size: 0.9rem; color: #64748b; font-weight: 500; text-transform: uppercase;">Component Life</div>
+                        </div>
+                        <div class="stat-item" style="text-align: center;">
+                            <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #3b82f6; margin-bottom: 8px;">ISO</div>
+                            <div class="stat-label" style="font-size: 0.9rem; color: #64748b; font-weight: 500; text-transform: uppercase;">Quality</div>
+                        </div>
+                        <div class="stat-item" style="text-align: center;">
+                            <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #3b82f6; margin-bottom: 8px;">24/7</div>
+                            <div class="stat-label" style="font-size: 0.9rem; color: #64748b; font-weight: 500; text-transform: uppercase;">Uptime</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="industry-hero-image" style="position: relative; width: 100%; height: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                    <img src="public/Industries%20Images/automotive%20%26%20transportation%20industries_backup.jpg" alt="Automotive manufacturing and transportation" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="image-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 30px;"><div class="overlay-content" style="text-align: center; color: white;"><i class="fas fa-industry"></i><h4>Manufacturing Grade</h4><p>Consistency & Compliance</p></div></div>
+                </div>
+            </div>
+            <div class="industry-features-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px;">
+                <div class="feature-card" style="background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);">
+                    <div class="feature-icon" style="width: 60px; height: 60px; background: #3b82f6; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-gauge-high"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">High Performance</h3>
+                    <p style="color: #64748b; line-height: 1.5;">Formulations engineered for rigorous automotive demands</p>
+                </div>
+                <div class="feature-card" style="background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);">
+                    <div class="feature-icon" style="width: 60px; height: 60px; background: #3b82f6; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-temperature-high"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">Temperature Stability</h3>
+                    <p style="color: #64748b; line-height: 1.5;">Consistent performance across wide temperature ranges</p>
+                </div>
+                <div class="feature-card" style="background: white; padding: 30px; border-radius: 15px; text-align: center; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);">
+                    <div class="feature-icon" style="width: 60px; height: 60px; background: #3b82f6; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 style="font-size: 1.2rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">Extended Life</h3>
+                    <p style="color: #64748b; line-height: 1.5;">Protects components and reduces downtime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section-enhanced" style="padding: 80px 0; background: white;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="section-header-enhanced" style="text-align: center; margin-bottom: 60px;">
+                <div class="section-badge" style="display: inline-flex; align-items: center; gap: 8px; background: #3b82f6; color: white; padding: 12px 24px; border-radius: 30px; font-size: 1rem; margin-bottom: 20px;"><i class="fas fa-box"></i> OUR PRODUCTS</div>
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: #1e293b; margin-bottom: 16px;">Recommended Products for Automotive & Transportation</h2>
+                <p style="font-size: 1.1rem; color: #64748b; max-width: 600px; margin: 0 auto;">Professional-grade solutions for your automotive manufacturing and transportation needs</p>
+            </div>
+            <div class="products-grid-enhanced" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
+                <a href="products/s-88-silicone-mould-release.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
+                        <img src="public/s-88 paintable.png" alt="S-88 Silicone Mould Release" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-content" style="padding: 24px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">S-88</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 16px;">Silicone mould release for automotive parts manufacturing</p>
+                        <div class="product-features-enhanced" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">HIGH PERFORMANCE</span>
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">VERSATILE</span>
+                        </div>
+                        <div class="product-application" style="margin-bottom: 20px;">
+                            <p style="color: #475569; font-size: 0.9rem; margin: 0;"><strong>Application:</strong> Automotive parts moulding, release applications</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/lube-guard-original.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
+                        <img src="public/lube guard.png" alt="Lube Guard Original" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-content" style="padding: 24px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">LUBE GUARD</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 16px;">Multi-purpose lubricant for automotive manufacturing and maintenance</p>
+                        <div class="product-features-enhanced" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">MULTI-PURPOSE</span>
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">VERSATILE</span>
+                        </div>
+                        <div class="product-application" style="margin-bottom: 20px;">
+                            <p style="color: #475569; font-size: 0.9rem; margin: 0;"><strong>Application:</strong> General lubrication, equipment maintenance</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/sg-18-high-performance-grease.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
+                        <img src="public/sg-18.png" alt="SG-18" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-content" style="padding: 24px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">SG-18</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 16px;">Multi-functional spray grease for automotive components</p>
+                        <div class="product-features-enhanced" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">MULTI-PURPOSE</span>
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">NON-DRIP</span>
+                        </div>
+                        <div class="product-application" style="margin-bottom: 20px;">
+                            <p style="color: #475569; font-size: 0.9rem; margin: 0;"><strong>Application:</strong> Moving parts, bearings, suspension systems</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/moly-lube-advanced-lubricant.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
+                        <img src="public/moly lube.png" alt="Moly Lube Advanced" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-content" style="padding: 24px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">MOLY LUBE</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 16px;">Advanced molybdenum lubricant for extreme conditions</p>
+                        <div class="product-features-enhanced" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">EXTREME PRESSURE</span>
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">HIGH TEMPERATURE</span>
+                        </div>
+                        <div class="product-application" style="margin-bottom: 20px;">
+                            <p style="color: #475569; font-size: 0.9rem; margin: 0;"><strong>Application:</strong> Heavy-duty automotive components, high-stress parts</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/s-22-degreaser-mould-cleaner.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
+                        <img src="public/s-22.png" alt="S-22 Degreaser" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-content" style="padding: 24px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">S-22 H</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 16px;">Heavy-duty degreaser for automotive parts cleaning</p>
+                        <div class="product-features-enhanced" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">HEAVY DUTY</span>
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">RESIDUE FREE</span>
+                        </div>
+                        <div class="product-application" style="margin-bottom: 20px;">
+                            <p style="color: #475569; font-size: 0.9rem; margin: 0;"><strong>Application:</strong> Parts cleaning, degreasing, equipment maintenance</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/belt-dressing-industrial-lubricant.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
+                        <img src="public/belt dressing.png" alt="Belt Dressing" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-content" style="padding: 24px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">Belt Dressing</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 16px;">Belt conditioner for automotive drive belts and industrial applications</p>
+                        <div class="product-features-enhanced" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">ANTI-SLIP</span>
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">CONDITIONING</span>
+                        </div>
+                        <div class="product-application" style="margin-bottom: 20px;">
+                            <p style="color: #475569; font-size: 0.9rem; margin: 0;"><strong>Application:</strong> Drive belts, conveyor belts, belt maintenance</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="products/waterless-hand-scrubber.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
+                        <img src="public/superscrub.png" alt="Super Scrub Waterless Hand Scrubber" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <div class="product-content" style="padding: 24px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">Waterless Hand Scrubber with Grit</h3>
+                        <p style="color: #64748b; line-height: 1.6; margin-bottom: 16px;">Heavy-duty cleaner for automotive manufacturing equipment</p>
+                        <div class="product-features-enhanced" style="display: flex; gap: 8px; margin-bottom: 16px;">
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">HEAVY DUTY</span>
+                            <span class="feature-tag-enhanced" style="background: #f1f5f9; color: #475569; padding: 6px 16px; border-radius: 50px; font-size: 0.875rem;">EFFECTIVE</span>
+                        </div>
+                        <div class="product-application" style="margin-bottom: 20px;">
+                            <p style="color: #475569; font-size: 0.9rem; margin: 0;"><strong>Application:</strong> Equipment cleaning, degreasing, maintenance</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="technical-specs-enhanced">
+        <div class="container">
+            <h2>Technical Specifications & Benefits</h2>
+            <div class="specs-grid-enhanced">
+                <div class="spec-card-enhanced">
+                    <div class="spec-icon">
+                        <i class="fas fa-temperature-high"></i>
+                    </div>
+                    <h3>High Temperature Stability</h3>
+                    <p>Maintains performance at elevated operational temperatures</p>
+                </div>
+
+                <div class="spec-card-enhanced">
+                    <div class="spec-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Superior Protection</h3>
+                    <p>Excellent protective properties for complex automotive parts</p>
+                </div>
+
+                <div class="spec-card-enhanced">
+                    <div class="spec-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Non-Contaminating</h3>
+                    <p>Clean formulations that maintain part quality standards</p>
+                </div>
+
+                <div class="spec-card-enhanced">
+                    <div class="spec-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Extended Component Life</h3>
+                    <p>Protects components and extends their service life</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section-enhanced">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Custom Solutions for Your Automotive Operations?</h2>
+                <p>Our technical team can help you select the right products for your specific automotive manufacturing and transportation requirements.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-cta-primary"><i class="fas fa-envelope"></i> Contact Our Experts</a>
+                    <a href="products.html" class="btn-cta-secondary"><i class="fas fa-box"></i> View All Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-col-brand">
+                    <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="footer-logo-img">
+                    <p class="footer-company">Ungdaka (M) Sdn. Bhd.</p>
+                    <p class="footer-reg">199701002373(417869-V)</p>
+                    <p class="footer-tagline">Advanced Technology Solutions to Cleanliness & Lubrications.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Products</h4>
+                    <ul class="footer-list">
+                        <li><a href="products.html">Aerosol Products</a></li>
+                        <li><a href="products.html">Industrial Lubricants</a></li>
+                        <li><a href="products.html">Industrial Grease</a></li>
+                        <li><a href="products.html">Maintenance & Repair</a></li>
+                        <li><a href="products.html">Metal Working</a></li>
+                        <li><a href="products.html">Food Grade Products</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contact Info (HQ)</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>21, Lorong Nagasari 25, Taman Nagasari, 13600 Prai, Penang, Malaysia</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+604-399 9966</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>pgsales@ungdaka.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-new">
+                <p>&copy; 2025 Ungdaka (M) Sdn. Bhd. All Rights Reserved.</p>
+                <div class="footer-social-new">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stamping Industry Products | Ungdaka (M) Sdn Bhd</title>
+    <meta name="description" content="Heavy-duty lubricants and release agents for metal stamping and forming operations. Professional solutions for stamping industry.">
+    <meta name="keywords" content="stamping industry products, metal stamping, forming lubricants, stamping chemicals, metal working">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Enhanced Styles for Industry Pages -->
+    <style>
+        .industry-overview-enhanced {
+            background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+            padding: 80px 0;
+        }
+        
+        .industry-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .industry-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .industry-hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .industry-hero p {
+            font-size: 1.1rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .industry-stats {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ef4444;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .industry-hero-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .industry-hero-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 30px;
+        }
+        
+        .overlay-content {
+            text-align: center;
+        }
+        
+        .overlay-content i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .overlay-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .section-header-enhanced { text-align: center; margin-bottom: 60px; }
+        .section-badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; padding: 8px 16px; border-radius: 25px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+        .section-header-enhanced h2 { font-size: 2.2rem; font-weight: 700; color: #111827; margin-bottom: 12px; }
+        .section-header-enhanced p { font-size: 1.05rem; color: #6b7280; max-width: 700px; margin: 0 auto; }
+        .products-grid-enhanced { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+        .product-card-enhanced { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.08); transition: transform .25s ease, box-shadow .25s ease; }
+        .product-card-enhanced:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(0,0,0,.12); }
+        /* Match featured product sizing used on home page */
+        .products-grid-enhanced .product-image,
+        .products-grid-enhanced .product-image-container {
+            position: relative;
+            height: 600px;
+            padding: 40px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .products-grid-enhanced .product-image img,
+        .products-grid-enhanced .product-image-container img {
+            width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .product-badge { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .product-content { padding: 22px; }
+        .product-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .product-header h3 { font-size: 1.15rem; margin: 0; color: #111827; }
+        .product-rating { color: #f59e0b; font-size: .9rem; }
+        .product-features-enhanced { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 16px; }
+        .feature-tag-enhanced { display: inline-flex; align-items: center; gap: 6px; background: #fee2e2; color: #991b1b; padding: 6px 12px; border-radius: 999px; font-size: .85rem; font-weight: 500; }
+        .product-application-enhanced { display: flex; gap: 12px; background: #f9fafb; padding: 14px; border-radius: 10px; margin-bottom: 16px; }
+        .application-icon { width: 34px; height: 34px; background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: .95rem; }
+        .product-actions { display: flex; gap: 10px; }
+        .btn-product-primary { flex: 1; background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; border: none; padding: 12px 18px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+        .btn-product-secondary { flex: 1; background: transparent; color: #b91c1c; border: 2px solid #b91c1c; padding: 10px 18px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+        .industry-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: #64748b;
+            line-height: 1.5;
+        }
+        
+        .technical-specs-enhanced {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .technical-specs-enhanced h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 60px;
+        }
+        
+        .specs-grid-enhanced {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .spec-item-enhanced {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .spec-item-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+        }
+    .spec-item-enhanced:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    .spec-item-enhanced h3 { font-size: 1.4rem; font-weight: 600; color: #1e293b; margin-bottom: 15px; }
+    .spec-item-enhanced p { color: #64748b; line-height: 1.6; font-size: 1rem; }
+    .spec-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #ef4444, #b91c1c); border-radius: 50%; display:flex; align-items:center; justify-content:center; margin: 0 auto 25px; color: white; font-size: 2rem; box-shadow: 0 10px 20px rgba(239,68,68,0.3); }
+        .cta-section-enhanced {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-cta-primary {
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(239,68,68,0.4);
+        }
+        
+        .btn-cta-secondary {
+            background: transparent;
+            color: #ef4444;
+            border: 2px solid #ef4444;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn-cta-secondary:hover {
+            background: #ef4444;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .industry-hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .industry-stats {
+                justify-content: center;
+            }
+            
+            .products-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .specs-grid-enhanced {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .industry-hero-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="logo-img">
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                
+                <!-- Products Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="products.html" class="nav-link dropdown-toggle">
+                        Our Products
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4>Lubricants & Oils</h4>
+                                <a href="products/engine-oils.html">Engine Oils</a>
+                                <a href="products/hydraulic-awx-series.html">Hydraulic Oils</a>
+                                <a href="products/industrial-gear-series.html">Industrial Gear Oils</a>
+                                <a href="products/compressor-oils.html">Compressor Oils</a>
+                                <a href="products/circulating-oils.html">Circulating Oils</a>
+                                <a href="products/lubricating-oils.html">Lubricating Oils</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Greases</h4>
+                                <a href="products/heavy-duty-grease.html">Heavy Duty Grease</a>
+                                <a href="products/lit-888-ep-grease.html">LIT 888 EP Grease</a>
+                                <a href="products/hi-lo-grease.html">Hi-Lo Grease</a>
+                                <a href="products/food-grade-grease.html">Food Grade Grease</a>
+                                <a href="products/al-cx-grease.html">AL-CX Grease</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Specialty Products</h4>
+                                <a href="products/cnc-os-oil-skimmer.html">CNC OS Oil Skimmer</a>
+                                <a href="products/giga-os-oil-skimmer.html">GIGA OS Oil Skimmer</a>
+                                <a href="products/anti-rust-series.html">Anti-Rust Series</a>
+                                <a href="products/moly-lube-advanced-lubricant.html">Moly Lube</a>
+                                <a href="products.html" class="view-all">View All Products →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Industries Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="industries.html" class="nav-link dropdown-toggle">
+                        Industries
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4>Manufacturing</h4>
+                                <a href="stamping-products.html">Stamping</a>
+                                <a href="automotive-transportation-products.html">Automotive & Transportation</a>
+                                <a href="plastic-injection-products.html">Plastic Injection</a>
+                                <a href="machining-engineering-products.html">Machining & Engineering</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Heavy Industries</h4>
+                                <a href="construction-cement-products.html">Construction & Cement</a>
+                                <a href="marine-offshore-products.html">Marine & Offshore</a>
+                                <a href="oil-gas-products.html">Oil & Gas</a>
+                                <a href="quarries-products.html">Quarries</a>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Specialized</h4>
+                                <a href="semiconductor-disk-drive-products.html">Semiconductor & Disk Drive</a>
+                                <a href="food-beverage-pharmaceutical-products.html">Food & Beverage</a>
+                                <a href="rubber-latex-products.html">Rubber & Latex</a>
+                                <a href="printing-paper-products.html">Printing & Paper</a>
+                                <a href="workshops-automotive-products.html">Workshops</a>
+                                <a href="industries.html" class="view-all">View All Industries →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </div>
+            <div class="nav-actions">
+                <a href="tel:+60439999966" class="nav-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>+604-399 9966</span>
+                </a>
+                <button class="nav-quote-btn">Get Quote</button>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="industries.html">Industries</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Stamping Industry Products</span>
+                </div>
+                <h1>Stamping Industry Products</h1>
+                <p>Heavy-duty lubricants and release agents for metal stamping and forming operations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Overview -->
+    <section class="industry-overview-enhanced">
+        <div class="container">
+            <div class="industry-hero">
+                <div class="industry-content">
+                    <div class="industry-badge"><i class="fas fa-stamp"></i> Stamping Industry</div>
+                    <h2>Robust Solutions for Metal Stamping Operations</h2>
+                    <p>Our specialized products are designed for the demanding requirements of metal stamping and forming operations. From die release agents to forming lubricants, we provide solutions that ensure optimal part quality and production efficiency.</p>
+                    <div class="industry-stats">
+                        <div class="stat-item"><div class="stat-number">+35%</div><div class="stat-label">Die Life</div></div>
+                        <div class="stat-item"><div class="stat-number">-20%</div><div class="stat-label">Downtime</div></div>
+                        <div class="stat-item"><div class="stat-number">ROI</div><div class="stat-label">Optimized</div></div>
+                    </div>
+                </div>
+                <div class="industry-hero-image">
+                    <img src="public/Industries%20Images/stamping.png" alt="Metal stamping and forming operations">
+                    <div class="image-overlay"><div class="overlay-content"><i class="fas fa-industry"></i><h4>Production Grade</h4><p>Efficiency and protection</p></div></div>
+                </div>
+            </div>
+            <div class="industry-features-grid">
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-spray-can"></i></div><h3>Superior Release</h3><p>Consistent part ejection for complex geometries</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Extended Die Life</h3><p>Protects tooling, reduces maintenance</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-clock"></i></div><h3>Reduced Downtime</h3><p>Keeps lines running at peak efficiency</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-section-enhanced">
+        <div class="container">
+            <div class="section-header-enhanced">
+                <div class="section-badge"><i class="fas fa-box"></i> Our Products</div>
+                <h2>Recommended Products for Stamping Industry</h2>
+                <p>Professional-grade solutions for your metal stamping and forming needs</p>
+            </div>
+            <div class="products-grid-enhanced">
+                <a href="products/hydraulic-awx-series.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/drum and pail.png" alt="Hydraulic AWX Series">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hydraulic AWX Series Oils (10,32,46,68,100)</h3>
+                        <p>High-performance hydraulic oils for stamping press hydraulic systems</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Anti-Wear</span>
+                            <span class="feature-tag">Multi-Grade</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Hydraulic systems, stamping presses, power units
+                        </div>
+                    </div>
+                </a>
+
+                <a href="products/food-grade-grease.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/bucket.png" alt="Greases">
+                    </div>
+                    <div class="product-info">
+                        <h3>Greases</h3>
+                        <p>Industrial greases for stamping equipment bearings and moving parts</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Heavy Duty</span>
+                            <span class="feature-tag">Long-Lasting</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Bearings, slides, moving components
+                        </div>
+                    </div>
+                </a>
+
+                <a href="products/stamping-oils.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/drum and pail.png" alt="Stamping Oil">
+                    </div>
+                    <div class="product-info">
+                        <h3>Stamping Oil</h3>
+                        <p>Specialized lubricant for metal stamping and forming operations</p>
+                        <div class="product-features">
+                            <span class="feature-tag">High Performance</span>
+                            <span class="feature-tag">Metal Forming</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Metal stamping, deep drawing, forming operations
+                        </div>
+                    </div>
+                </a>
+
+                <a href="products/hydrocarbon-solvents.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/drum and pail.png" alt="Hydrocarbon Solvent">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hydrocarbon Solvent</h3>
+                        <p>Industrial solvent for cleaning and degreasing stamping equipment</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Fast Evaporation</span>
+                            <span class="feature-tag">Effective</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Cleaning, degreasing, surface preparation
+                        </div>
+                    </div>
+                </a>
+
+                <a href="products/industrial-gear-series.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/drum and pail.png" alt="Gear Oil">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gear Oil</h3>
+                        <p>Industrial gear oil for stamping press gearboxes and transmission systems</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Heavy Duty</span>
+                            <span class="feature-tag">High Performance</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Gear systems, transmission, power transfer
+                        </div>
+                    </div>
+                </a>
+
+                <a href="products/lube-guard-original.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/lube guard.png" alt="LUBE GUARD Original">
+                    </div>
+                    <div class="product-info">
+                        <h3>LUBE GUARD</h3>
+                        <p>Multi-purpose lubricant for stamping equipment maintenance</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Multi-Purpose</span>
+                            <span class="feature-tag">Versatile</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> General lubrication, equipment maintenance
+                        </div>
+                    </div>
+                </a>
+
+                <a href="products/waterless-hand-scrubber.html" class="product-card">
+                    <div class="product-image">
+                        <img src="public/superscrub.png" alt="Waterless Hand Scrubber with Grit">
+                    </div>
+                    <div class="product-info">
+                        <h3>Waterless Hand Scrubber with Grit</h3>
+                        <p>Heavy-duty cleaner for stamping equipment and dies</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Heavy Duty</span>
+                            <span class="feature-tag">Effective</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Equipment cleaning, die maintenance, degreasing
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="technical-specs-enhanced">
+        <div class="container">
+            <h2>Technical Specifications & Benefits</h2>
+            <div class="specs-grid-enhanced">
+                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-spray-can"></i></div><h3>Superior Release</h3><p>Excellent release properties for complex metal stamping operations</p></div>
+                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-shield-alt"></i></div><h3>Extended Die Life</h3><p>Protects dies and extends their service life for cost savings</p></div>
+                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-clock"></i></div><h3>Reduced Downtime</h3><p>Minimizes production interruptions and maintenance requirements</p></div>
+                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-dollar-sign"></i></div><h3>Cost Effective</h3><p>Optimized formulations for maximum efficiency and value</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section-enhanced">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need Custom Solutions for Your Stamping Operations?</h2>
+                <p>Our technical team can help you select the right products for your specific metal stamping and forming requirements.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn-cta-primary"><i class="fas fa-envelope"></i> Contact Our Experts</a>
+                    <a href="products.html" class="btn-cta-secondary"><i class="fas fa-box"></i> View All Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-new">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-col-brand">
+                    <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="footer-logo-img">
+                    <p class="footer-company">Ungdaka (M) Sdn. Bhd.</p>
+                    <p class="footer-reg">199701002373(417869-V)</p>
+                    <p class="footer-tagline">Advanced Technology Solutions to Cleanliness & Lubrications.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Our Products</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Products</h4>
+                    <ul class="footer-list">
+                        <li><a href="products.html">Aerosol Products</a></li>
+                        <li><a href="products.html">Industrial Lubricants</a></li>
+                        <li><a href="products.html">Industrial Grease</a></li>
+                        <li><a href="products.html">Maintenance & Repair</a></li>
+                        <li><a href="products.html">Metal Working</a></li>
+                        <li><a href="products.html">Food Grade Products</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-heading">Contact Info (HQ)</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>21, Lorong Nagasari 25, Taman Nagasari, 13600 Prai, Penang, Malaysia</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+604-399 9966</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>pgsales@ungdaka.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-new">
+                <p>&copy; 2025 Ungdaka (M) Sdn. Bhd. All Rights Reserved.</p>
+                <div class="footer-social-new">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
