@@ -154,6 +154,64 @@
     <!-- Scripts -->
     <script src="../script.js"></script>
     <script>
+        // Ensure product page Request Quote buttons open the site's quote modal
+        document.addEventListener('DOMContentLoaded', function() {
+            function openQuoteModal() {
+                // Prefer modal already present on page (root pages include it)
+                let modal = document.getElementById('quote-modal');
+                if (!modal) {
+                    // If no modal exists, try to find one in parent document structure via iframe or window.opener (unlikely)
+                    // Fallback: create a minimal modal using existing quote-form markup if available anywhere
+                    modal = document.createElement('div');
+                    modal.id = 'quote-modal';
+                    modal.className = 'modal';
+                    modal.style.display = 'block';
+                    modal.innerHTML = `
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Request a Quote</h3>
+                                <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="quote-form">
+                                    <div class="form-row"><div class="form-group"><input name="company" required><label>Company Name</label></div>
+                                    <div class="form-group"><input name="contact-person" required><label>Contact Person</label></div></div>
+                                    <div class="form-row"><div class="form-group"><input name="email" type="email" required><label>Email</label></div>
+                                    <div class="form-group"><input name="phone" required><label>Phone</label></div></div>
+                                    <div class="form-group"><select name="product-category"><option value="">Select Product Category</option></select><label>Product Category</label></div>
+                                    <div class="form-group"><textarea name="requirements" rows="4"></textarea><label>Requirements</label></div>
+                                    <button type="submit" class="btn btn-primary btn-full">Send via WhatsApp</button>
+                                </form>
+                            </div>
+                        </div>`;
+                    document.body.appendChild(modal);
+                    // small handler for close
+                    modal.querySelector('#modal-close').addEventListener('click', function() { modal.style.display = 'none'; });
+                } else {
+                    modal.style.display = 'block';
+                }
+
+                // focus first field if present
+                const form = modal.querySelector('#quote-form') || modal.querySelector('form');
+                if (form) {
+                    const first = form.querySelector('[name="company"]') || form.querySelector('input, textarea, select');
+                    if (first) first.focus();
+                }
+            }
+
+            // Attach to all .quote-btn in the page
+            const qButtons = document.querySelectorAll('.quote-btn');
+            qButtons.forEach(btn => btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openQuoteModal();
+            }));
+
+            // Also attach nav-quote buttons to open the modal if present
+            const navQuote = document.querySelectorAll('.nav-quote-btn');
+            navQuote.forEach(b => b.addEventListener('click', function(e){ e.preventDefault(); openQuoteModal(); }));
+        });
+    </script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.querySelector('.image-zoom-container');
             const img = container.querySelector('.zoom-image');

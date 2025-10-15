@@ -1,3 +1,43 @@
+    <!-- Scripts -->
+    <script src="../dropdown.js"></script>
+    <script src="../header.js"></script>
+    <script src="../shared-nav.js"></script>
+    <script>
+        // Quote button functionality
+        document.querySelector('.quote-btn').addEventListener('click', function() {
+            window.location.href = '../contact.html?product=Protean+Vacuum+Pump+Oils';
+        });
+        document.querySelector('.nav-quote-btn').addEventListener('click', function() {
+            window.location.href = '../contact.html?product=Protean+Vacuum+Pump+Oils';
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function openQuoteModal() {
+                let modal = document.getElementById('quote-modal');
+                if (!modal) {
+                    modal = document.createElement('div');
+                    modal.id = 'quote-modal';
+                    modal.className = 'modal';
+                    modal.style.display = 'block';
+                    modal.innerHTML = `<div class="modal-content"><div class="modal-header"><h3>Request a Quote</h3><button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button></div><div class="modal-body"><form id="quote-form"><div class="form-row"><div class="form-group"><input name="company" required><label>Company Name</label></div><div class="form-group"><input name="contact-person" required><label>Contact Person</label></div></div><div class="form-row"><div class="form-group"><input name="email" type="email" required><label>Email</label></div><div class="form-group"><input name="phone" required><label>Phone</label></div></div><div class="form-group"><select name="product-category"><option value="">Select Product Category</option></select><label>Product Category</label></div><div class="form-group"><textarea name="requirements" rows="4"></textarea><label>Requirements</label></div><button type="submit" class="btn btn-primary btn-full">Send via WhatsApp</button></form></div></div>`;
+                    document.body.appendChild(modal);
+                    modal.querySelector('#modal-close').addEventListener('click', function() { modal.style.display = 'none'; });
+                } else {
+                    modal.style.display = 'block';
+                }
+
+                const form = modal.querySelector('#quote-form') || modal.querySelector('form');
+                if (form) {
+                    const first = form.querySelector('[name="company"]') || form.querySelector('input, textarea, select');
+                    if (first) first.focus();
+                }
+            }
+
+            document.querySelectorAll('.quote-btn').forEach(btn => btn.addEventListener('click', function(e){ e.preventDefault(); openQuoteModal(); }));
+            document.querySelectorAll('.nav-quote-btn').forEach(b => b.addEventListener('click', function(e){ e.preventDefault(); openQuoteModal(); }));
+        });
+    </script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,13 +190,8 @@
     <script src="../shared-nav.js"></script>
     <script>
         // Quote button functionality
-        document.querySelector('.quote-btn').addEventListener('click', function() {
-            window.location.href = '../contact.html?product=Protean+Vacuum+Pump+Oils';
-        });
-
-        document.querySelector('.nav-quote-btn').addEventListener('click', function() {
-            window.location.href = '../contact.html?product=Protean+Vacuum+Pump+Oils';
-        });
+        // Inline redirect handlers removed so modal controller can open the quote modal instead.
+        // ModalController in script.js will handle .quote-btn and .nav-quote-btn.
     </script>
 </body>
 </html>

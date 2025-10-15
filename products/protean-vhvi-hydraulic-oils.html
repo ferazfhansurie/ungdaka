@@ -151,13 +151,8 @@
     <script src="../shared-nav.js"></script>
     <script>
         // Quote button functionality
-        document.querySelector('.quote-btn').addEventListener('click', function() {
-            window.location.href = '../contact.html?product=Protean+VHVI+Hydraulic+Oils';
-        });
-
-        document.querySelector('.nav-quote-btn').addEventListener('click', function() {
-            window.location.href = '../contact.html?product=Protean+VHVI+Hydraulic+Oils';
-        });
+        // Inline redirect handlers removed so modal controller can open the quote modal instead.
+        // ModalController in script.js will handle .quote-btn and .nav-quote-btn.
     </script>
 </body>
 </html>

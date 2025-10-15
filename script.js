@@ -866,9 +866,14 @@ class FormController {
 class ModalController {
     constructor() {
         this.modal = document.getElementById('quote-modal');
+        this.quoteButtons = document.querySelectorAll('.nav-quote-btn, .quote-btn, [data-modal="quote"]');
+
+        // If modal is missing on the page, create a minimal version so buttons still work
+        if (!this.modal) {
+            this.createModal();
+        }
+
         this.modalClose = document.getElementById('modal-close');
-        this.quoteButtons = document.querySelectorAll('.nav-quote-btn, [data-modal="quote"]');
-        
         this.init();
     }
     
@@ -878,10 +883,13 @@ class ModalController {
 
     bindEvents() {
         this.quoteButtons.forEach(btn => {
+            // Use capture and stopImmediatePropagation to ensure modal opens even if other handlers
+            // (for example page-specific redirect handlers) are attached later in the bubble phase.
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
+                try { e.stopImmediatePropagation(); } catch (err) {}
                 this.openModal();
-            });
+            }, { capture: true });
         });
         
         if (this.modalClose) {
@@ -921,6 +929,54 @@ class ModalController {
         if (this.modal) {
             this.modal.classList.remove('active');
             document.body.style.overflow = '';
+        }
+    }
+
+    // Create a minimal quote modal when none exists on the page
+    createModal() {
+        const modal = document.createElement('div');
+        modal.id = 'quote-modal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Request a Quote</h3>
+                    <button class="modal-close" id="modal-close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form id="quote-form">
+                        <div class="form-row">
+                            <div class="form-group"><input name="company" required><label>Company Name</label></div>
+                            <div class="form-group"><input name="contact-person" required><label>Contact Person</label></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><input name="email" type="email" required><label>Email</label></div>
+                            <div class="form-group"><input name="phone" required><label>Phone</label></div>
+                        </div>
+                        <div class="form-group">
+                            <select name="product-category"><option value="">Select Product Category</option></select>
+                            <label>Product Category</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="requirements" rows="4"></textarea>
+                            <label>Requirements</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Send via WhatsApp</button>
+                    </form>
+                </div>
+            </div>`;
+
+        // hide by default (styles assume .active shows it)
+        modal.style.display = 'none';
+        document.body.appendChild(modal);
+
+        // update references
+        this.modal = modal;
+        this.modalClose = document.getElementById('modal-close');
+
+        // small close handler
+        if (this.modalClose) {
+            this.modalClose.addEventListener('click', () => { this.closeModal(); });
         }
     }
 }
