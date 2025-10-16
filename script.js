@@ -1928,6 +1928,24 @@ window.addEventListener('error', (e) => {
     console.error('Global error:', e.error);
 });
 
+// Make header logo navigate to Home if not already a link
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        const navLogo = document.querySelector('.nav-logo');
+        if (!navLogo) return;
+        const hasAnchor = !!navLogo.querySelector('a');
+        if (!hasAnchor) {
+            // Find an existing Home link to copy URL; fallback to index.html
+            const homeLink = document.querySelector('.nav-menu a.nav-link[href="index.html"]');
+            const homeHref = homeLink ? homeLink.getAttribute('href') : 'index.html';
+            navLogo.style.cursor = 'pointer';
+            navLogo.addEventListener('click', () => { window.location.href = homeHref; });
+        }
+    } catch (e) {
+        // ignore
+    }
+});
+
 // Bearing Animation
 document.addEventListener('DOMContentLoaded', () => {
     const bearings = ['dry-bearing', 'greased-bearing'].map(id => {
