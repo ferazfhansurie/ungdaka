@@ -157,6 +157,150 @@ const Utils = {
     }
 };
 
+// ===== PRODUCT CATEGORY FILTER / GROUPING (shared initializer) =====
+// Usage: window.initProductCategoryFilter(options)
+// options: { gridSelector, barSelector, categoryMap, moveLubeGuardHref }
+window.initProductCategoryFilter = function initProductCategoryFilter(options = {}){
+    try{
+        const cfg = Object.assign({
+            gridSelector: '.products-grid-enhanced',
+            barSelector: '#product-category-bar',
+            // default ordered categories (slug,label)
+            categoryMap: [
+                ['aerosol-products','Aerosol Products'],
+                ['industrial-lubricants','Industrial Lubricants'],
+                ['industrial-grease','Industrial Grease'],
+                ['maintenance-repair','Maintenance & Repair'],
+                ['metal-working','Metal Working'],
+                ['accessories','Accessories'],
+                ['food-grade-products','Food Grade Products']
+            ],
+            moveLubeGuardHref: 'products/lube-guard-original.html',
+            // if true, order the 'All' view by category order from categoryMap
+            orderAllByCategory: false
+        }, options || {});
+
+        const grid = document.querySelector(cfg.gridSelector);
+        if(!grid) return;
+
+        // product card selector inside grid
+        const products = Array.from(grid.querySelectorAll('.product-card, .product-card-enhanced'));
+        const present = new Set(products.map(p=>p.dataset && p.dataset.category).filter(Boolean));
+        const bar = document.querySelector(cfg.barSelector);
+
+        // --- image grouping helper (fallbacks to filename heuristics) ---
+        function imageGroupKey(card){
+            const img = card.querySelector('img'); if(!img) return 'other';
+            const src = (img.getAttribute('src')||'').toLowerCase();
+            if(src.includes('drum')||src.includes('pail')||src.includes('bucket')||src.includes('drumandpail')) return 'drum-pail';
+            if(src.includes('lube')||src.includes('lubeguard')||src.includes('guard')||src.includes('aerosol')||src.includes('spray')||src.includes('can')) return 'aerosol';
+            if(src.includes('superscrub')||src.includes('scrub')||src.includes('hand')) return 'scrubber';
+            if(src.includes('grease')||src.includes('sg-18')) return 'grease';
+            return 'other';
+        }
+
+        // reorder products by image group preserving first-seen order
+        (function reorderByImageType(){
+            const list = Array.from(grid.querySelectorAll('.product-card, .product-card-enhanced'));
+            const groups = {};
+            const order = [];
+            list.forEach(card=>{ const k = imageGroupKey(card); if(!groups[k]) groups[k]=[]; groups[k].push(card); if(!order.includes(k)) order.push(k); });
+            order.forEach(k=> groups[k].forEach(card=> grid.appendChild(card)));
+        })();
+
+        // reorder by category using categoryMap order (optional, for 'All' view)
+        function reorderByCategory(){
+            try{
+                const order = cfg.categoryMap.map(([slug])=>slug);
+                const buckets = new Map();
+                order.forEach(slug=> buckets.set(slug, []));
+                const others = [];
+                const list = Array.from(grid.querySelectorAll('.product-card, .product-card-enhanced'));
+                list.forEach(card=>{
+                    const cat = card.dataset && card.dataset.category;
+                    if(cat && buckets.has(cat)){
+                        buckets.get(cat).push(card);
+                    } else {
+                        others.push(card);
+                    }
+                });
+                // append in category order, preserving original order inside each bucket
+                order.forEach(slug=>{
+                    const arr = buckets.get(slug) || [];
+                    arr.forEach(card=> grid.appendChild(card));
+                });
+                // append any remaining items
+                others.forEach(card=> grid.appendChild(card));
+            }catch(e){ /* ignore */ }
+        }
+
+        // move LUBE GUARD to top if present (configurable href)
+        (function moveLubeGuardFirst(){
+            try{
+                const sel = `a[href="${cfg.moveLubeGuardHref}"]`;
+                const lg = grid.querySelector(sel);
+                if(lg && grid.firstElementChild !== lg){ grid.insertBefore(lg, grid.firstElementChild); }
+            }catch(e){}
+        })();
+
+        // If enabled, enforce category ordering for the initial 'All' layout
+        if(cfg.orderAllByCategory){
+            reorderByCategory();
+            // keep special-case promo after ordering
+            (function(){
+                try{
+                    const sel = `a[href="${cfg.moveLubeGuardHref}"]`;
+                    const lg = grid.querySelector(sel);
+                    if(lg && grid.firstElementChild !== lg){ grid.insertBefore(lg, grid.firstElementChild); }
+                }catch(e){}
+            })();
+        }
+
+        // build category bar only if bar exists
+        if(bar){
+            // clear any previous content
+            bar.innerHTML = '';
+
+            function createButton(slug,label,active){
+                const btn = document.createElement('button');
+                btn.className = 'category-btn' + (active? ' active':'');
+                btn.setAttribute('data-cat', slug);
+                btn.textContent = label;
+                btn.addEventListener('click', ()=>{
+                    Array.from(bar.querySelectorAll('.category-btn')).forEach(b=>b.classList.remove('active'));
+                    btn.classList.add('active');
+                    applyFilter(slug);
+                });
+                return btn;
+            }
+
+            function applyFilter(cat){
+                Array.from(bar.querySelectorAll('.category-btn')).forEach(b=> b.classList.toggle('active', b.dataset.cat===cat));
+                if(cat==='all'){
+                    // show all and optionally order by category
+                    products.forEach(p=>{ p.style.display = ''; });
+                    if(cfg.orderAllByCategory){
+                        reorderByCategory();
+                        // keep special-case promo item on top
+                        try{
+                            const sel = `a[href="${cfg.moveLubeGuardHref}"]`;
+                            const lg = grid.querySelector(sel);
+                            if(lg && grid.firstElementChild !== lg){ grid.insertBefore(lg, grid.firstElementChild); }
+                        }catch(e){}
+                    }
+                } else {
+                    products.forEach(p=>{ p.style.display = ((p.dataset && p.dataset.category)===cat) ? '' : 'none'; });
+                }
+            }
+
+            // Insert All button
+            bar.appendChild(createButton('all','All', true));
+            cfg.categoryMap.forEach(([slug,label])=>{ if(present.has(slug)) bar.appendChild(createButton(slug,label,false)); });
+        }
+
+    }catch(err){ console.error('initProductCategoryFilter error', err); }
+};
+
 // ===== PARTICLE SYSTEM =====
 class ParticleSystem {
     constructor(canvas) {

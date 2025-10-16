@@ -18,12 +18,24 @@
     <!-- Enhanced Styles for Industry Pages -->
     <style>
         .industry-overview-enhanced {
-            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
-            padding: 80px 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            /* tiled SVG grid background (match stamping page) */
+            background-image: url('public/top-bg.svg');
+            background-color: #274e78; /* deep blue to match stamping's contrast */
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            /* ensure content clears fixed header */
+            position: relative;
+            padding: 160px 0 80px; /* increased top padding to clear header further */
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .industry-overview-enhanced::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') center/cover;
+            opacity: 0.25;
+            pointer-events: none;
         }
         
         .industry-hero {
@@ -31,7 +43,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -41,6 +53,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            /* Automotive theme: blue gradient */
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
             padding: 8px 16px;
@@ -49,14 +62,46 @@
             font-weight: 600;
             margin-bottom: 20px;
         }
+        .industry-hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .industry-hero p {
+            font-size: 1.1rem;
+            color: #fff; /* make paragraph solid white for better contrast */
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
         .section-badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; padding: 8px 16px; border-radius: 25px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
-        .section-header-enhanced h2 { font-size: 2.2rem; font-weight: 700; color: #0f172a; margin-bottom: 12px; }
-        .section-header-enhanced p { font-size: 1.05rem; color: #475569; max-width: 700px; margin: 0 auto; }
-        .products-grid-enhanced { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+        .section-header-enhanced h2 { font-size: 2.2rem; font-weight: 700; color: #111827; margin-bottom: 12px; }
+    .section-header-enhanced p { font-size: 1.05rem; color: #6b7280; max-width: 700px; margin: 0 auto; }
+        /* Category selector styles (copied from stamping page) */
+        .product-category-bar .category-btn {
+            background: transparent;
+            border: 1px solid #e5e7eb;
+            padding: 8px 14px;
+            margin: 0 6px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .product-category-bar .category-btn.active {
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            color: #fff;
+            border-color: transparent;
+        }
+    .products-grid-enhanced { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
         .product-card-enhanced { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.08); transition: transform .25s ease, box-shadow .25s ease; }
         .product-card-enhanced:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(0,0,0,.12); }
-        .product-image-container { position: relative; height: 200px; overflow: hidden; }
-        .product-image-container img { width: 100%; height: 100%; object-fit: cover; }
+    .product-image-container { position: relative; height: 480px; overflow: hidden; padding: 32px; box-sizing: border-box; }
+    .product-image-container img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    @media (max-width: 640px){ .product-image-container { height: 360px; padding: 20px; } }
         .product-badge { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .product-content { padding: 22px; }
         .product-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
@@ -362,51 +407,36 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <a href="industries.html">Industries</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <span>Automotive & Transportation Industry Products</span>
-                </div>
-                <h1>Automotive & Transportation Industry Products</h1>
-                <p>Specialized lubricants and maintenance solutions for automotive manufacturing and transportation equipment</p>
-            </div>
-        </div>
-    </section>
+    <!-- Page header removed to make the hero concise; background moved into the hero section -->
 
     <!-- Industry Overview -->
     <section class="industry-overview-enhanced">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <div class="industry-badge" style="position: absolute; top: 40px; left: 50%; transform: translateX(-50%); padding: 12px 24px; border-radius: 30px; background: #3b82f6; color: white; display: flex; align-items: center; gap: 8px; font-size: 1rem;">
-                <i class="fas fa-car"></i> Automotive & Transportation
-            </div>
             <div class="industry-hero" style="margin-top: 60px;">
                 <div class="industry-content" style="max-width: 600px;">
-                    <h2 style="font-size: 3rem; font-weight: 700; color: #1e293b; margin-bottom: 24px;">Advanced Solutions for Automotive Excellence</h2>
-                    <p style="font-size: 1.1rem; color: #64748b; line-height: 1.6; margin-bottom: 40px;">Our specialized products are designed for the demanding requirements of automotive manufacturing and transportation. From assembly line lubrication to vehicle maintenance, we provide solutions that ensure optimal performance and reliability.</p>
+                    <div class="industry-badge" style="display:inline-flex; align-items:center; gap:8px; background: linear-gradient(135deg,#ef4444,#b91c1c); color: #fff; padding: 8px 16px; border-radius: 25px; font-weight:600; margin-bottom:18px;">
+                        <i class="fas fa-car"></i> Automotive & Transportation
+                    </div>
+                    <h2 style="font-size: 3rem; font-weight: 700; color: #fff; margin-bottom: 24px;">Advanced Solutions for Automotive Excellence</h2>
+                    <p style="font-size: 1.1rem; color: #fff; line-height: 1.6; margin-bottom: 40px;">Our specialized products are designed for the demanding requirements of automotive manufacturing and transportation. From assembly line lubrication to vehicle maintenance, we provide solutions that ensure optimal performance and reliability.</p>
                     <div class="industry-stats" style="display: flex; gap: 60px;" style="display: flex; gap: 60px;">
                         <div class="stat-item" style="text-align: center;">
-                            <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #3b82f6; margin-bottom: 8px;">+30%</div>
-                            <div class="stat-label" style="font-size: 0.9rem; color: #64748b; font-weight: 500; text-transform: uppercase;">Component Life</div>
+                        <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #3b82f6; margin-bottom: 8px;">+30%</div>
+                        <div class="stat-label" style="font-size: 0.9rem; color: #fff; font-weight: 500; text-transform: uppercase;">Component Life</div>
                         </div>
                         <div class="stat-item" style="text-align: center;">
                             <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #3b82f6; margin-bottom: 8px;">ISO</div>
-                            <div class="stat-label" style="font-size: 0.9rem; color: #64748b; font-weight: 500; text-transform: uppercase;">Quality</div>
+                            <div class="stat-label" style="font-size: 0.9rem; color: #fff; font-weight: 500; text-transform: uppercase;">Quality</div>
                         </div>
                         <div class="stat-item" style="text-align: center;">
                             <div class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: #3b82f6; margin-bottom: 8px;">24/7</div>
-                            <div class="stat-label" style="font-size: 0.9rem; color: #64748b; font-weight: 500; text-transform: uppercase;">Uptime</div>
+                            <div class="stat-label" style="font-size: 0.9rem; color: #fff; font-weight: 500; text-transform: uppercase;">Uptime</div>
                         </div>
                     </div>
                 </div>
                 <div class="industry-hero-image" style="position: relative; width: 100%; height: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
                     <img src="public/Industries%20Images/automotive%20%26%20transportation%20industries_backup.jpg" alt="Automotive manufacturing and transportation" style="width: 100%; height: 100%; object-fit: cover;">
-                    <div class="image-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 30px;"><div class="overlay-content" style="text-align: center; color: white;"><i class="fas fa-industry"></i><h4>Manufacturing Grade</h4><p>Consistency & Compliance</p></div></div>
+                    <div class="image-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 30px;"><div class="overlay-content" style="text-align: center; color: white;"><i class="fas fa-industry"></i><h4>Manufacturing Grade</h4></div></div>
                 </div>
             </div>
             <div class="industry-features-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px;">
@@ -438,15 +468,16 @@
     <!-- Products Grid -->
     <section class="products-section-enhanced" style="padding: 80px 0; background: white;">
         <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-            <div class="section-header-enhanced" style="text-align: center; margin-bottom: 60px;">
-                <div class="section-badge" style="display: inline-flex; align-items: center; gap: 8px; background: #3b82f6; color: white; padding: 12px 24px; border-radius: 30px; font-size: 1rem; margin-bottom: 20px;"><i class="fas fa-box"></i> OUR PRODUCTS</div>
-                <h2 style="font-size: 2.5rem; font-weight: 700; color: #1e293b; margin-bottom: 16px;">Recommended Products for Automotive & Transportation</h2>
-                <p style="font-size: 1.1rem; color: #64748b; max-width: 600px; margin: 0 auto;">Professional-grade solutions for your automotive manufacturing and transportation needs</p>
+            <div class="section-header-enhanced" style="text-align: center; margin-bottom: 40px;">
+                <div class="section-badge" style="display: inline-flex; align-items: center; gap: 8px; background: #3b82f6; color: white; padding: 12px 24px; border-radius: 30px; font-size: 1rem; margin-bottom: 12px;"><i class="fas fa-box"></i> Recommended Products</div>
+                <p style="font-size: 1.05rem; color: #64748b; max-width: 700px; margin: 0 auto;">Professional-grade solutions for automotive manufacturing and transportation.</p>
             </div>
-            <div class="products-grid-enhanced" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px;">
-                <a href="products/s-88-silicone-mould-release.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
-                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
-                        <img src="public/s-88 paintable.png" alt="S-88 Silicone Mould Release" style="width: 100%; height: 100%; object-fit: contain;">
+            <div id="product-category-bar" class="product-category-bar" style="text-align:center; margin-bottom:16px;"></div>
+
+            <div class="products-grid-enhanced" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 20px;">
+                <a href="products/s-88-silicone-mould-release.html" class="product-card-enhanced product-card" data-category="aerosol-products" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 600px; background: white; padding: 40px; box-sizing: border-box;">
+                        <img src="public/s-88 paintable.png" alt="S-88 Silicone Mould Release" style="width: 100%; height: 100%; object-fit: contain; display: block;">
                     </div>
                     <div class="product-content" style="padding: 24px;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">S-88</h3>
@@ -461,9 +492,9 @@
                     </div>
                 </a>
                 
-                <a href="products/lube-guard-original.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
-                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
-                        <img src="public/lube guard.png" alt="Lube Guard Original" style="width: 100%; height: 100%; object-fit: contain;">
+                <a href="products/lube-guard-original.html" class="product-card-enhanced product-card" data-category="aerosol-products" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 600px; background: white; padding: 40px; box-sizing: border-box;">
+                        <img src="public/lube guard.png" alt="Lube Guard Original" style="width: 100%; height: 100%; object-fit: contain; display: block;">
                     </div>
                     <div class="product-content" style="padding: 24px;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">LUBE GUARD</h3>
@@ -478,9 +509,9 @@
                     </div>
                 </a>
                 
-                <a href="products/sg-18-high-performance-grease.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
-                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
-                        <img src="public/sg-18.png" alt="SG-18" style="width: 100%; height: 100%; object-fit: contain;">
+                <a href="products/sg-18-high-performance-grease.html" class="product-card-enhanced product-card" data-category="aerosol-products" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 600px; background: white; padding: 40px; box-sizing: border-box;">
+                        <img src="public/sg-18.png" alt="SG-18" style="width: 100%; height: 100%; object-fit: contain; display: block;">
                     </div>
                     <div class="product-content" style="padding: 24px;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">SG-18</h3>
@@ -495,9 +526,9 @@
                     </div>
                 </a>
                 
-                <a href="products/moly-lube-advanced-lubricant.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
-                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
-                        <img src="public/moly lube.png" alt="Moly Lube Advanced" style="width: 100%; height: 100%; object-fit: contain;">
+                <a href="products/moly-lube-advanced-lubricant.html" class="product-card-enhanced product-card" data-category="aerosol-products" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 600px; background: white; padding: 40px; box-sizing: border-box;">
+                        <img src="public/moly lube.png" alt="Moly Lube Advanced" style="width: 100%; height: 100%; object-fit: contain; display: block;">
                     </div>
                     <div class="product-content" style="padding: 24px;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">MOLY LUBE</h3>
@@ -512,9 +543,9 @@
                     </div>
                 </a>
                 
-                <a href="products/s-22-degreaser-mould-cleaner.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
-                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
-                        <img src="public/s-22.png" alt="S-22 Degreaser" style="width: 100%; height: 100%; object-fit: contain;">
+                <a href="products/s-22-degreaser-mould-cleaner.html" class="product-card-enhanced product-card" data-category="aerosol-products" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 600px; background: white; padding: 40px; box-sizing: border-box;">
+                        <img src="public/s-22.png" alt="S-22 Degreaser" style="width: 100%; height: 100%; object-fit: contain; display: block;">
                     </div>
                     <div class="product-content" style="padding: 24px;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">S-22 H</h3>
@@ -529,9 +560,9 @@
                     </div>
                 </a>
                 
-                <a href="products/belt-dressing-industrial-lubricant.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
-                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
-                        <img src="public/belt dressing.png" alt="Belt Dressing" style="width: 100%; height: 100%; object-fit: contain;">
+                <a href="products/belt-dressing-industrial-lubricant.html" class="product-card-enhanced product-card" data-category="aerosol-products" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 600px; background: white; padding: 40px; box-sizing: border-box;">
+                        <img src="public/belt dressing.png" alt="Belt Dressing" style="width: 100%; height: 100%; object-fit: contain; display: block;">
                     </div>
                     <div class="product-content" style="padding: 24px;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">Belt Dressing</h3>
@@ -546,9 +577,9 @@
                     </div>
                 </a>
                 
-                <a href="products/waterless-hand-scrubber.html" class="product-card-enhanced" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
-                    <div class="product-image-container" style="position: relative; height: 300px; background: white; padding: 40px;">
-                        <img src="public/superscrub.png" alt="Super Scrub Waterless Hand Scrubber" style="width: 100%; height: 100%; object-fit: contain;">
+                <a href="products/waterless-hand-scrubber.html" class="product-card-enhanced product-card" data-category="maintenance-repair" style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; color: inherit;">
+                    <div class="product-image-container" style="position: relative; height: 600px; background: white; padding: 40px; box-sizing: border-box;">
+                        <img src="public/superscrub.png" alt="Super Scrub Waterless Hand Scrubber" style="width: 100%; height: 100%; object-fit: contain; display: block;">
                     </div>
                     <div class="product-content" style="padding: 24px;">
                         <h3 style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 12px;">Waterless Hand Scrubber with Grit</h3>
@@ -684,6 +715,13 @@
             </div>
         </div>
     </footer>
+
+    <!-- product filtering and grouping initialized from script.js -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if(window.initProductCategoryFilter) window.initProductCategoryFilter({ moveLubeGuardHref: 'products/lube-guard-original.html' });
+        });
+    </script>
 
     <!-- Scripts -->
     <script src="script.js"></script>

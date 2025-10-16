@@ -18,12 +18,23 @@
     <!-- Enhanced Styles for Industry Pages -->
     <style>
         .industry-overview-enhanced {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            padding: 80px 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            /* tiled SVG grid background to match stamping/automotive */
+            background-image: url('public/top-bg.svg');
+            background-color: #274e78;
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            position: relative;
+            padding: 160px 0 80px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .industry-overview-enhanced::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') center/cover;
+            opacity: 0.25;
+            pointer-events: none;
         }
         
         .industry-hero {
@@ -41,6 +52,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            /* Plastic Injection theme: orange gradient */
             background: linear-gradient(135deg, #f59e0b, #d97706);
             color: white;
             padding: 8px 16px;
@@ -53,14 +65,14 @@
         .industry-hero h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #1e293b;
+            color: #fff;
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
         .industry-hero p {
             font-size: 1.1rem;
-            color: #64748b;
+            color: rgba(255,255,255,0.95);
             line-height: 1.6;
             margin-bottom: 30px;
         }
@@ -268,7 +280,7 @@
             }
             
             .industry-hero-image {
-                height: 300px;
+            height: 600px;
             }
         }
         
@@ -368,8 +380,14 @@
         
         .products-grid-enhanced {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* force 3 columns on desktop */
             gap: 30px;
+        }
+        @media (max-width: 1200px) {
+            .products-grid-enhanced { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .products-grid-enhanced { grid-template-columns: 1fr; }
         }
         
         .product-card-enhanced {
@@ -385,12 +403,12 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
         
-        /* Make recommended product images match the large featured cards */
+        /* Make recommended product images match the large featured cards (compact sizing) */
         .products-grid-enhanced .product-image,
         .products-grid-enhanced .product-image-container {
             position: relative;
-            height: 600px; /* match the largest featured card */
-            padding: 40px; /* match featured card padding */
+            height: 480px !important; /* override inline 600px */
+            padding: 32px !important; /* override inline 40px */
             overflow: hidden;
             box-sizing: border-box;
         }
@@ -401,6 +419,10 @@
             max-height: 100%;
             object-fit: contain; /* keep the same containment behavior */
             display: block;
+        }
+        @media (max-width: 640px){
+            .products-grid-enhanced .product-image,
+            .products-grid-enhanced .product-image-container { height: 360px !important; padding: 20px !important; }
         }
         
         .product-badge {
@@ -547,7 +569,42 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+        /* Category selector styles (copied from stamping page for consistent look) */
+        .product-category-bar .category-btn {
+            background: transparent;
+            border: 1px solid #e5e7eb;
+            padding: 8px 14px;
+            margin: 0 6px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .product-category-bar .category-btn.active {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        /* Reduce industry hero image size to make the card smaller like the attachment */
+        .industry-hero-image {
+            height: 220px; /* smaller visual height */
+            overflow: hidden;
+        }
+
+        .industry-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .industry-hero-image { height: 180px; }
+            .product-category-bar .category-btn { padding: 6px 10px; margin: 4px; }
+        }
+
+        </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -649,22 +706,7 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <a href="industries.html">Industries</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <span>Plastic Injection Industry Products</span>
-                </div>
-                <h1>Plastic Injection Industry Products</h1>
-                <p>Specialized mould release agents and lubricants for plastic injection molding processes</p>
-            </div>
-        </div>
-    </section>
+    <!-- Page header removed to simplify layout; hero follows -->
 
     <!-- Industry Overview -->
     <section class="industry-overview-enhanced">
@@ -673,16 +715,16 @@
                 <div class="industry-content">
                     <div class="industry-badge"><i class="fas fa-cubes"></i> Plastic Injection</div>
                     <h2>Precision Solutions for Plastic Injection Molding</h2>
-                    <p>Our specialized products are designed for the demanding requirements of plastic injection molding. From mould release agents to processing aids, we provide solutions that ensure optimal part quality and production efficiency.</p>
-                    <div class="industry-stats">
-                        <div class="stat-item"><div class="stat-number">+20%</div><div class="stat-label">Cycle Efficiency</div></div>
-                        <div class="stat-item"><div class="stat-number">ISO</div><div class="stat-label">Clean</div></div>
-                        <div class="stat-item"><div class="stat-number">0</div><div class="stat-label">Residue</div></div>
-                    </div>
+                    <p>From mould release agents to processing aids, we provide solutions that ensure optimal part quality and production efficiency.</p>
+                        <div class="industry-stats">
+                            <div class="stat-item"><div class="stat-number">+20%</div><div class="stat-label" style="color:#fff;">Cycle Efficiency</div></div>
+                            <div class="stat-item"><div class="stat-number">ISO</div><div class="stat-label" style="color:#fff;">Clean</div></div>
+                            <div class="stat-item"><div class="stat-number">0</div><div class="stat-label" style="color:#fff;">Residue</div></div>
+                        </div>
                 </div>
                 <div class="industry-hero-image">
                     <img src="public/Industries Images/plastic injection.png" alt="Plastic injection molding machine">
-                    <div class="image-overlay"><div class="overlay-content"><i class="fas fa-industry"></i><h4>Production Grade</h4><p>Consistency and quality</p></div></div>
+                    <div class="image-overlay"><div class="overlay-content"><i class="fas fa-industry"></i><h4>Production Grade</h4></div></div>
                 </div>
             </div>
             <div class="industry-features-grid">
@@ -697,167 +739,17 @@
     <section class="products-section-enhanced">
         <div class="container">
             <div class="section-header-enhanced">
-                <div class="section-badge"><i class="fas fa-box"></i> Our Products</div>
-                <h2>Recommended Products for Plastic Injection Industry</h2>
+                <div class="section-badge"><i class="fas fa-box"></i> Recommended Products for Plastic Injection Industry</div>
                 <p>Professional-grade solutions for your plastic injection molding needs</p>
             </div>
+            <!-- Category bar populated dynamically by script.js -->
+            <div id="product-category-bar" class="product-category-bar" style="display:flex; gap:8px; flex-wrap:wrap; margin:18px 0 24px; justify-content:center;"></div>
             <div class="products-grid-enhanced">
-                <a href="products/hydraulic-awx-series.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/drum and pail.png" alt="Hydraulic AWX Series">
-                    </div>
-                    <div class="product-info">
-                        <h3>Hydraulic AWX Series Oils (10,32,46,68,100)</h3>
-                        <p>High-performance hydraulic oils for plastic injection molding machines</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Anti-Wear</span>
-                            <span class="feature-tag">Multi-Grade</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Hydraulic systems, injection molding machines
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/cooling-tower-water-treatment.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/drum and pail.png" alt="Cooling Tower Chemicals">
-                    </div>
-                    <div class="product-info">
-                        <h3>Cooling Tower Chemicals</h3>
-                        <p>Water treatment chemicals for cooling tower systems</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Water Treatment</span>
-                            <span class="feature-tag">Efficient</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Cooling systems, water treatment
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/heat-transfer-oils.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/drum and pail.png" alt="Heat Transfer Oil">
-                    </div>
-                    <div class="product-info">
-                        <h3>Heat Transfer Oil</h3>
-                        <p>Thermal fluid for heat transfer systems in plastic processing</p>
-                        <div class="product-features">
-                            <span class="feature-tag">High Temperature</span>
-                            <span class="feature-tag">Thermal Stability</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Heat transfer systems, temperature control
-                        </div>
-                    </div>
-                </a>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="public/drum and pail.png" alt="Lithium Base Greases">
-                    </div>
-                    <div class="product-info">
-                        <h3>Lithium Base Greases</h3>
-                        <p>General purpose lithium-based grease for machinery components</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Multi-Purpose</span>
-                            <span class="feature-tag">Reliable</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Bearings, moving parts, general lubrication
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="public/drum and pail.png" alt="Robotic Arm Lubricating Grease">
-                    </div>
-                    <div class="product-info">
-                        <h3>Robotic Arm Lubricating Grease</h3>
-                        <p>Specialized grease for robotic arm systems and automation</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Precision</span>
-                            <span class="feature-tag">Long-Lasting</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Robotic arms, automation systems
-                        </div>
-                    </div>
-                </div>
-                
-                <a href="products/ep-lube-ejector-pin-lubricant.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/ep lube.png" alt="Ejector Pin Lubricating Paste">
-                    </div>
-                    <div class="product-info">
-                        <h3>Ejector Pin Lubricating Paste</h3>
-                        <p>High-performance paste lubricant for ejector pins</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Non-Drip</span>
-                            <span class="feature-tag">Precision</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Ejector pins, slides, precision components
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/protean-silicone-release.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/Protean Silicone Release.png" alt="Protean Silicone Release">
-                    </div>
-                    <div class="product-info">
-                        <h3>PROTEAN FOOD GRADE SILICONE Release</h3>
-                        <p>Food-grade silicone release agent for food contact applications</p>
-                        <div class="product-features">
-                            <span class="feature-tag gold">Food Grade</span>
-                            <span class="feature-tag">High Performance</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Food packaging, medical devices
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/protean-fast-dry-solvent-cleaner.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/Protean Fast Dry Solvent Cleaner.png" alt="Protean Fast Dry Solvent Cleaner">
-                    </div>
-                    <div class="product-info">
-                        <h3>PROTEAN FAST DRY SOLVENT Cleaner</h3>
-                        <p>Fast-drying solvent cleaner for molds and equipment</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Fast Dry</span>
-                            <span class="feature-tag">Residue Free</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Mold cleaning, equipment maintenance
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/protean-white-grease.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/Protean White Grease.png" alt="Protean Food Grade Grease">
-                    </div>
-                    <div class="product-info">
-                        <h3>PROTEAN FOOD GRADE GREASE</h3>
-                        <p>Food-safe grease for food contact applications</p>
-                        <div class="product-features">
-                            <span class="feature-tag gold">Food Grade</span>
-                            <span class="feature-tag">NSF Approved</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Food processing equipment, packaging machinery
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/s-88-silicone-mould-release.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/s-88 paintable.png" alt="S-88">
+
+                <!-- Aerosol Products (requested order) -->
+                <a href="products/s-88-silicone-mould-release.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/s-88 paintable.png" alt="S-88" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>S-88</h3>
@@ -871,10 +763,10 @@
                         </div>
                     </div>
                 </a>
-                
-                <a href="products/ns-77-non-silicone-mould-release.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/ns-77.png" alt="NS-77">
+
+                <a href="products/ns-77-non-silicone-mould-release.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/ns-77.png" alt="NS-77" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>NS-77</h3>
@@ -888,10 +780,10 @@
                         </div>
                     </div>
                 </a>
-                
-                <a href="products/s-22-degreaser-mould-cleaner.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/s-22.png" alt="S-22">
+
+                <a href="products/s-22-degreaser-mould-cleaner.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/s-22.png" alt="S-22" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>S-22</h3>
@@ -905,10 +797,10 @@
                         </div>
                     </div>
                 </a>
-                
-                <a href="products/sc-99-solvent-cleaner.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/sc-99.png" alt="SC-99">
+
+                <a href="products/sc-99-solvent-cleaner.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/sc-99.png" alt="SC-99" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>SC-99</h3>
@@ -922,10 +814,10 @@
                         </div>
                     </div>
                 </a>
-                
-                <a href="products/pro-cote.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/Pro cote.png" alt="PRO-COTE">
+
+                <a href="products/pro-cote.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/Pro cote.png" alt="PRO-COTE" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>PRO-COTE</h3>
@@ -939,10 +831,10 @@
                         </div>
                     </div>
                 </a>
-                
-                <a href="products/pro-shield-blue-anti-corrosion.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/pro shield blue.png" alt="PRO-SHIELD">
+
+                <a href="products/pro-shield-blue-anti-corrosion.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/pro shield blue.png" alt="PRO-SHIELD" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>PRO-SHIELD</h3>
@@ -956,10 +848,10 @@
                         </div>
                     </div>
                 </a>
-                
-                <a href="products/sr-remover-silicone-residue-cleaner.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/sr remover.png" alt="SR REMOVER">
+
+                <a href="products/sr-remover-silicone-residue-cleaner.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/sr remover.png" alt="SR REMOVER" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>SR REMOVER</h3>
@@ -973,12 +865,30 @@
                         </div>
                     </div>
                 </a>
+
+                <!-- Moved EP Lube into Aerosol Products -->
+                <a href="products/ep-lube-ejector-pin-lubricant.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/ep lube.png" alt="Ejector Pin Lubricating Paste" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ejector Pin Lubricating Paste</h3>
+                        <p>High-performance paste lubricant for ejector pins</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Non-Drip</span>
+                            <span class="feature-tag">Precision</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Ejector pins, slides, precision components
+                        </div>
+                    </div>
+                </a>
+
                 
-                <!-- duplicate EP LUBE removed (already listed above with product link) -->
-                
-                <a href="products/lube-guard-original.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/lube guard.png" alt="Lube Guard">
+
+                <a href="products/lube-guard-original.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/lube guard.png" alt="Lube Guard" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>LUBE GUARD</h3>
@@ -992,27 +902,10 @@
                         </div>
                     </div>
                 </a>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="public/Tygris copper.jfif" alt="TYGRIS COPPER">
-                    </div>
-                    <div class="product-info">
-                        <h3>TYGRIS COPPER</h3>
-                        <p>Copper-based anti-seize compound</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Anti-Seize</span>
-                            <span class="feature-tag">High Temperature</span>
-                        </div>
-                        <div class="product-application">
-                            <strong>Application:</strong> Threaded connections, high-temperature assemblies
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="public/tygris synthetic.jpg" alt="TYGRIS SYNTHETIC">
+
+                <div class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/tygris synthetic.png" alt="TYGRIS SYNTHETIC" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
                         <h3>TYGRIS SYNTHETIC</h3>
@@ -1026,23 +919,134 @@
                         </div>
                     </div>
                 </div>
-                
-                <a href="products/waterless-hand-scrubber.html" class="product-card">
-                    <div class="product-image">
-                        <img src="public/superscrub.png" alt="Waterless Hand Scrubber with Grit">
+
+                <a href="products/protean-silicone-release.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/Protean Silicone Release.png" alt="Protean Silicone Release" style="width:100%; height:100%; object-fit:contain; display:block;">
                     </div>
                     <div class="product-info">
-                        <h3>Waterless Hand Scrubber with Grit</h3>
-                        <p>Heavy-duty hand scrubber for industrial cleaning</p>
+                        <h3>PROTEAN FOOD GRADE SILICONE Release</h3>
+                        <p>Food-grade silicone release agent for food contact applications</p>
                         <div class="product-features">
-                            <span class="feature-tag">Heavy Duty</span>
-                            <span class="feature-tag">Effective</span>
+                            <span class="feature-tag gold">Food Grade</span>
+                            <span class="feature-tag">High Performance</span>
                         </div>
                         <div class="product-application">
-                            <strong>Application:</strong> Equipment cleaning, manual maintenance
+                            <strong>Application:</strong> Food packaging, medical devices
                         </div>
                     </div>
                 </a>
+
+                <a href="products/protean-fast-dry-solvent-cleaner.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/Protean Fast Dry Solvent Cleaner.png" alt="Protean Fast Dry Solvent Cleaner" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info">
+                        <h3>PROTEAN FAST DRY SOLVENT Cleaner</h3>
+                        <p>Fast-drying solvent cleaner for molds and equipment</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Fast Dry</span>
+                            <span class="feature-tag">Residue Free</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Mold cleaning, equipment maintenance
+                        </div>
+                    </div>
+                </a>
+
+                
+
+                <!-- Industrial Lubricants (requested order) -->
+                <a href="products/hydraulic-awx-series.html" class="product-card" data-category="industrial-lubricants">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/drum and pail.png" alt="Hydraulic AWX Series" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info"><h3>Hydraulic AWX Series Oils (10,32,46,68,100)</h3><p>High-performance hydraulic oils for plastic injection molding machines</p></div>
+                </a>
+
+                <a href="products/cooling-tower-water-treatment.html" class="product-card" data-category="industrial-lubricants">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/drum and pail.png" alt="Cooling Tower Chemicals" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info"><h3>Cooling Tower Chemicals</h3><p>Water treatment chemicals for cooling tower systems</p></div>
+                </a>
+
+                <a href="products/heat-transfer-oils.html" class="product-card" data-category="industrial-lubricants">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/drum and pail.png" alt="Heat Transfer Oil" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info"><h3>Heat Transfer Oil</h3><p>Thermal fluid for heat transfer systems in plastic processing</p></div>
+                </a>
+
+                <div class="product-card" data-category="industrial-lubricants">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/drum and pail.png" alt="Lithium Base Greases" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lithium Base Greases</h3>
+                        <p>General purpose lithium-based grease for machinery components</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Multi-Purpose</span>
+                            <span class="feature-tag">Reliable</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Bearings, moving parts, general lubrication
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="industrial-lubricants">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/drum and pail.png" alt="Robotic Arm Lubricating Grease" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info">
+                        <h3>Robotic Arm Lubricating Grease</h3>
+                        <p>Specialized grease for robotic arm systems and automation</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Precision</span>
+                            <span class="feature-tag">Long-Lasting</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Robotic arms, automation systems
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Industrial Greases (mapped under Aerosol Products per request) -->
+                <a href="products/protean-white-grease.html" class="product-card" data-category="aerosol-products">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/Protean White Grease.png" alt="Protean Food Grade Grease" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info">
+                        <h3>PROTEAN FOOD GRADE GREASE</h3>
+                        <p>Food-safe grease for food contact applications</p>
+                        <div class="product-features">
+                            <span class="feature-tag gold">Food Grade</span>
+                            <span class="feature-tag">NSF Approved</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Food processing equipment, packaging machinery
+                        </div>
+                    </div>
+                </a>
+
+                
+
+                <!-- Maintenance & Repair (requested order) -->
+                <div class="product-card" data-category="maintenance-repair">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/tygris copper.png" alt="TYGRIS COPPER" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info"><h3>TYGRIS COPPER</h3><p>Copper-based anti-seize compound</p></div>
+                </div>
+
+                <a href="products/waterless-hand-scrubber.html" class="product-card" data-category="maintenance-repair">
+                    <div class="product-image-container" style="position: relative; height: 600px; padding: 40px; box-sizing: border-box; background: white;">
+                        <img src="public/superscrub.png" alt="Waterless Hand Scrubber with Grit" style="width:100%; height:100%; object-fit:contain; display:block;">
+                    </div>
+                    <div class="product-info"><h3>Waterless Hand Scrubber with Grit</h3><p>Heavy-duty hand scrubber for industrial cleaning</p></div>
+                </a>
+
             </div>
         </div>
     </section>
@@ -1171,5 +1175,19 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if (window.initProductCategoryFilter) {
+                window.initProductCategoryFilter({
+                    gridSelector: '.products-grid-enhanced',
+                    categoryMap: [
+                        ['aerosol-products', 'Aerosol Products'],
+                        ['maintenance-repair', 'Maintenance & Repair']
+                    ],
+                    orderAllByCategory: true
+                });
+            }
+        });
+    </script>
 </body>
 </html>

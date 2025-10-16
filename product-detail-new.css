@@ -16,9 +16,9 @@
 .product-detail-image {
     background: white;
     border-radius: 20px;
-    padding: 40px;
+    padding: 32px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    height: 600px;
+    height: 480px;
     position: sticky;
     top: 100px;
 }
@@ -41,6 +41,10 @@
     object-fit: contain;
     transition: transform 0.3s ease-out;
     will-change: transform;
+}
+
+@media (max-width: 640px){
+    .product-detail-image { height: 360px; padding: 20px; }
 }
 
 .product-detail-content {

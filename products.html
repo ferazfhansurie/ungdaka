@@ -22,6 +22,12 @@
     
     <!-- JavaScript -->
     <script src="product-animations.js" defer></script>
+    <style>
+        /* Page override: normalize product image sizing to compact standard */
+        .products-grid .product-image { height: 480px !important; padding: 32px !important; box-sizing: border-box; overflow: hidden; display: flex; align-items: center; justify-content: center; background: white; }
+        .products-grid .product-image img { max-height: 100% !important; width: 100% !important; object-fit: contain !important; }
+        @media (max-width: 640px){ .products-grid .product-image { height: 360px !important; padding: 20px !important; } }
+    </style>
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Industrial Products | Ungdaka (M) Sdn Bhd">

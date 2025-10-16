@@ -18,12 +18,23 @@
     <!-- Enhanced Styles for Industry Pages -->
     <style>
     .industry-overview-enhanced { 
-        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-        padding: 80px 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        /* Tiled SVG background to match stamping/plastic */
+        background-image: url('public/top-bg.svg');
+        background-color: #274e78; /* deep blue base */
+        background-repeat: repeat;
+        background-size: 200px 200px;
+        position: relative;
+        padding: 160px 0 80px;
+        margin-bottom: 40px;
+        color: #fff;
+    }
+    .industry-overview-enhanced::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') center/cover;
+        opacity: 0.25;
+        pointer-events: none;
     }
     
     .industry-hero { 
@@ -38,13 +49,13 @@
     }
     .industry-content { max-width: 680px; }
     .industry-badge { display:inline-flex; align-items:center; gap:10px; background: linear-gradient(135deg, #06b6d4, #0ea5e9); color:#fff; padding:8px 18px; border-radius:24px; font-weight:700; }
-    .industry-hero h2 { font-size: 2.6rem; line-height:1.05; margin-top: 8px; color: #0f172a; }
-    .industry-hero p { font-size: 1.05rem; color: #475569; margin-top: 18px; }
+    .industry-hero h2 { font-size: 2.6rem; line-height:1.05; margin-top: 8px; color: #fff; }
+    .industry-hero p { font-size: 1.05rem; color: rgba(255,255,255,0.9); margin-top: 18px; }
     /* Stats row (horizontal, prominent) */
     .industry-stats { display:flex; gap: 42px; align-items:center; margin-top: 34px; }
     .stat-item { text-align:center; min-width:120px; }
     .stat-number { font-size: 2.2rem; font-weight:800; color: #f59e0b; }
-    .stat-label { text-transform: uppercase; font-size: .8rem; color:#94a3b8; letter-spacing: .06em; margin-top:6px; }
+    .stat-label { text-transform: uppercase; font-size: .8rem; color: rgba(255,255,255,0.9); letter-spacing: .06em; margin-top:6px; }
 
     .industry-hero-image { position: relative; width: 100%; height: 440px; overflow: hidden; border-radius: 18px; box-shadow: 0 20px 50px rgba(11,37,84,0.08); }
     .industry-hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -139,8 +150,8 @@
         .products-grid-enhanced .product-image,
         .products-grid-enhanced .product-image-container {
             position: relative;
-            height: 600px;
-            padding: 40px;
+            height: 480px;
+            padding: 32px;
             overflow: hidden;
             box-sizing: border-box;
         }
@@ -151,6 +162,10 @@
             max-height: 100%;
             object-fit: contain;
             display: block;
+        }
+        @media (max-width: 640px){
+            .products-grid-enhanced .product-image,
+            .products-grid-enhanced .product-image-container { height: 360px; padding: 20px; }
         }
         .product-badge { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; background: linear-gradient(135deg, #06b6d4, #0ea5e9); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .product-content { padding: 22px; }
@@ -276,6 +291,24 @@
                 height: 300px;
             }
         }
+
+        /* Category selector styles (match stamping sizing; nyan blue active) */
+        .product-category-bar { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin: 16px 0 24px; }
+        .product-category-bar .category-btn {
+            background: transparent;
+            border: 1px solid #e5e7eb;
+            padding: 8px 14px;
+            margin: 0 6px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #0f172a;
+        }
+        .product-category-bar .category-btn.active {
+            background: linear-gradient(135deg, #06b6d4, #0ea5e9); /* nyan blue */
+            color: #fff;
+            border-color: transparent;
+        }
     </style>
 </head>
 <body>
@@ -378,22 +411,7 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <a href="industries.html">Industries</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <span>Machining, Engineering & Precision Components Products</span>
-                </div>
-                <h1>Machining, Engineering & Precision Components Products</h1>
-                <p>Precision lubricants and cutting fluids for machining, moulding, and precision component manufacturing</p>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Industry Overview -->
     <section class="industry-overview-enhanced">
@@ -402,7 +420,7 @@
                 <div class="industry-content">
                     <div class="industry-badge"><i class="fas fa-screwdriver-wrench"></i> Engineering & Precision</div>
                     <h2>Precision Solutions for Engineering Excellence</h2>
-                    <p>Our specialized products are designed for the demanding requirements of precision machining and engineering. From cutting fluids to precision lubricants, we provide solutions that ensure optimal performance and component quality.</p>
+                    <p>From cutting fluids to precision lubricants, we provide solutions that ensure optimal performance and component quality.</p>
                     <div class="industry-stats">
                         <div class="stat-item"><div class="stat-number">+40%</div><div class="stat-label">Tool Life</div></div>
                         <div class="stat-item"><div class="stat-number">+25%</div><div class="stat-label">Finish</div></div>
@@ -411,7 +429,7 @@
                 </div>
                 <div class="industry-hero-image">
                     <img src="public/Industries%20Images/machining,%20moulding,%20engineering%20%26%20precision%20components.webp" alt="Precision machining and engineering equipment">
-                    <div class="image-overlay"><div class="overlay-content"><i class="fas fa-microchip"></i><h4>Precision Grade</h4><p>Accuracy and control</p></div></div>
+                    <div class="image-overlay"><div class="overlay-content"><i class="fas fa-microchip"></i><h4>Precision Grade</h4></div></div>
                 </div>
             </div>
             <div class="industry-features-grid">
@@ -426,12 +444,13 @@
     <section class="products-section-enhanced">
         <div class="container">
             <div class="section-header-enhanced">
-                <div class="section-badge"><i class="fas fa-box"></i> Our Products</div>
-                <h2>Recommended Products for Machining & Engineering</h2>
+                <div class="section-badge"><i class="fas fa-box"></i> Recommended Products for Machining & Engineering</div>
                 <p>Professional-grade solutions for your precision manufacturing needs</p>
             </div>
+            <!-- Category bar populated dynamically by script.js -->
+            <div id="product-category-bar" class="product-category-bar"></div>
             <div class="products-grid-enhanced">
-                <a href="products/hydraulic-awx-series.html" class="product-card">
+                <a href="products/hydraulic-awx-series.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Hydraulic AWX Series">
                     </div>
@@ -448,7 +467,7 @@
                     </div>
                 </a>
                 
-                <div class="product-card">
+                <div class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Slideway Oil">
                     </div>
@@ -465,7 +484,7 @@
                     </div>
                 </div>
                 
-                <a href="products/water-soluble-cutting-coolants.html" class="product-card">
+                <a href="products/water-soluble-cutting-coolants.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Cutting Coolant">
                     </div>
@@ -482,7 +501,7 @@
                     </div>
                 </a>
                 
-                <a href="products/neat-cutting-oils.html" class="product-card">
+                <a href="products/neat-cutting-oils.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Neat Cutting Oil">
                     </div>
@@ -499,7 +518,7 @@
                     </div>
                 </a>
                 
-                <a href="products/anti-rust-series.html" class="product-card">
+                <a href="products/anti-rust-series.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Anti Rust Solvent/Oil">
                     </div>
@@ -516,7 +535,7 @@
                     </div>
                 </a>
                 
-                <a href="products/hydrocarbon-solvents.html" class="product-card">
+                <a href="products/hydrocarbon-solvents.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Hydrocarbon Solvents">
                     </div>
@@ -533,7 +552,7 @@
                     </div>
                 </a>
                 
-                <a href="products/edm-synthetic-oils.html" class="product-card">
+                <a href="products/edm-synthetic-oils.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="EDM Oil">
                     </div>
@@ -550,7 +569,7 @@
                     </div>
                 </a>
                 
-                <a href="products/sg-18-high-performance-grease.html" class="product-card">
+                <a href="products/sg-18-high-performance-grease.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Penetrator">
                     </div>
@@ -567,7 +586,7 @@
                     </div>
                 </a>
                 
-                <a href="products/supertap-cutting-lubricant.html" class="product-card">
+                <a href="products/supertap-cutting-lubricant.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Supertap">
                     </div>
@@ -584,7 +603,7 @@
                     </div>
                 </a>
                 
-                <a href="products/tapping-fluids.html" class="product-card">
+                <a href="products/tapping-fluids.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Tapping Oil">
                     </div>
@@ -601,7 +620,7 @@
                     </div>
                 </a>
                 
-                <a href="products/rust-remover-chemical.html" class="product-card">
+                <a href="products/rust-remover-chemical.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Rust Remover">
                     </div>
@@ -618,7 +637,7 @@
                     </div>
                 </a>
                 
-                <div class="product-card">
+                <div class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Spindle Oil">
                     </div>
@@ -635,7 +654,7 @@
                     </div>
                 </div>
                 
-                <a href="products/giga-os-oil-skimmer.html" class="product-card">
+                <a href="products/giga-os-oil-skimmer.html" class="product-card" data-category="accessories">
                     <div class="product-image">
                         <img src="public/Giga-OS Oil Skimmer (Korea).png" alt="GIGA-OS">
                     </div>
@@ -652,7 +671,7 @@
                     </div>
                 </a>
                 
-                <a href="products/cnc-os-oil-skimmer.html" class="product-card">
+                <a href="products/cnc-os-oil-skimmer.html" class="product-card" data-category="accessories">
                     <div class="product-image">
                         <img src="public/CNC-OS Oil Skimmer (Korea).png" alt="CNC-OS">
                     </div>
@@ -669,7 +688,7 @@
                     </div>
                 </a>
                 
-                <a href="products/handheld-ph-reader.html" class="product-card">
+                <a href="products/handheld-ph-reader.html" class="product-card" data-category="accessories">
                     <div class="product-image">
                         <img src="public/Handheld pH Reader.png" alt="Handheld pH Reader">
                     </div>
@@ -686,7 +705,7 @@
                     </div>
                 </a>
                 
-                <a href="products/lube-guard-original.html" class="product-card">
+                <a href="products/lube-guard-original.html" class="product-card" data-category="aerosol-products">
                     <div class="product-image">
                         <img src="public/lube guard.png" alt="Lube Guard">
                     </div>
@@ -703,7 +722,28 @@
                     </div>
                 </a>
                 
-                <a href="products/waterless-hand-scrubber.html" class="product-card">
+                
+
+                <!-- Accessories: Refractometer -->
+                <a href="products/handheld-refractometer.html" class="product-card" data-category="accessories">
+                    <div class="product-image">
+                        <img src="public/Handheld Refractometer (USA & Singapore).png" alt="Handheld Refractometer">
+                    </div>
+                    <div class="product-info">
+                        <h3>Handheld Refractometer</h3>
+                        <p>Portable refractometer for coolant concentration checks</p>
+                        <div class="product-features">
+                            <span class="feature-tag">Measurement</span>
+                            <span class="feature-tag">Quality Control</span>
+                        </div>
+                        <div class="product-application">
+                            <strong>Application:</strong> Coolant concentration, QA checks
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Make Waterless Hand Scrubber last -->
+                <a href="products/waterless-hand-scrubber.html" class="product-card" data-category="maintenance-repair">
                     <div class="product-image">
                         <img src="public/superscrub.png" alt="Waterless Hand Scrubber with Grit">
                     </div>
@@ -817,5 +857,18 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if(window.initProductCategoryFilter) window.initProductCategoryFilter({
+                categoryMap: [
+                    ['aerosol-products', 'Aerosol Products'],
+                    ['industrial-lubricants', 'Industrial Lubricants'],
+                    ['maintenance-repair', 'Maintenance & Repair'],
+                    ['accessories', 'Accessories']
+                ],
+                moveLubeGuardHref: 'products/lube-guard-original.html'
+            });
+        });
+    </script>
 </body>
 </html>

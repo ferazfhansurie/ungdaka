@@ -21,8 +21,24 @@
     <!-- Enhanced Styles for Industry Pages -->
     <style>
         .industry-overview-enhanced {
-            background: linear-gradient(135deg, #fff1f2, #ffe4e6);
-            padding: 80px 0;
+            /* tiled SVG grid background */
+            background-image: url('public/top-bg.svg');
+            background-color: #274e78;
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            /* ensure content clears fixed header */
+            position: relative;
+            padding: 120px 0 80px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .industry-overview-enhanced::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') center/cover;
+            opacity: 0.25;
+            pointer-events: none;
         }
         
         .industry-hero {
@@ -49,14 +65,14 @@
         .industry-hero h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #1e293b;
+            color: #fff;
             margin-bottom: 20px;
             line-height: 1.2;
         }
-        
+
         .industry-hero p {
             font-size: 1.1rem;
-            color: #64748b;
+            color: rgba(255,255,255,0.9);
             line-height: 1.6;
             margin-bottom: 30px;
         }
@@ -73,14 +89,16 @@
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
-            color: #ef4444;
+            color: #ff6b6b; /* brighter red for contrast */
             margin-bottom: 5px;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.2);
         }
-        
+
         .stat-label {
             font-size: 0.9rem;
-            color: #64748b;
-            font-weight: 500;
+            color: rgba(255,255,255,0.85); /* lighter for visibility */
+            font-weight: 600;
+            letter-spacing: 1px;
         }
         
         .industry-hero-image {
@@ -126,12 +144,12 @@
         .products-grid-enhanced { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
         .product-card-enhanced { background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,.08); transition: transform .25s ease, box-shadow .25s ease; }
         .product-card-enhanced:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(0,0,0,.12); }
-        /* Match featured product sizing used on home page */
+        /* Match featured product sizing used on home page (compact sizing) */
         .products-grid-enhanced .product-image,
         .products-grid-enhanced .product-image-container {
             position: relative;
-            height: 600px;
-            padding: 40px;
+            height: 480px;
+            padding: 32px;
             overflow: hidden;
             box-sizing: border-box;
         }
@@ -142,6 +160,10 @@
             max-height: 100%;
             object-fit: contain;
             display: block;
+        }
+        @media (max-width: 640px){
+            .products-grid-enhanced .product-image,
+            .products-grid-enhanced .product-image-container { height: 360px; padding: 20px; }
         }
         .product-badge { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .product-content { padding: 22px; }
@@ -344,6 +366,24 @@
                 height: 300px;
             }
         }
+        /* Category selector styles */
+        .product-category-bar .category-btn {
+            background: transparent;
+            border: 1px solid #e5e7eb;
+            padding: 8px 14px;
+            margin: 0 6px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .product-category-bar .category-btn.active {
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        /* Keep grid layout when filtering; no single-column override */
     </style>
 </head>
 <body>
@@ -446,22 +486,7 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <a href="industries.html">Industries</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <span>Stamping Industry Products</span>
-                </div>
-                <h1>Stamping Industry Products</h1>
-                <p>Heavy-duty lubricants and release agents for metal stamping and forming operations</p>
-            </div>
-        </div>
-    </section>
+    <!-- Page header removed as requested -->
 
     <!-- Industry Overview -->
     <section class="industry-overview-enhanced">
@@ -469,17 +494,17 @@
             <div class="industry-hero">
                 <div class="industry-content">
                     <div class="industry-badge"><i class="fas fa-stamp"></i> Stamping Industry</div>
-                    <h2>Robust Solutions for Metal Stamping Operations</h2>
-                    <p>Our specialized products are designed for the demanding requirements of metal stamping and forming operations. From die release agents to forming lubricants, we provide solutions that ensure optimal part quality and production efficiency.</p>
+                    <h2>Solutions for Metal Stamping</h2>
+                    <p>Products that improve part quality, protect dies and keep production running.</p>
                     <div class="industry-stats">
-                        <div class="stat-item"><div class="stat-number">+35%</div><div class="stat-label">Die Life</div></div>
+                        <div class="stat-item"><div class="stat-number">+35%</div><div class="stat-label">Die life</div></div>
                         <div class="stat-item"><div class="stat-number">-20%</div><div class="stat-label">Downtime</div></div>
-                        <div class="stat-item"><div class="stat-number">ROI</div><div class="stat-label">Optimized</div></div>
+                        <div class="stat-item"><div class="stat-number">Improved</div><div class="stat-label">ROI</div></div>
                     </div>
                 </div>
                 <div class="industry-hero-image">
                     <img src="public/Industries%20Images/stamping.png" alt="Metal stamping and forming operations">
-                    <div class="image-overlay"><div class="overlay-content"><i class="fas fa-industry"></i><h4>Production Grade</h4><p>Efficiency and protection</p></div></div>
+                    <div class="image-overlay"><div class="overlay-content"><i class="fas fa-industry"></i><h4>Production Grade</h4></div></div>
                 </div>
             </div>
             <div class="industry-features-grid">
@@ -494,18 +519,21 @@
     <section class="products-section-enhanced">
         <div class="container">
             <div class="section-header-enhanced">
-                <div class="section-badge"><i class="fas fa-box"></i> Our Products</div>
-                <h2>Recommended Products for Stamping Industry</h2>
-                <p>Professional-grade solutions for your metal stamping and forming needs</p>
+                <div class="section-badge"><i class="fas fa-box"></i> Recommended Products for Stamping</div>
+                <p>Professional-grade lubricants, greases and cleaners.</p>
+            </div>
+            <!-- Category selector (built dynamically to show only categories that have products) -->
+            <div class="product-category-bar" style="text-align:center;margin-bottom:24px;" id="product-category-bar">
+                <!-- Buttons inserted by JS -->
             </div>
             <div class="products-grid-enhanced">
-                <a href="products/hydraulic-awx-series.html" class="product-card">
+                <a href="products/hydraulic-awx-series.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Hydraulic AWX Series">
                     </div>
                     <div class="product-info">
-                        <h3>Hydraulic AWX Series Oils (10,32,46,68,100)</h3>
-                        <p>High-performance hydraulic oils for stamping press hydraulic systems</p>
+                            <h3>Hydraulic AWX Series Oils (10,32,46,68,100)</h3>
+                            <p>High-performance hydraulic oils for press systems.</p>
                         <div class="product-features">
                             <span class="feature-tag">Anti-Wear</span>
                             <span class="feature-tag">Multi-Grade</span>
@@ -516,13 +544,13 @@
                     </div>
                 </a>
 
-                <a href="products/food-grade-grease.html" class="product-card">
+                <a href="products/food-grade-grease.html" class="product-card" data-category="industrial-grease">
                     <div class="product-image">
                         <img src="public/bucket.png" alt="Greases">
                     </div>
                     <div class="product-info">
-                        <h3>Greases</h3>
-                        <p>Industrial greases for stamping equipment bearings and moving parts</p>
+                        <h3>Industrial Greases</h3>
+                        <p>For bearings, slides and moving parts.</p>
                         <div class="product-features">
                             <span class="feature-tag">Heavy Duty</span>
                             <span class="feature-tag">Long-Lasting</span>
@@ -533,13 +561,13 @@
                     </div>
                 </a>
 
-                <a href="products/stamping-oils.html" class="product-card">
+                <a href="products/stamping-oils.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Stamping Oil">
                     </div>
                     <div class="product-info">
                         <h3>Stamping Oil</h3>
-                        <p>Specialized lubricant for metal stamping and forming operations</p>
+                        <p>Forming lubricant for stamping and deep drawing.</p>
                         <div class="product-features">
                             <span class="feature-tag">High Performance</span>
                             <span class="feature-tag">Metal Forming</span>
@@ -550,13 +578,13 @@
                     </div>
                 </a>
 
-                <a href="products/hydrocarbon-solvents.html" class="product-card">
+                <a href="products/hydrocarbon-solvents.html" class="product-card" data-category="maintenance-repair">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Hydrocarbon Solvent">
                     </div>
                     <div class="product-info">
                         <h3>Hydrocarbon Solvent</h3>
-                        <p>Industrial solvent for cleaning and degreasing stamping equipment</p>
+                        <p>Cleaner and degreaser for equipment and dies.</p>
                         <div class="product-features">
                             <span class="feature-tag">Fast Evaporation</span>
                             <span class="feature-tag">Effective</span>
@@ -567,13 +595,13 @@
                     </div>
                 </a>
 
-                <a href="products/industrial-gear-series.html" class="product-card">
+                <a href="products/industrial-gear-series.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Gear Oil">
                     </div>
                     <div class="product-info">
                         <h3>Gear Oil</h3>
-                        <p>Industrial gear oil for stamping press gearboxes and transmission systems</p>
+                        <p>For gearboxes and transmissions.</p>
                         <div class="product-features">
                             <span class="feature-tag">Heavy Duty</span>
                             <span class="feature-tag">High Performance</span>
@@ -584,13 +612,13 @@
                     </div>
                 </a>
 
-                <a href="products/lube-guard-original.html" class="product-card">
+                <a href="products/lube-guard-original.html" class="product-card" data-category="aerosol-products">
                     <div class="product-image">
                         <img src="public/lube guard.png" alt="LUBE GUARD Original">
                     </div>
                     <div class="product-info">
                         <h3>LUBE GUARD</h3>
-                        <p>Multi-purpose lubricant for stamping equipment maintenance</p>
+                        <p>Multi-purpose lubricant for quick maintenance tasks.</p>
                         <div class="product-features">
                             <span class="feature-tag">Multi-Purpose</span>
                             <span class="feature-tag">Versatile</span>
@@ -601,13 +629,13 @@
                     </div>
                 </a>
 
-                <a href="products/waterless-hand-scrubber.html" class="product-card">
+                <a href="products/waterless-hand-scrubber.html" class="product-card" data-category="maintenance-repair">
                     <div class="product-image">
                         <img src="public/superscrub.png" alt="Waterless Hand Scrubber with Grit">
                     </div>
                     <div class="product-info">
-                        <h3>Waterless Hand Scrubber with Grit</h3>
-                        <p>Heavy-duty cleaner for stamping equipment and dies</p>
+                        <h3>Waterless Hand Scrubber</h3>
+                        <p>Hand cleaner for shop use and die maintenance.</p>
                         <div class="product-features">
                             <span class="feature-tag">Heavy Duty</span>
                             <span class="feature-tag">Effective</span>
@@ -624,12 +652,12 @@
     <!-- Technical Specifications -->
     <section class="technical-specs-enhanced">
         <div class="container">
-            <h2>Technical Specifications & Benefits</h2>
+            <h2>Key Benefits</h2>
             <div class="specs-grid-enhanced">
-                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-spray-can"></i></div><h3>Superior Release</h3><p>Excellent release properties for complex metal stamping operations</p></div>
-                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-shield-alt"></i></div><h3>Extended Die Life</h3><p>Protects dies and extends their service life for cost savings</p></div>
-                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-clock"></i></div><h3>Reduced Downtime</h3><p>Minimizes production interruptions and maintenance requirements</p></div>
-                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-dollar-sign"></i></div><h3>Cost Effective</h3><p>Optimized formulations for maximum efficiency and value</p></div>
+                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-spray-can"></i></div><h3>Superior Release</h3><p>Reliable part ejection for complex shapes.</p></div>
+                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-shield-alt"></i></div><h3>Longer Die Life</h3><p>Reduces wear and maintenance.</p></div>
+                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-clock"></i></div><h3>Less Downtime</h3><p>Fewer stops and faster changeovers.</p></div>
+                <div class="spec-item-enhanced"><div class="spec-icon"><i class="fas fa-dollar-sign"></i></div><h3>Cost Efficient</h3><p>Better uptime and lower total cost of ownership.</p></div>
             </div>
         </div>
     </section>
@@ -715,5 +743,11 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <!-- product filtering and grouping initialized from script.js -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if(window.initProductCategoryFilter) window.initProductCategoryFilter();
+        });
+    </script>
 </body>
 </html>

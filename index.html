@@ -593,17 +593,17 @@
                 </div>
 
                 <div class="about-text-modern">
-                    <span class="section-badge">About Us</span>
+                    <span class="section-badge">Our Services</span>
                     <h2>Why Choose Ungdaka?</h2>
                     <p class="about-lead">
-                        Over the years, we are involved in producing and supplying <span class="text-highlight">high-quality industrial
-                        aerosol sprays</span>, industrial specialty lubricants, greases & maintenance chemicals
-                        to our customers at competitive prices.
                     </p>
+                    <h3 style="margin-top: 12px; color: var(--primary-color);">Order Customization</h3>
                     <p>
-                        With complete technical support from both overseas principles & in-house R&D department,
-                        we are also capable of <span class="text-highlight">customizing products</span> accordingly to the
-                        respective customers' requirements.
+                        We customise lubricants and chemicals to your requirements and can provide samples for testing before mass production.
+                    </p>
+                    <h3 style="margin-top: 12px; color: var(--primary-color);">Original Equipment Manufacturer (OEM)</h3>
+                    <p>
+                        We offer OEM packing under your brand and supply local or overseas agents with high-quality products at competitive prices.
                     </p>
 
                     <div class="features-list-modern">
@@ -645,11 +645,109 @@
                         </div>
                     </div>
 
-                    <a href="about.html" class="btn-modern btn-primary-modern">Learn More About Ungdaka <i class="fas fa-arrow-right"></i></a>
+                    <!-- Removed Learn More button as requested -->
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Logos of Trust Carousel (added under About section) -->
+    <section class="logos-trust-section about-home-modern">
+        <div class="container">
+            <!-- header removed as requested -->
+            <div class="logos-carousel" id="logosCarousel" aria-label="Trusted logos carousel">
+                <button class="logos-prev" id="logosPrev" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="logos-track" id="logosTrack">
+                    <div class="logo-item"><img src="public/Logos Of Trust/protean.jpg" alt="Protean"></div>
+                    <div class="logo-item"><img src="public/Logos Of Trust/eco.jpg" alt="Eco Friendly"></div>
+                    <div class="logo-item"><img src="public/Logos Of Trust/rohs.jpg" alt="RoHS Compliant"></div>
+                    <div class="logo-item"><img src="public/Logos Of Trust/fmm.jpg" alt="Federation of Malaysian Manufacturers"></div>
+                    <div class="logo-item"><img src="public/Logos Of Trust/isoca.jpeg" alt="ISO Certification"></div>
+                    <div class="logo-item"><img src="public/Logos Of Trust/matrade.jpg" alt="Matrade"></div>
+                    <div class="logo-item"><img src="public/Logos Of Trust/tygris.jpg" alt="Tygris"></div>
+                </div>
+                <button class="logos-next" id="logosNext" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Logos of Trust carousel styles (match About section background) */
+        /* Use the same padding and background as .about-home-modern from styles.css */
+        .logos-trust-section { padding: var(--spacing-2xl) 0 var(--spacing-2xl) 0; background: rgba(219, 234, 254, 0.5); position: relative; overflow: hidden; }
+        .logos-carousel { display:flex; align-items:center; gap:12px; position:relative; }
+        .logos-track { display:flex; gap:20px; overflow:hidden; scroll-behavior:smooth; width:100%; }
+        .logo-item { flex: 0 0 auto; width:220px; height:110px; display:flex; align-items:center; justify-content:center; padding:12px; background:#fff; border-radius:12px; box-shadow:0 6px 18px rgba(11,22,40,0.06); }
+        .logo-item img{ max-width:100%; max-height:86px; object-fit:contain; }
+        .logos-prev, .logos-next { background: rgba(0,0,0,0.06); border: none; width:44px; height:44px; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; }
+        .logos-prev i, .logos-next i { color: var(--primary-color); }
+        .logos-prev:focus, .logos-next:focus { outline: 2px solid rgba(0,0,0,0.08); }
+
+        @media (max-width: 900px) {
+            .logo-item { width:160px; height:90px; }
+        }
+        @media (max-width: 520px) {
+            .logo-item { width:120px; height:72px; }
+            .logos-prev, .logos-next { width:38px; height:38px; }
+        }
+    </style>
+
+    <script>
+        // Minimal logos carousel: prev/next + autoplay
+        (function(){
+            const track = document.getElementById('logosTrack');
+            const prev = document.getElementById('logosPrev');
+            const next = document.getElementById('logosNext');
+            if(!track) return;
+
+            const itemWidth = track.querySelector('.logo-item')?.offsetWidth || 220;
+            const gap = 20;
+            const scrollStep = itemWidth + gap;
+            let autoTimer = null;
+
+            function scrollNext(){
+                if(!track) return;
+                const maxScroll = track.scrollWidth - track.clientWidth;
+                if(track.scrollLeft + scrollStep >= maxScroll) {
+                    // loop to start
+                    track.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                }
+            }
+
+            function scrollPrev(){
+                if(!track) return;
+                if(track.scrollLeft - scrollStep <= 0) {
+                    // jump to end
+                    track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+                } else {
+                    track.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                }
+            }
+
+            next?.addEventListener('click', ()=>{ scrollNext(); resetAuto(); });
+            prev?.addEventListener('click', ()=>{ scrollPrev(); resetAuto(); });
+
+            function resetAuto(){
+                if(autoTimer) clearInterval(autoTimer);
+                autoTimer = setInterval(scrollNext, 3500);
+            }
+
+            // keyboard support
+            document.addEventListener('keydown', (e)=>{
+                if(e.key === 'ArrowRight') { scrollNext(); resetAuto(); }
+                if(e.key === 'ArrowLeft') { scrollPrev(); resetAuto(); }
+            });
+
+            // Start autoplay
+            resetAuto();
+        })();
+    </script>
 
     <!-- Interactive Bearings Section -->
     <section class="bearings-comparison">

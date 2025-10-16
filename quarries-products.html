@@ -21,12 +21,23 @@
     <!-- Enhanced Styles for Industry Pages -->
     <style>
         .industry-overview-enhanced {
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            padding: 80px 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            /* Tiled SVG hero background with overlay; white text */
+            background-image: url('public/top-bg.svg');
+            background-color: #4b5563; /* slate/gray tone for quarries */
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            position: relative;
+            padding: 120px 0 80px;
+            min-height: auto;
+            color: #fff;
+        }
+        .industry-overview-enhanced::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') center/cover no-repeat;
+            opacity: 0.25;
+            pointer-events: none;
         }
         
         .industry-hero {
@@ -56,14 +67,14 @@
         .industry-hero h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #1e293b;
+            color: #fff;
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
         .industry-hero p {
             font-size: 1.1rem;
-            color: #64748b;
+            color: rgba(255,255,255,0.9);
             line-height: 1.6;
             margin-bottom: 30px;
         }
@@ -80,14 +91,15 @@
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
-            color: #6b7280;
+            color: #fbbf24;
             margin-bottom: 5px;
         }
         
         .stat-label {
             font-size: 0.9rem;
-            color: #64748b;
-            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            font-weight: 600;
+            letter-spacing: .02em;
         }
         
         .industry-hero-image {
@@ -186,7 +198,7 @@
 
         .products-grid-enhanced {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -371,9 +383,16 @@
         
         .products-grid-enhanced {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
+        /* Category selector styles for Quarries (grey theme) */
+        .product-category-bar { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin: 16px 0 24px; }
+        .product-category-bar .category-btn { background: transparent; border: 1px solid #e5e7eb; padding: 8px 14px; margin: 0 6px; border-radius: 8px; font-weight: 600; cursor: pointer; color: #0f172a; }
+        .product-category-bar .category-btn.active { background: linear-gradient(135deg, #6b7280, #4b5563); color:#fff; border-color: transparent; }
+        /* Responsive grid fallbacks */
+        @media (max-width: 1200px) { .products-grid-enhanced, .products-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .products-grid-enhanced, .products-grid { grid-template-columns: 1fr; } }
         
         .product-card-enhanced {
             background: white;
@@ -390,8 +409,8 @@
         
         .product-image-container, .product-image {
             position: relative;
-            height: 600px;
-            padding: 40px;
+            height: 480px;
+            padding: 32px;
             overflow: hidden;
             box-sizing: border-box;
         }
@@ -406,18 +425,23 @@
         /* Strong override for quarries product visuals (use only on this page) */
         .products-grid .product-card .product-image,
         .products-grid .product-card .product-image-container {
-            height: 600px !important;
-            padding: 40px !important;
+            height: 480px !important;
+            padding: 32px !important;
             box-sizing: border-box !important;
         }
 
         .products-grid .product-card .product-image img,
         .products-grid .product-card .product-image-container img {
             width: auto !important;
-            max-height: 520px !important;
+            max-height: 100% !important;
             object-fit: contain !important;
             display: block !important;
             margin: 0 auto !important;
+        }
+        @media (max-width: 640px){
+            .product-image-container, .product-image,
+            .products-grid .product-card .product-image,
+            .products-grid .product-card .product-image-container { height: 360px !important; padding: 20px !important; }
         }
         
         .product-badge {
@@ -822,22 +846,7 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <a href="industries.html">Industries</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <span>Quarries Industry Products</span>
-                </div>
-                <h1>Quarries Industry Products</h1>
-                <p>Heavy-duty lubricants and maintenance solutions for quarry equipment and mining operations</p>
-            </div>
-        </div>
-    </section>
+    <!-- Page Header removed to streamline layout -->
 
     <!-- Industry Overview -->
     <section class="industry-overview-enhanced">
@@ -917,14 +926,15 @@
             <div class="section-header-enhanced">
                 <div class="section-badge">
                     <i class="fas fa-mountain"></i>
-                    <span>Our Products</span>
+                    <span>Recommended Products for Quarries Industry</span>
                 </div>
-                <h2>Recommended Products for Quarries Industry</h2>
                 <p>Professional-grade solutions for your quarry and mining equipment needs</p>
             </div>
-            
-            <div class="products-grid">
-                <a href="products/hydraulic-awx-series.html" class="product-card">
+            <!-- Dynamic Category Bar -->
+            <div id="product-category-bar" class="product-category-bar"></div>
+
+            <div class="products-grid products-grid-enhanced">
+                <a href="products/hydraulic-awx-series.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Hydraulic AWX Series">
                     </div>
@@ -941,7 +951,7 @@
                     </div>
                 </a>
                 
-                <a href="products/heavy-duty-grease.html" class="product-card">
+                <a href="products/heavy-duty-grease.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Lithium Moly Grease">
                     </div>
@@ -958,7 +968,7 @@
                     </div>
                 </a>
                 
-                <div class="product-card">
+                <div class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Open Gear Grease">
                     </div>
@@ -975,7 +985,7 @@
                     </div>
                 </div>
                 
-                <a href="products/industrial-gear-series.html" class="product-card">
+                <a href="products/industrial-gear-series.html" class="product-card" data-category="industrial-lubricants">
                     <div class="product-image">
                         <img src="public/drum and pail.png" alt="Gear Oil">
                     </div>
@@ -992,7 +1002,7 @@
                     </div>
                 </a>
                 
-                <a href="products/moly-lube-advanced-lubricant.html" class="product-card">
+                <a href="products/moly-lube-advanced-lubricant.html" class="product-card" data-category="aerosol-products">
                     <div class="product-image">
                         <img src="public/moly lube.png" alt="MOLY LUBE">
                     </div>
@@ -1009,7 +1019,7 @@
                     </div>
                 </a>
                 
-                <a href="products/lube-guard-original.html" class="product-card">
+                <a href="products/lube-guard-original.html" class="product-card" data-category="aerosol-products">
                     <div class="product-image">
                         <img src="public/lube guard.png" alt="LUBE GUARD">
                     </div>
@@ -1026,7 +1036,7 @@
                     </div>
                 </a>
                 
-                <div class="product-card">
+                <div class="product-card" data-category="aerosol-products">
                     <div class="product-image">
                         <img src="public/TYGRIS MOLY DRY FILM SPRAY.jpg" alt="TYGRIS MOLY DRY FILM SPRAY">
                     </div>
@@ -1043,7 +1053,7 @@
                     </div>
                 </div>
                 
-                <a href="products/waterless-hand-scrubber.html" class="product-card">
+                <a href="products/waterless-hand-scrubber.html" class="product-card" data-category="maintenance-repair">
                     <div class="product-image">
                         <img src="public/superscrub.png" alt="Waterless Hand Scrubber with Grit">
                     </div>
@@ -1181,5 +1191,21 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if (window.initProductCategoryFilter) {
+                window.initProductCategoryFilter({
+                    gridSelector: '.products-grid.products-grid-enhanced',
+                    categoryMap: [
+                        ['aerosol-products', 'Aerosol Products'],
+                        ['industrial-lubricants', 'Industrial Lubricants'],
+                        ['maintenance-repair', 'Maintenance & Repair']
+                    ],
+                    moveLubeGuardHref: 'products/lube-guard-original.html',
+                    orderAllByCategory: true
+                });
+            }
+        });
+    </script>
 </body>
 </html>

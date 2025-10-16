@@ -18,12 +18,23 @@
     <!-- Enhanced Styles for Industry Pages -->
     <style>
         .industry-overview-enhanced {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            padding: 80px 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            /* Tiled SVG background with overlay grid */
+            background-image: url('public/top-bg.svg');
+            background-color: #274e78;
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            position: relative;
+            padding: 120px 0 80px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .industry-overview-enhanced::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') center/cover;
+            opacity: 0.25;
+            pointer-events: none;
         }
         
         .industry-hero {
@@ -53,14 +64,14 @@
         .industry-hero h2 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: white;
+            color: #fff;
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
         .industry-hero p {
             font-size: 1.1rem;
-            color: #d1d5db;
+            color: rgba(255,255,255,0.9);
             line-height: 1.6;
             margin-bottom: 30px;
         }
@@ -83,8 +94,9 @@
         
         .stat-label {
             font-size: 0.9rem;
-            color: #d1d5db;
-            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            font-weight: 600;
+            letter-spacing: .02em;
         }
         
         .industry-hero-image {
@@ -290,7 +302,7 @@
 
         .products-grid-enhanced {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -374,9 +386,16 @@
         
         .products-grid-enhanced {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
+        /* Category selector styles (Oil & Gas theme) */
+        .product-category-bar { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin: 16px 0 24px; }
+        .product-category-bar .category-btn { background: transparent; border: 1px solid #e5e7eb; padding: 8px 14px; margin: 0 6px; border-radius: 8px; font-weight: 600; cursor: pointer; color: #0f172a; }
+        .product-category-bar .category-btn.active { background: linear-gradient(135deg, #f59e0b, #d97706); color:#fff; border-color: transparent; }
+        /* Responsive grid fallbacks */
+        @media (max-width: 1200px) { .products-grid-enhanced, .products-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 640px) { .products-grid-enhanced, .products-grid { grid-template-columns: 1fr; } }
         
         .product-card-enhanced {
             background: white;
@@ -393,8 +412,8 @@
         
         .product-image-container {
             position: relative;
-            height: 600px;
-            padding: 40px;
+            height: 480px;
+            padding: 32px;
             overflow: hidden;
         }
 
@@ -407,8 +426,8 @@
 
         /* Ensure product card images in the grid match featured sizing */
         .products-grid .product-image {
-            height: 600px;
-            padding: 40px;
+            height: 480px;
+            padding: 32px;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -420,6 +439,10 @@
             height: 100%;
             object-fit: contain;
             max-height: 100%;
+        }
+        @media (max-width: 640px){
+            .product-image-container,
+            .products-grid .product-image { height: 360px; padding: 20px; }
         }
         
         .product-badge {
@@ -824,22 +847,7 @@
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <a href="industries.html">Industries</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <span>Oil & Gas Products</span>
-                </div>
-                <h1>Oil & Gas Industry Products</h1>
-                <p>High-performance lubricants and specialty chemicals for oil and gas exploration and processing equipment</p>
-            </div>
-        </div>
-    </section>
+    <!-- Page Header removed for streamlined layout -->
 
     <!-- Industry Overview -->
     <section class="industry-overview-enhanced">
@@ -906,15 +914,17 @@
     </section>
 
     <!-- Products Grid -->
-    <section class="products-section">
+    <section class="products-section-enhanced">
         <div class="container">
-            <div class="section-header">
-                <h2>Recommended Products for Oil & Gas Industry</h2>
+            <div class="section-header-enhanced">
+                <div class="section-badge"><i class="fas fa-box"></i> Recommended Products for Oil & Gas Industry</div>
                 <p>Professional-grade solutions for your oil and gas operations</p>
             </div>
-            
-            <div class="products-grid">
-                <a href="products/moly-lube-advanced-lubricant.html" class="product-card">
+            <!-- Dynamic Category Bar -->
+            <div id="product-category-bar" class="product-category-bar"></div>
+
+            <div class="products-grid products-grid-enhanced">
+                <a href="products/moly-lube-advanced-lubricant.html" class="product-card" data-category="aerosol-products">
                     <div class="product-image">
                         <img src="public/moly lube.png" alt="Moly Lube Advanced">
                     </div>
@@ -931,7 +941,7 @@
                     </div>
                 </a>
                 
-                <a href="products/lube-guard-original.html" class="product-card">
+                <a href="products/lube-guard-original.html" class="product-card" data-category="aerosol-products">
                     <div class="product-image">
                         <img src="public/lube guard.png" alt="Lube Guard Original">
                     </div>
@@ -948,7 +958,7 @@
                     </div>
                 </a>
                 
-                <div class="product-card">
+                <div class="product-card" data-category="aerosol-products">
                     <div class="product-image">
                         <img src="public/TYGRIS MOLY DRY FILM SPRAY.jpg" alt="TYGRIS MOLY DRY FILM SPRAY">
                     </div>
@@ -965,9 +975,9 @@
                     </div>
                 </div>
                 
-                <div class="product-card">
+                <div class="product-card" data-category="maintenance-repair">
                     <div class="product-image">
-                        <img src="public/Tygris copper.jfif" alt="TYGRIS COPPER">
+                        <img src="public/tygris copper.png" alt="TYGRIS COPPER">
                     </div>
                     <div class="product-info">
                         <h3>TYGRIS COPPER</h3>
@@ -982,7 +992,7 @@
                     </div>
                 </div>
                 
-                <a href="products/sr-remover-silicone-residue-cleaner.html" class="product-card">
+                <a href="products/sr-remover-silicone-residue-cleaner.html" class="product-card" data-category="maintenance-repair">
                     <div class="product-image">
                         <img src="public/superscrub.png" alt="Super Scrub Waterless Hand Scrubber">
                     </div>
@@ -1112,5 +1122,20 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if (window.initProductCategoryFilter) {
+                window.initProductCategoryFilter({
+                    gridSelector: '.products-grid.products-grid-enhanced',
+                    categoryMap: [
+                        ['aerosol-products', 'Aerosol Products'],
+                        ['maintenance-repair', 'Maintenance & Repair']
+                    ],
+                    moveLubeGuardHref: 'products/lube-guard-original.html',
+                    orderAllByCategory: true
+                });
+            }
+        });
+    </script>
 </body>
 </html>
