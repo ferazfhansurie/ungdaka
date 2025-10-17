@@ -858,6 +858,26 @@ body {
     color: white;
 }
 
+/* ===== Collapsible Dropdown Groups (shared) ===== */
+/* Sub-link styling reused for both Products and Industries dropdowns */
+.dropdown-menu .dropdown-content a.sub-link {
+    display: block;
+    padding-left: 12px;
+    font-size: 0.95em;
+    opacity: 0.95;
+}
+/* Collapsible category groups */
+.dropdown-menu .cat-group { margin: 4px 0; }
+.dropdown-menu .cat-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.dropdown-menu .cat-header .cat-link { flex: 1; padding: 8px 10px; border-radius: 8px; text-decoration: none; display: inline-block; color: var(--gray-800); }
+.dropdown-menu .cat-header .cat-link:hover { background: rgba(0,0,0,0.05); }
+.dropdown-menu .cat-toggle { width: 28px; height: 28px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: #fff; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.dropdown-menu .cat-toggle i { font-size: 12px; transition: transform 160ms ease; color: var(--primary-color); }
+.dropdown-menu .cat-group.open .cat-toggle i { transform: rotate(90deg); }
+.dropdown-menu .sub-list { display: none; padding: 4px 0 6px 2px; }
+.dropdown-menu .cat-group.open > .sub-list { display: block; }
+.dropdown-menu .sub-list a.sub-link { padding-top: 6px; padding-bottom: 6px; }
+
 /* ===== BUTTONS ===== */
 .btn {
     display: inline-flex;
@@ -3589,6 +3609,126 @@ section {
     line-height: 1.6;
     margin-bottom: var(--spacing-md);
     font-size: var(--font-size-sm);
+}
+
+/* Grouped product card links (when multiple products share the same image) */
+.product-card-grouped .product-info h3 {
+    margin-bottom: var(--spacing-sm);
+}
+.product-card-grouped .product-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.product-card-grouped .product-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-700, #0f766e);
+    text-decoration: none;
+    font-weight: 600;
+}
+.product-card-grouped .product-link:hover {
+    text-decoration: underline;
+}
+
+/* Enhanced formatting for grouped product list with descriptions */
+.product-card-grouped .product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.product-card-grouped .product-item {
+    padding: 12px 14px;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    background: #fff;
+}
+.product-card-grouped .product-item + .product-item {
+    margin-top: 6px;
+}
+.product-card-grouped .product-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.product-card-grouped .product-toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid var(--gray-300);
+    background: #f8fafc;
+    color: var(--gray-700);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.product-card-grouped .product-toggle:hover {
+    background: #eef2f7;
+}
+.product-card-grouped .product-item .product-link {
+    font-size: var(--font-size-md, 1rem);
+    flex: 1;
+}
+.product-card-grouped .product-item .product-desc {
+    margin: 8px 0 0;
+    color: var(--gray-600);
+    font-size: var(--font-size-sm, 0.95rem);
+    line-height: 1.5;
+    display: none;
+}
+.product-card-grouped .product-item.open .product-desc {
+    display: block;
+}
+.product-card-grouped .product-toggle .toggle-icon::before {
+    content: '>';
+    display: inline-block;
+    transform: translateY(-1px);
+    font-weight: 700;
+}
+.product-card-grouped .product-item.open .product-toggle .toggle-icon::before {
+    content: 'v';
+}
+
+/* CTA under expanded description */
+.product-card-grouped .product-cta {
+    display: none;
+    margin-top: 10px;
+    align-self: flex-start;
+    background: var(--secondary-color);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.product-card-grouped .product-item.open .product-cta {
+    display: inline-flex;
+}
+.product-card-grouped .product-cta:hover {
+    background: var(--gold-dark, #b7791f);
+    transform: translateY(-1px);
+}
+
+/* Industries dropdown: hide section titles and reduce spacing when titles are hidden */
+.nav-dropdown .dropdown-menu .cat-group.open .cat-link[style*="display: none"] + .cat-toggle[style*="display: none"] {
+    display: none !important;
+}
+.nav-dropdown .dropdown-menu .cat-group.open .sub-list {
+    margin-top: 0;
+    padding-top: 0;
+}
+.product-card-grouped .product-item .product-link {
+    font-size: var(--font-size-md, 1rem);
+}
+.product-card-grouped .product-item .product-desc {
+    margin: 6px 0 0;
+    color: var(--gray-600);
+    font-size: var(--font-size-sm, 0.95rem);
+    line-height: 1.5;
 }
 
 .product-card:hover::before {
@@ -7043,4 +7183,16 @@ section {
 /* Add position relative to industries section */
 .industries-carousel-section {
     position: relative;
+}
+
+/* ===== DUPLICATE-IMAGE TITLE HIGHLIGHT ===== */
+/* Applied to product names/links when multiple cards share the same image */
+.duplicate-image-title {
+    color: #1d4ed8 !important; /* Brand blue for emphasis */
+}
+
+/* Slightly darker on hover or when parent card is hovered */
+.product-card:hover .product-info .duplicate-image-title,
+a.duplicate-image-title:hover {
+    color: #1e40af !important;
 }

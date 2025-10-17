@@ -93,6 +93,171 @@ ${requirements}`;
         });
     }
 });
+        // Group product cards by identical image within each grid and show one image with a list of product links
+        try {
+    function groupCardsWithSameImage(grid) {
+                const cards = Array.from(grid.querySelectorAll('.product-card'))
+                    // exclude already grouped
+                    .filter(c => !c.classList.contains('product-card-grouped'));
+
+                if (cards.length < 2) return;
+
+                // group by exact image src
+                const groups = new Map();
+                cards.forEach(card => {
+                    const img = card.querySelector('.product-image img');
+                    const src = (img && img.getAttribute('src')) ? img.getAttribute('src').trim() : '';
+                    if (!src) return;
+                    if (!groups.has(src)) groups.set(src, []);
+                    groups.get(src).push(card);
+                });
+
+                groups.forEach((list, src) => {
+                    if (!list || list.length <= 1) return; // only group duplicates
+
+                    // Build a new grouped card using the first card's image block
+                    const first = list[0];
+                    const grouped = document.createElement('div');
+                    grouped.className = 'product-card product-card-grouped';
+
+                    // Preserve categories: if all originals share same category, set data-category;
+                    // otherwise store a comma-separated list in data-categories for multi-match filtering
+                    try {
+                        const catSet = new Set(
+                            list.map(c => (c.dataset && c.dataset.category) || '')
+                                .filter(Boolean)
+                        );
+                        if (catSet.size === 1) {
+                            const only = Array.from(catSet)[0];
+                            if (only) grouped.dataset.category = only;
+                        } else if (catSet.size > 1) {
+                            grouped.dataset.categories = Array.from(catSet).join(',');
+                        }
+                    } catch (e) { /* ignore */ }
+
+                    // Clone the image section to keep inline sizing
+                    const imgWrap = first.querySelector('.product-image');
+                    grouped.appendChild(imgWrap.cloneNode(true));
+
+                    // Build the info section with a list of links
+                    const info = document.createElement('div');
+                    info.className = 'product-info';
+
+                    const title = document.createElement('h3');
+                    title.textContent = `Products (${list.length})`;
+                    info.appendChild(title);
+
+                    const listWrap = document.createElement('div');
+                    listWrap.className = 'product-list';
+
+                    list.forEach(card => {
+                        const item = document.createElement('div');
+                        item.className = 'product-item';
+
+                        // Link and toggle line
+                        const line = document.createElement('div');
+                        line.className = 'product-line';
+
+                        const a = document.createElement('a');
+                        const h3 = card.querySelector('.product-info h3');
+                        const label = h3 ? h3.textContent.trim() : (card.getAttribute('aria-label') || 'View');
+                        const href = card.getAttribute('href') || card.dataset.href || '#';
+                        a.href = href;
+                        a.textContent = label;
+                        a.className = 'product-link';
+
+                        // Description
+                        const pd = document.createElement('p');
+                        const descEl = card.querySelector('.product-info p');
+                        const descText = descEl ? descEl.textContent.trim() : '';
+                        pd.className = 'product-desc';
+                        pd.textContent = descText;
+                        // create toggle only if description exists
+                        if (descText) {
+                            const btn = document.createElement('button');
+                            btn.type = 'button';
+                            btn.className = 'product-toggle';
+                            btn.title = 'Show description';
+                            btn.setAttribute('aria-expanded', 'false');
+                            const descId = 'desc-' + Math.random().toString(36).slice(2, 9);
+                            pd.id = descId;
+                            btn.setAttribute('aria-controls', descId);
+                            // icon span (font awesome friendly, falls back to +)
+                            const ic = document.createElement('span');
+                            ic.className = 'toggle-icon';
+                            ic.setAttribute('aria-hidden', 'true');
+                            btn.appendChild(ic);
+                            btn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                const isOpen = item.classList.toggle('open');
+                                btn.setAttribute('aria-expanded', String(isOpen));
+                                btn.title = isOpen ? 'Hide description' : 'Show description';
+                            });
+                            line.appendChild(btn);
+                        }
+
+                        line.appendChild(a);
+                        item.appendChild(line);
+                        if (descText) {
+                            item.appendChild(pd);
+                            const cta = document.createElement('a');
+                            cta.href = href;
+                            cta.className = 'product-cta';
+                            cta.textContent = 'View details';
+                            item.appendChild(cta);
+                        }
+                        listWrap.appendChild(item);
+                    });
+
+                    info.appendChild(listWrap);
+                    grouped.appendChild(info);
+
+                    // Insert grouped card before the first occurrence, then remove all originals
+                    grid.insertBefore(grouped, first);
+                    list.forEach(card => card.remove());
+                });
+            }
+
+            const groupingGrids = document.querySelectorAll('.products-grid, .products-grid-enhanced');
+            groupingGrids.forEach(groupCardsWithSameImage);
+
+            // After grouping, mark titles that share the same image within each grid
+            function markDuplicateImageTitles(grid){
+                try{
+                    const cards = Array.from(grid.querySelectorAll('.product-card'));
+                    if (cards.length < 2) return;
+                    const bySrc = new Map();
+                    cards.forEach(card => {
+                        const img = card.querySelector('.product-image img');
+                        const src = img ? (img.getAttribute('src')||'').trim() : '';
+                        if (!src) return;
+                        if (!bySrc.has(src)) bySrc.set(src, []);
+                        bySrc.get(src).push(card);
+                    });
+                    bySrc.forEach((list, src) => {
+                        if (!list || list.length <= 1) return;
+                        list.forEach(card => {
+                            const h3 = card.querySelector('.product-info h3');
+                            if (h3) h3.classList.add('duplicate-image-title');
+                            // Some titles are anchors in grouped cards; mark their product links as well
+                            const a = card.querySelector('.product-info a.product-link, .product-info h3 a');
+                            if (a) a.classList.add('duplicate-image-title');
+                        });
+                    });
+                } catch(e) { /* ignore */ }
+            }
+
+            // Mark duplicates in all common grid containers (without grouping side-effects)
+            const markGrids = document.querySelectorAll('.products-grid, .products-grid-enhanced, .related-products-grid, .related-products-container');
+            markGrids.forEach(markDuplicateImageTitles);
+
+            // Additionally, in grouped cards, all items came from duplicate images — mark their links
+            document.querySelectorAll('.product-card-grouped .product-list .product-link')
+                .forEach(a => a.classList.add('duplicate-image-title'));
+        } catch (e) {
+            // no-op
+        }
 
 // Transparent overlay uses an animated GIF now; no autoplay handling needed.
 
@@ -173,7 +338,7 @@ window.initProductCategoryFilter = function initProductCategoryFilter(options = 
                 ['maintenance-repair','Maintenance & Repair'],
                 ['metal-working','Metal Working'],
                 ['accessories','Accessories'],
-                ['food-grade-products','Food Grade Products']
+                ['food-grade-products','Food-Safe Products']
             ],
             moveLubeGuardHref: 'products/lube-guard-original.html',
             // if true, order the 'All' view by category order from categoryMap
@@ -185,7 +350,14 @@ window.initProductCategoryFilter = function initProductCategoryFilter(options = 
 
         // product card selector inside grid
         const products = Array.from(grid.querySelectorAll('.product-card, .product-card-enhanced'));
-        const present = new Set(products.map(p=>p.dataset && p.dataset.category).filter(Boolean));
+        // Build a set of present categories from both data-category and data-categories
+        const present = new Set();
+        products.forEach(p => {
+            const single = p.dataset && p.dataset.category;
+            if (single) present.add(single);
+            const multi = p.dataset && p.dataset.categories;
+            if (multi) multi.split(',').map(s => s.trim()).filter(Boolean).forEach(cat => present.add(cat));
+        });
         const bar = document.querySelector(cfg.barSelector);
 
         // --- image grouping helper (fallbacks to filename heuristics) ---
@@ -289,7 +461,12 @@ window.initProductCategoryFilter = function initProductCategoryFilter(options = 
                         }catch(e){}
                     }
                 } else {
-                    products.forEach(p=>{ p.style.display = ((p.dataset && p.dataset.category)===cat) ? '' : 'none'; });
+                    products.forEach(p=>{
+                        const direct = (p.dataset && p.dataset.category) === cat;
+                        const multi = (p.dataset && p.dataset.categories) ? p.dataset.categories.split(',').map(s=>s.trim()) : [];
+                        const hasMulti = multi.includes(cat);
+                        p.style.display = (direct || hasMulti) ? '' : 'none';
+                    });
                 }
             }
 
@@ -712,6 +889,8 @@ class ProductTabsController {
         this.bindEvents();
         // Hide all tab panels on initial load
         this.hideAllTabs();
+        // Activate from URL hash if present
+        this.initFromHash();
     }
 
     bindEvents() {
@@ -764,6 +943,14 @@ class ProductTabsController {
                 panel.classList.add('active');
             }
         });
+        // Update URL hash without scrolling
+        try {
+            if (targetTab && typeof history.replaceState === 'function') {
+                const url = new URL(window.location.href);
+                url.hash = `#${targetTab}`;
+                history.replaceState(null, '', url.toString());
+            }
+        } catch (e) { /* ignore */ }
     }
 
     hideCategoryOverview() {
@@ -799,6 +986,28 @@ class ProductTabsController {
         }
     }
 }
+
+// Extend ProductTabsController with hash init
+ProductTabsController.prototype.initFromHash = function(){
+    try {
+        const raw = window.location.hash || '';
+        const hash = raw.replace('#','');
+        if (!hash) return;
+        const panel = document.getElementById(hash);
+        if (!panel) return;
+        // Hide category overview and show tab
+        if (this.categoryOverview) this.categoryOverview.classList.add('hidden');
+        this.showBackButton();
+        this.switchTab(hash);
+        // Ensure tab content is in view
+        const tabContent = document.querySelector('.tab-content');
+        if (tabContent) {
+            tabContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    } catch (e) {
+        // ignore
+    }
+};
 
 // ===== FORM CONTROLLER =====
 class FormController {
@@ -1926,6 +2135,179 @@ const app = new UngdakaApp();
 // ===== GLOBAL ERROR HANDLING =====
 window.addEventListener('error', (e) => {
     console.error('Global error:', e.error);
+});
+
+// Shared: Collapsible category groups inside all dropdown menus (Products, Industries)
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        // Ensure Products dropdown contains all categories (unify across pages)
+        (function unifyProductsDropdown(){
+            try {
+                const dropdowns = document.querySelectorAll('.navbar .nav-dropdown');
+                dropdowns.forEach(dd => {
+                    const toggle = dd.querySelector('.dropdown-toggle');
+                    const href = toggle && toggle.getAttribute('href');
+                    // Identify the "Our Products" dropdown by its link to products.html
+                    if (!href || !/products\.html(?:$|[?#])/.test(href)) return;
+                    const content = dd.querySelector('.dropdown-menu .dropdown-content');
+                    if (!content) return;
+
+                    // If already has all three columns and Food Grade group, skip
+                    const hasFood = !!content.querySelector('#cat-foodgrade');
+                    const groupNodesCheck = content.querySelectorAll('.cat-group');
+                    if (hasFood && groupNodesCheck.length >= 6) return;
+
+                    // Build the full dropdown content to match homepage
+                    const html = `
+                        <div class="dropdown-column">
+                            <div class="cat-group">
+                                <div class="cat-header">
+                                    <a class="cat-link" href="products.html#aerosol">Aerosol Products</a>
+                                    <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-aerosol"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="sub-list" id="cat-aerosol">
+                                    <a class="sub-link" href="products/s-88-paintable.html">S-88 Silicone Mould Release</a>
+                                    <a class="sub-link" href="products/ns-77-non-silicone-mould-release.html">NS-77 Non-Silicone Mould Release</a>
+                                    <a class="sub-link" href="products/s-22-degreaser-mould-cleaner.html">S-22 Degreaser & Mould Cleaner</a>
+                                    <a class="sub-link view-all" href="products.html#aerosol">View all →</a>
+                                </div>
+                            </div>
+
+                            <div class="cat-group">
+                                <div class="cat-header">
+                                    <a class="cat-link" href="products.html#lubricants">Industrial Lubricants</a>
+                                    <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-lubricants"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="sub-list" id="cat-lubricants">
+                                    <a class="sub-link" href="products/engine-oils.html">Engine Oils</a>
+                                    <a class="sub-link" href="products/hydraulic-awx-series.html">Hydraulic Oils</a>
+                                    <a class="sub-link" href="products/industrial-gear-series.html">Industrial Gear Oils</a>
+                                    <a class="sub-link view-all" href="products.html#lubricants">View all →</a>
+                                </div>
+                            </div>
+
+                            <div class="cat-group">
+                                <div class="cat-header">
+                                    <a class="cat-link" href="products.html#grease">Industrial Grease</a>
+                                    <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-grease"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="sub-list" id="cat-grease">
+                                    <a class="sub-link" href="products/heavy-duty-grease.html">Heavy Duty Grease</a>
+                                    <a class="sub-link" href="products/lit-888-ep-grease.html">LIT 888 EP Grease</a>
+                                    <a class="sub-link" href="products/hi-lo-grease.html">Hi-Lo Grease</a>
+                                    <a class="sub-link view-all" href="products.html#grease">View all →</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-column">
+                            <div class="cat-group">
+                                <div class="cat-header">
+                                    <a class="cat-link" href="products.html#maintenance">Maintenance & Repair</a>
+                                    <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-maintenance"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="sub-list" id="cat-maintenance">
+                                    <a class="sub-link" href="products/oil-degreaser.html">Oil Degreaser</a>
+                                    <a class="sub-link" href="products/industrial-paint-remover.html">Industrial Paint Remover</a>
+                                    <a class="sub-link" href="products/rust-remover-chemical.html">Rust Remover Chemical</a>
+                                    <a class="sub-link view-all" href="products.html#maintenance">View all →</a>
+                                </div>
+                            </div>
+
+                            <div class="cat-group">
+                                <div class="cat-header">
+                                    <a class="cat-link" href="products.html#metalworking">Metal Working</a>
+                                    <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-metalworking"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="sub-list" id="cat-metalworking">
+                                    <a class="sub-link" href="products/water-soluble-cutting-coolants.html">Water-Soluble Cutting Coolants</a>
+                                    <a class="sub-link" href="products/neat-cutting-oils.html">Neat Cutting Oils</a>
+                                    <a class="sub-link" href="products/tapping-fluids.html">Tapping Fluids</a>
+                                    <a class="sub-link view-all" href="products.html#metalworking">View all →</a>
+                                </div>
+                            </div>
+
+                            <div class="cat-group">
+                                <div class="cat-header">
+                                    <a class="cat-link" href="products.html#accessories">Accessories</a>
+                                    <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-accessories"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="sub-list" id="cat-accessories">
+                                    <a class="sub-link" href="products/handheld-refractometer.html">Handheld Refractometer</a>
+                                    <a class="sub-link" href="products/handheld-ph-reader.html">Handheld pH Reader</a>
+                                    <a class="sub-link" href="products/cnc-os-oil-skimmer.html">CNC OS Oil Skimmer</a>
+                                    <a class="sub-link view-all" href="products.html#accessories">View all →</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-column">
+                            <div class="cat-group">
+                                <div class="cat-header">
+                                    <a class="cat-link" href="products.html#foodgrade">Food-Safe Products</a>
+                                    <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-foodgrade"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="sub-list" id="cat-foodgrade">
+                                    <a class="sub-link" href="products/protean-3h1-grease.html">PROTEAN 3H1 Grease</a>
+                                    <a class="sub-link" href="products/protean-white-grease.html">PROTEAN White Grease</a>
+                                    <a class="sub-link" href="products/protean-airline-oils.html">PROTEAN Airline Oils</a>
+                                    <a class="sub-link" href="products/protean-chain-gear-oils-new.html">PROTEAN Chain & Gear Oils</a>
+                                    <a class="sub-link view-all" href="products.html#foodgrade">View all →</a>
+                                </div>
+                            </div>
+                            <a href="products.html" class="view-all" style="margin-top:10px; display:inline-block;">View All Products →</a>
+                        </div>`;
+
+                    // Replace dropdown content
+                    content.innerHTML = html;
+
+                    // Rebind toggle buttons inside newly injected content
+                    const groupNodesRebind = content.querySelectorAll('.cat-group');
+                    groupNodesRebind.forEach(group => {
+                        const btn = group.querySelector('.cat-toggle');
+                        btn?.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const isOpen = group.classList.toggle('open');
+                            btn.setAttribute('aria-expanded', String(isOpen));
+                        });
+                    });
+                });
+            } catch (e) { /* ignore */ }
+        })();
+
+        const menus = document.querySelectorAll('.nav-dropdown .dropdown-menu');
+        if(!menus.length) return;
+        menus.forEach(menu => {
+            const groups = menu.querySelectorAll('.cat-group');
+            groups.forEach(group => {
+                const btn = group.querySelector('.cat-toggle');
+                const sub = group.querySelector('.sub-list');
+                if(!btn || !sub) return;
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isOpen = group.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', String(isOpen));
+                });
+
+                // Industries dropdown: remove titles and keep lists open
+                try {
+                    const subId = sub.id || '';
+                    if (subId.startsWith('cat-ind-')) {
+                        // Open by default
+                        group.classList.add('open');
+                        // Hide the group title link and toggle button
+                        const titleLink = group.querySelector('.cat-link');
+                        if (titleLink) titleLink.style.display = 'none';
+                        if (btn) btn.style.display = 'none';
+                    }
+                } catch (e) { /* ignore */ }
+            });
+        });
+    } catch (err) {
+        // swallow any minor errors
+    }
 });
 
 // Make header logo navigate to Home if not already a link

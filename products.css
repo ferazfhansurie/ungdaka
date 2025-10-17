@@ -32,8 +32,8 @@
 }
 
 .product-image {
-    height: 480px;
-    padding: 32px;
+    height: 600px;
+    padding: 40px;
     background: white;
     display: flex;
     align-items: center;
@@ -45,10 +45,6 @@
     width: 100%;
     object-fit: contain;
     transition: transform 0.3s ease;
-}
-
-@media (max-width: 640px){
-    .product-image { height: 360px; padding: 20px; }
 }
 
 .product-card:hover .product-image img {
@@ -273,4 +269,45 @@
     .category-image {
         height: 220px;
     }
+}
+
+/* ===== Metal Working: make images wider ===== */
+/* Widen the product cards only within the Metal Working tab */
+.tab-panel#metalworking .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* force 2 columns on wide screens */
+}
+
+/* Reduce inner padding on product image containers to maximize usable width */
+.tab-panel#metalworking .product-image {
+    padding: 0 !important; /* remove padding so image can be as wide as the card */
+    height: 560px !important; /* give good vertical space while emphasizing width */
+}
+
+/* Ensure images inside metalworking tab expand to full width without cropping */
+.tab-panel#metalworking .product-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* fill the entire image area */
+    display: block;
+}
+
+/* Responsive: keep 2 columns until tablet widths, then drop to 1 */
+@media (max-width: 980px) {
+    .tab-panel#metalworking .products-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .tab-panel#metalworking .product-image {
+        height: 420px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .tab-panel#metalworking .product-image {
+        height: 360px !important;
+    }
+}
+
+/* Make the Metal Working category card image area tighter so the image reads larger */
+.category-card[data-category="metalworking"] .category-image {
+    padding: 12px;
 }

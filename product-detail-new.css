@@ -241,17 +241,17 @@
 .related-products-grid .view-product-btn {
     display: inline-block;
     padding: 8px 20px;
-    background: var(--primary-color);
-    
+    background: var(--secondary-color);
     color: white;
     text-decoration: none;
     border-radius: 6px;
     font-size: 0.9rem;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .related-products-grid .view-product-btn:hover {
-    background: var(--primary-dark);
+    background: var(--gold-dark, #b7791f);
+    transform: translateY(-1px);
 }
 
 /* Related Products Container (alternative layout) */

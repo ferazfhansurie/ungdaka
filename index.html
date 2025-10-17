@@ -21,6 +21,45 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Page overrides: hide hero liquid/oil effect and industries oil background -->
+    <style>
+        /* Remove the oil/liquid animation in the hero section without touching JS */
+        .liquid-fill { display: none !important; }
+        /* Remove the oil wave/drip background in the Industries section */
+        .oil-drip-top { display: none !important; }
+
+        /* Hero sizing and image quality improvements */
+        .hero-modern { min-height: 92vh; position: relative; }
+        @media (max-width: 768px) {
+            .hero-modern { min-height: 74vh; }
+        }
+        .hero-modern .hero-background { position: absolute; inset: 0; overflow: hidden; }
+        .hero-modern .hero-bg-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 650ms ease;
+            will-change: transform;
+        }
+        .hero-modern .hero-bg-image.is-current { transform: translateX(0%); }
+        .hero-modern .hero-bg-image.is-next { transform: translateX(100%); }
+        .hero-modern .hero-bg-image.is-exit { transform: translateX(-100%); }
+        .hero-modern .hero-bg-image.is-enter { transform: translateX(0%); }
+        .hero-modern .hero-overlay { position: absolute; inset: 0; background: linear-gradient(120deg, rgba(17,24,39,0.6), rgba(17,24,39,0.35)); }
+
+        /* Smooth text transitions for hero title/subtitle */
+        .hero-title-modern, .hero-subtitle-modern {
+            transition: opacity 240ms ease, transform 240ms ease;
+            will-change: opacity, transform;
+        }
+        .hero-text-hide { opacity: 0; transform: translateY(6px); }
+    </style>
+    
+
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Ungdaka (M) Sdn Bhd | Industrial Lubricants & Chemicals">
     <meta property="og:description" content="Advanced Technology Solutions to Cleanliness & Lubrications. 20+ years experience in industrial solutions.">
@@ -76,7 +115,9 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="logo-img">
+                <a href="index.html" aria-label="Home">
+                    <img src="public/ungdaka-logo.png" alt="Ungdaka Logo" class="logo-img">
+                </a>
             </div>
             <div class="nav-menu" id="nav-menu">
                 <a href="index.html" class="nav-link active">Home</a>
@@ -91,29 +132,103 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-content">
                             <div class="dropdown-column">
-                                <h4>Lubricants & Oils</h4>
-                                <a href="products/engine-oils.html">Engine Oils</a>
-                                <a href="products/hydraulic-awx-series.html">Hydraulic Oils</a>
-                                <a href="products/industrial-gear-series.html">Industrial Gear Oils</a>
-                                <a href="products/compressor-oils.html">Compressor Oils</a>
-                                <a href="products/circulating-oils.html">Circulating Oils</a>
-                                <a href="products/lubricating-oils.html">Lubricating Oils</a>
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="products.html#aerosol">Aerosol Products</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-aerosol"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-aerosol">
+                                        <a class="sub-link" href="products/s-88-paintable.html">S-88 Silicone Mould Release</a>
+                                        <a class="sub-link" href="products/ns-77-non-silicone-mould-release.html">NS-77 Non-Silicone Mould Release</a>
+                                        <a class="sub-link" href="products/s-22-degreaser-mould-cleaner.html">S-22 Degreaser & Mould Cleaner</a>
+                                        <a class="sub-link view-all" href="products.html#aerosol">View all →</a>
+                                    </div>
+                                </div>
+
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="products.html#lubricants">Industrial Lubricants</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-lubricants"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-lubricants">
+                                        <a class="sub-link" href="products/engine-oils.html">Engine Oils</a>
+                                        <a class="sub-link" href="products/hydraulic-awx-series.html">Hydraulic Oils</a>
+                                        <a class="sub-link" href="products/industrial-gear-series.html">Industrial Gear Oils</a>
+                                        <a class="sub-link view-all" href="products.html#lubricants">View all →</a>
+                                    </div>
+                                </div>
+
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="products.html#grease">Industrial Grease</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-grease"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-grease">
+                                        <a class="sub-link" href="products/heavy-duty-grease.html">Heavy Duty Grease</a>
+                                        <a class="sub-link" href="products/lit-888-ep-grease.html">LIT 888 EP Grease</a>
+                                        <a class="sub-link" href="products/hi-lo-grease.html">Hi-Lo Grease</a>
+                                        <a class="sub-link view-all" href="products.html#grease">View all →</a>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="dropdown-column">
-                                <h4>Greases</h4>
-                                <a href="products/heavy-duty-grease.html">Heavy Duty Grease</a>
-                                <a href="products/lit-888-ep-grease.html">LIT 888 EP Grease</a>
-                                <a href="products/hi-lo-grease.html">Hi-Lo Grease</a>
-                                <a href="products/food-grade-grease.html">Food Grade Grease</a>
-                                <a href="products/al-cx-grease.html">AL-CX Grease</a>
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="products.html#maintenance">Maintenance & Repair</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-maintenance"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-maintenance">
+                                        <a class="sub-link" href="products/oil-degreaser.html">Oil Degreaser</a>
+                                        <a class="sub-link" href="products/industrial-paint-remover.html">Industrial Paint Remover</a>
+                                        <a class="sub-link" href="products/rust-remover-chemical.html">Rust Remover Chemical</a>
+                                        <a class="sub-link view-all" href="products.html#maintenance">View all →</a>
+                                    </div>
+                                </div>
+
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="products.html#metalworking">Metal Working</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-metalworking"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-metalworking">
+                                        <a class="sub-link" href="products/water-soluble-cutting-coolants.html">Water-Soluble Cutting Coolants</a>
+                                        <a class="sub-link" href="products/neat-cutting-oils.html">Neat Cutting Oils</a>
+                                        <a class="sub-link" href="products/tapping-fluids.html">Tapping Fluids</a>
+                                        <a class="sub-link view-all" href="products.html#metalworking">View all →</a>
+                                    </div>
+                                </div>
+
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="products.html#accessories">Accessories</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-accessories"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-accessories">
+                                        <a class="sub-link" href="products/handheld-refractometer.html">Handheld Refractometer</a>
+                                        <a class="sub-link" href="products/handheld-ph-reader.html">Handheld pH Reader</a>
+                                        <a class="sub-link" href="products/cnc-os-oil-skimmer.html">CNC OS Oil Skimmer</a>
+                                        <a class="sub-link view-all" href="products.html#accessories">View all →</a>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="dropdown-column">
-                                <h4>Specialty Products</h4>
-                                <a href="products/cnc-os-oil-skimmer.html">CNC OS Oil Skimmer</a>
-                                <a href="products/giga-os-oil-skimmer.html">GIGA OS Oil Skimmer</a>
-                                <a href="products/anti-rust-series.html">Anti-Rust Series</a>
-                                <a href="products/moly-lube-advanced-lubricant.html">Moly Lube</a>
-                                <a href="products.html" class="view-all">View All Products →</a>
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="products.html#foodgrade">Food-Safe Products</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-foodgrade"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-foodgrade">
+                                        <a class="sub-link" href="products/protean-3h1-grease.html">PROTEAN 3H1 Grease</a>
+                                        <a class="sub-link" href="products/protean-white-grease.html">PROTEAN White Grease</a>
+                                        <a class="sub-link" href="products/protean-airline-oils.html">PROTEAN Airline Oils</a>
+                                        <a class="sub-link" href="products/protean-chain-gear-oils-new.html">PROTEAN Chain & Gear Oils</a>
+                                        <a class="sub-link view-all" href="products.html#foodgrade">View all →</a>
+                                    </div>
+                                </div>
+
+                                <a href="products.html" class="view-all" style="margin-top:10px; display:inline-block;">View All Products →</a>
                             </div>
                         </div>
                     </div>
@@ -128,26 +243,47 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-content">
                             <div class="dropdown-column">
-                                <h4>Manufacturing</h4>
-                                <a href="stamping-products.html">Stamping</a>
-                                <a href="automotive-transportation-products.html">Automotive & Transportation</a>
-                                <a href="plastic-injection-products.html">Plastic Injection</a>
-                                <a href="machining-engineering-products.html">Machining & Engineering</a>
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="industries.html">Manufacturing</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-ind-manufacturing"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-ind-manufacturing">
+                                        <a class="sub-link" href="stamping-products.html">Stamping</a>
+                                        <a class="sub-link" href="automotive-transportation-products.html">Automotive & Transportation</a>
+                                        <a class="sub-link" href="plastic-injection-products.html">Plastic Injection</a>
+                                        <a class="sub-link" href="machining-engineering-products.html">Machining & Engineering</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="dropdown-column">
-                                <h4>Heavy Industries</h4>
-                                <a href="construction-cement-products.html">Construction & Cement</a>
-                                <a href="marine-offshore-products.html">Marine & Offshore</a>
-                                <a href="oil-gas-products.html">Oil & Gas</a>
-                                <a href="quarries-products.html">Quarries</a>
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="industries.html">Heavy Industries</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-ind-heavy"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-ind-heavy">
+                                        <a class="sub-link" href="construction-cement-products.html">Construction & Cement</a>
+                                        <a class="sub-link" href="marine-offshore-products.html">Marine & Offshore</a>
+                                        <a class="sub-link" href="oil-gas-products.html">Oil & Gas</a>
+                                        <a class="sub-link" href="quarries-products.html">Quarries</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="dropdown-column">
-                                <h4>Specialized</h4>
-                                <a href="semiconductor-disk-drive-products.html">Semiconductor & Disk Drive</a>
-                                <a href="food-beverage-pharmaceutical-products.html">Food & Beverage</a>
-                                <a href="rubber-latex-products.html">Rubber & Latex</a>
-                                <a href="printing-paper-products.html">Printing & Paper</a>
-                                <a href="workshops-automotive-products.html">Workshops</a>
+                                <div class="cat-group">
+                                    <div class="cat-header">
+                                        <a class="cat-link" href="industries.html">Specialized</a>
+                                        <button class="cat-toggle" type="button" aria-expanded="false" aria-controls="cat-ind-specialized"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="sub-list" id="cat-ind-specialized">
+                                        <a class="sub-link" href="semiconductor-disk-drive-products.html">Semiconductor & Disk Drive</a>
+                                        <a class="sub-link" href="food-beverage-pharmaceutical-products.html">Food & Beverage</a>
+                                        <a class="sub-link" href="rubber-latex-products.html">Rubber & Latex</a>
+                                        <a class="sub-link" href="printing-paper-products.html">Printing & Paper</a>
+                                        <a class="sub-link" href="workshops-automotive-products.html">Workshops</a>
+                                    </div>
+                                </div>
                                 <a href="industries.html" class="view-all">View All Industries →</a>
                             </div>
                         </div>
@@ -316,7 +452,7 @@
                                     <i class="fas fa-flask"></i>
                                 </div>
                                 <h3>Food, Beverage & Pharmaceutical</h3>
-                                <p class="panel-description">NSF approved food-grade lubricants and HACCP compliant solutions for food processing equipment.</p>
+                                <p class="panel-description">NSF H1 food-safe lubricants and HACCP compliant solutions for food processing equipment.</p>
                                 <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </a>
@@ -396,7 +532,7 @@
                                 <div class="panel-icon">
                                     <i class="fas fa-tools"></i>
                                 </div>
-                                <h3>Workshops → Cars / Motorcycles / Bicycles</h3>
+                                <h3>Workshops: Cars • Motorcycles • Bicycles</h3>
                                 <p class="panel-description">Professional lubricants and maintenance solutions for automotive workshops and vehicle maintenance.</p>
                                 <span class="panel-link">See Industry's Products <i class="fas fa-arrow-right"></i></span>
                             </div>
@@ -548,27 +684,7 @@
         }
     </style>
 
-    <!-- Rolling Drum Section -->
-    <section class="rolling-drum-section">
-        <div class="container">
-            <div class="drum-container">
-                <!-- Visual trail to show drum path -->
-                <div class="drum-trail" id="drumTrail">
-                    <div class="trail-line"></div>
-                </div>
-                
-                <div class="drum-wrapper">
-                    <img src="public/AI Images/drum with logo.png" alt="Ungdaka Drum with Logo" class="rolling-drum" id="drumWithLogo">
-                    <img src="public/AI Images/drum without logo.png" alt="Ungdaka Drum without Logo" class="rolling-drum" id="drumWithoutLogo">
-
-                    <!-- Slogan / Fun Fact that follows the drum -->
-                    <div class="drum-slogan" id="drumSlogan" aria-hidden="true">
-                        <span class="slogan-text" id="sloganText">Fun fact: Our drums last longer than your coffee breaks ☕</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- About Section -->
     <section class="about-home-modern">
@@ -749,12 +865,147 @@
         })();
     </script>
 
+    <script>
+        // Hero background slideshow with copy changes and swipe-left transitions
+        (function(){
+            const heroBg = document.querySelector('.hero-modern .hero-background');
+            let currentImg = document.querySelector('.hero-modern .hero-bg-image');
+            const titleEl = document.querySelector('.hero-title-modern');
+            const subtitleEl = document.querySelector('.hero-subtitle-modern');
+            if(!heroBg || !currentImg || !titleEl || !subtitleEl) return;
+
+            const slides = [
+                {
+                    src: 'public/AI Images/shelf.jpg',
+                    title: 'Advanced Technology Solutions',
+                    highlight: 'To Cleanliness & Lubrications',
+                    subtitle: 'Leading supplier of industrial aerosol sprays, specialty lubricants, greases & maintenance chemicals across Malaysia and Thailand'
+                },
+                {
+                    src: 'public/Cutting Coolant.png',
+                    title: 'High-Performance Cutting Coolants',
+                    highlight: 'Extend Tool Life. Better Finish.',
+                    subtitle: 'Advanced water-soluble and neat coolants engineered for CNC machining, milling, turning, and grinding'
+                },
+                {
+                    src: 'public/factory 2.png',
+                    title: 'Reliable Industrial Lubricants',
+                    highlight: 'For Every Industry',
+                    subtitle: 'Boost uptime with premium oils, greases, and maintenance chemicals'
+                },
+                {
+                    src: 'public/fnb factory.png',
+                    title: 'Food-Safe Lubrication',
+                    highlight: 'NSF & HACCP Compliant',
+                    subtitle: 'Safe, high-performance solutions for food processing equipment'
+                }
+            ];
+
+            // Preload images for smooth transitions
+            slides.forEach(s => { const i = new Image(); i.src = s.src; });
+
+            let index = 0;
+            // Initialize current copy and class
+            function setCopy(slide){
+                titleEl.innerHTML = `${slide.title}<span class="hero-highlight">${slide.highlight}</span>`;
+                subtitleEl.textContent = slide.subtitle;
+            }
+            currentImg.classList.add('is-current');
+            setCopy(slides[0]);
+
+            let transitioning = false;
+
+            function nextSlide(){
+                if (transitioning) return;
+                transitioning = true;
+                index = (index + 1) % slides.length;
+                const next = slides[index];
+
+                // Prepare next image element
+                const nextImg = document.createElement('img');
+                nextImg.className = 'hero-bg-image is-next';
+                nextImg.alt = currentImg.alt || 'Hero background';
+                nextImg.src = next.src;
+                heroBg.appendChild(nextImg);
+
+                // Fade-out text, update, then fade-in
+                titleEl.classList.add('hero-text-hide');
+                subtitleEl.classList.add('hero-text-hide');
+                setTimeout(() => {
+                    setCopy(next);
+                    // Force reflow before showing
+                    // eslint-disable-next-line no-unused-expressions
+                    titleEl.offsetWidth;
+                    subtitleEl.offsetWidth;
+                    titleEl.classList.remove('hero-text-hide');
+                    subtitleEl.classList.remove('hero-text-hide');
+                }, 180);
+
+                // Force reflow to ensure the browser acknowledges the starting position
+                // eslint-disable-next-line no-unused-expressions
+                nextImg.offsetWidth;
+
+                // Slide: current moves left (exit), next moves to center (enter)
+                currentImg.classList.remove('is-current');
+                currentImg.classList.add('is-exit');
+                nextImg.classList.remove('is-next');
+                nextImg.classList.add('is-enter');
+
+                const onDone = () => {
+                    // Remove the old one and promote the next to current
+                    if (currentImg && currentImg.parentNode) currentImg.remove();
+                    nextImg.classList.remove('is-enter');
+                    nextImg.classList.add('is-current');
+                    currentImg = nextImg;
+                    transitioning = false;
+                    nextImg.removeEventListener('transitionend', onDone);
+                };
+                nextImg.addEventListener('transitionend', onDone);
+            }
+
+            const intervalMs = 6500;
+            let timer = setInterval(nextSlide, intervalMs);
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    clearInterval(timer);
+                } else {
+                    clearInterval(timer);
+                    timer = setInterval(nextSlide, intervalMs);
+                }
+            });
+        })();
+    </script>
+
+    <!-- Rolling Drum Section (moved above comparison section) -->
+    <section class="rolling-drum-section">
+        <div class="container">
+            <div class="drum-container">
+                <!-- Visual trail to show drum path -->
+                <div class="drum-trail" id="drumTrail">
+                    <div class="trail-line"></div>
+                </div>
+                
+                <div class="drum-wrapper">
+                    <img src="public/AI Images/drum with logo.png" alt="Ungdaka Drum with Logo" class="rolling-drum" id="drumWithLogo">
+                    <img src="public/AI Images/drum without logo.png" alt="Ungdaka Drum without Logo" class="rolling-drum" id="drumWithoutLogo">
+
+                    <!-- Slogan / Fun Fact that follows the drum -->
+                    <div class="drum-slogan" id="drumSlogan" aria-hidden="true">
+                        <span class="slogan-text" id="sloganText">Fun fact: Our drums last longer than your coffee breaks ☕</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Interactive Bearings Section -->
-    <section class="bearings-comparison">
-        <video class="bearings-bg-video" autoplay loop muted playsinline>
+    <section class="bearings-comparison" style="position:relative; overflow:hidden; background:#0f172a;">
+        <video class="bearings-bg-video" autoplay loop muted playsinline style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); min-width:100%; min-height:100%; width:auto; height:auto; object-fit:cover; display:block;">
             <source src="public/Abstract_Golden_Oil_Flowing_Video.mp4" type="video/mp4">
         </video>
-        <div class="container">
+        <div class="bearings-overlay" aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(17,24,39,0.70), rgba(17,24,39,0.35)); pointer-events:none;"></div>
+        <div class="container" style="position:relative; z-index:1;">
             <div class="section-header">
                 <span class="section-badge">Quick Comparison</span>
                 <p>Discover how proper lubrication extends bearing life and improves performance</p>
@@ -796,174 +1047,28 @@
         </div>
     </section>
 
-    <!-- Featured Products Section -->
-    <section class="featured-products">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Our Products</span>
-                <h2>Featured Aerosol Products</h2>
-                <p>High-quality industrial solutions for your specific needs</p>
+
+
+
+    <!-- Professional CTA Band -->
+    <section class="cta-band" style="background: linear-gradient(120deg, #0f172a, #1e293b); color:#fff; padding: 48px 0;">
+        <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+            <div class="cta-copy" style="flex:1 1 420px;">
+                <h2 style="margin:0 0 8px; font-weight:700; font-size: clamp(1.4rem, 2.4vw, 2rem);">Ready to improve uptime and quality?</h2>
+                <p style="margin:0; color: rgba(255,255,255,0.85);">Talk to our specialists or browse our product range to get started.</p>
             </div>
-            
-            <div class="products-grid" style="grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 1400px; margin: 0 auto;">
-                <a href="products/s-88-silicone-mould-release.html" class="product-card">
-                    <div class="product-image" style="height: 600px; padding: 40px;">
-                        <img src="public/s-88 paintable.png" alt="S-88 Silicone Mould Release" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
-                    </div>
-                    <div class="product-info">
-                        <h3>S-88 Silicone Mould Release</h3>
-                        <p>Excellent Releasing Agent - Paintable & Non-Paintable Version Available</p>
-                        <div class="product-features">
-                            <span class="feature-tag">High Performance</span>
-                            <span class="feature-tag">Versatile</span>
-                        </div>
-                    </div>
+            <div class="cta-actions" style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a href="contact.html" class="btn-modern" style="background:#f59e0b; color:#111827; padding:12px 18px; border-radius:10px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+                    <i class="fas fa-headset"></i>
+                    <span>Contact Sales</span>
                 </a>
-                
-                <a href="products/ns-77-non-silicone-mould-release.html" class="product-card">
-                    <div class="product-image" style="height: 600px; padding: 40px;">
-                        <img src="public/ns-77.png" alt="NS-77 Non-Silicone Mould Release" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
-                    </div>
-                    <div class="product-info">
-                        <h3>NS-77 Non-Silicone Mould Release</h3>
-                        <p>Formulated from Vegetable Oil & Food Grade Base</p>
-                        <div class="product-features">
-                            <span class="feature-tag gold">Food Grade</span>
-                            <span class="feature-tag">Eco-Friendly</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/s-22-degreaser-mould-cleaner.html" class="product-card">
-                    <div class="product-image" style="height: 450px; padding: 30px;">
-                        <img src="public/s-22.png" alt="S-22 Degreaser & Mould Cleaner" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
-                    </div>
-                    <div class="product-info">
-                        <h3>S-22 Degreaser & Mould Cleaner</h3>
-                        <p>Superior Metal & Plastic Cleaner - Heavy Duty, Effective, Economical & Residue Free</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Heavy Duty</span>
-                            <span class="feature-tag">Residue Free</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/pro-shield-blue-anti-corrosion.html" class="product-card">
-                    <div class="product-image" style="height: 450px; padding: 30px;">
-                        <img src="public/pro shield blue.png" alt="Pro-Shield Anti-Corrosion" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
-                    </div>
-                    <div class="product-info">
-                        <h3>Pro-Shield Anti-Corrosion</h3>
-                        <p>Short Mid-Term Protection Wax Coating - Excellent Protection Against Rust & Corrosion</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Anti-Corrosion</span>
-                            <span class="feature-tag">High Temperature</span>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="products/ep-lube-ejector-pin-lubricant.html" class="product-card">
-                        <div class="product-image" style="height: 450px; padding: 30px;">
-                            <img src="public/ep lube.png" alt="EP Lube Ejector Pin Lubricant" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
-                        </div>
-                        <div class="product-info">
-                            <h3>EP Lube Ejector Pin Lubricant</h3>
-                            <p>Non-Staining & Non-Dripping Lubrication Film for Ejector Pins</p>
-                            <div class="product-features">
-                                <span class="feature-tag">Non-Staining</span>
-                                <span class="feature-tag">Precision</span>
-                            </div>
-                        </div>
-                    </a>
-                
-                <a href="products/sg-18-high-performance-grease.html" class="product-card">
-                    <div class="product-image" style="height: 450px; padding: 30px;">
-                        <img src="public/sg-18.png" alt="SG-18 Multi Functional Spray Grease" loading="lazy" style="max-height: 100%; width: 100%; object-fit: contain;">
-                    </div>
-                    <div class="product-info">
-                        <h3>SG-18 Multi Functional Spray Grease</h3>
-                        <p>Non-Drip Lithium Based Grease Spray - Applicable to all Moving Parts</p>
-                        <div class="product-features">
-                            <span class="feature-tag">Multi-Purpose</span>
-                            <span class="feature-tag">Non-Drip</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="products-cta">
-                <a href="products.html" class="btn-modern btn-primary-modern">
-                    <span>View All Products</span>
-                    <i class="fas fa-arrow-right"></i>
+                <a href="products.html" class="btn-modern" style="background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.6); padding:10px 16px; border-radius:10px; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+                    <i class="fas fa-box"></i>
+                    <span>Explore Products</span>
                 </a>
             </div>
         </div>
     </section>
-
-    <!-- Food Grade Section -->
-    <section class="food-grade-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Food Grade Solutions</span>
-                <h2>Safe for Food Industry Applications</h2>
-                <p>NSF approved and HACCP compliant products for food processing equipment</p>
-            </div>
-            
-            <div class="food-grade-content">
-                <div class="food-grade-text golden-border">
-                    <h3>Food Safety Compliance</h3>
-                    <p>
-                        Our <span class="golden-accent">food-grade lubricants and chemicals</span> are specially formulated 
-                        to meet the stringent requirements of the food processing industry. All products are 
-                        NSF approved and comply with HACCP standards for safe incidental food contact.
-                    </p>
-                    
-                    <div class="food-grade-features">
-                        <div class="feature-item">
-                            <i class="fas fa-certificate" style="color: var(--secondary-color);"></i>
-                            <span>NSF Approved</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-shield-alt" style="color: var(--secondary-color);"></i>
-                            <span>HACCP Compliant</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-leaf" style="color: var(--secondary-color);"></i>
-                            <span>Food Safe</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-check-circle" style="color: var(--secondary-color);"></i>
-                            <span>Quality Assured</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="food-grade-images">
-                    <div class="food-image-grid">
-                        <div class="food-image-card">
-                            <img src="public/AI Images/a man holding a spray can.png" alt="Professional demonstrating Ungdaka aerosol products" loading="lazy">
-                            <div class="image-overlay">
-                                <h4>Professional Quality Products</h4>
-                            </div>
-                        </div>
-                        <div class="food-image-card">
-                            <img src="public/AI Images/landscape of factory.png" alt="Industrial manufacturing facility" loading="lazy">
-                            <div class="image-overlay">
-                                <h4>Industrial Production</h4>
-                            </div>
-                        </div>
-                        <div class="food-image-card">
-                            <img src="public/Industries Images/food  & beverage.jpg" alt="Food Grade Lubricants" loading="lazy">
-                            <div class="image-overlay">
-                                <h4>Food Grade Lubricants</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <!-- Footer -->
     <footer class="footer-new">
@@ -995,7 +1100,7 @@
                         <li><a href="products.html">Industrial Grease</a></li>
                         <li><a href="products.html">Maintenance & Repair</a></li>
                         <li><a href="products.html">Metal Working</a></li>
-                        <li><a href="products.html">Food Grade Products</a></li>
+                        <li><a href="products.html">Food-Safe Products</a></li>
                     </ul>
                 </div>
 
@@ -1082,7 +1187,7 @@
                             <option value="grease">Industrial Grease</option>
                             <option value="maintenance">Maintenance & Repair</option>
                             <option value="metalworking">Metal Working</option>
-                            <option value="foodgrade">Food Grade Products</option>
+                            <option value="foodgrade">Food-Safe Products</option>
                         </select>
                         <label>Product Category</label>
                     </div>
@@ -1102,5 +1207,7 @@
     <!-- Scripts -->
     <script src="script.js"></script>
     <script src="product-animations.js"></script>
+    
+    
 </body>
 </html>
